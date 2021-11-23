@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_095636) do
+ActiveRecord::Schema.define(version: 2021_11_23_135604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,25 @@ ActiveRecord::Schema.define(version: 2021_11_23_095636) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "dashboards", force: :cascade do |t|
+    t.integer "time_reading"
+    t.bigint "user_id", null: false
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_dashboards_on_user_id"
+  end
+
+  create_table "media", force: :cascade do |t|
+    t.bigint "dashboard_id", null: false
+    t.string "mediable_type", null: false
+    t.bigint "mediable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dashboard_id"], name: "index_media_on_dashboard_id"
+    t.index ["mediable_type", "mediable_id"], name: "index_media_on_mediable"
+  end
+
   create_table "podcasts", force: :cascade do |t|
     t.string "title"
     t.string "category"
@@ -37,6 +56,23 @@ ActiveRecord::Schema.define(version: 2021_11_23_095636) do
     t.string "source"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_categories", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "category"
+    t.boolean "sub_category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_categories_on_user_id"
+  end
+
+  create_table "user_media_types", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "media_types"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_media_types_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,9 +84,6 @@ ActiveRecord::Schema.define(version: 2021_11_23_095636) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.string "category"
-    t.string "sub_category"
-    t.string "media_type"
     t.integer "available_time"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -65,4 +98,8 @@ ActiveRecord::Schema.define(version: 2021_11_23_095636) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "dashboards", "users"
+  add_foreign_key "media", "dashboards"
+  add_foreign_key "user_categories", "users"
+  add_foreign_key "user_media_types", "users"
 end
