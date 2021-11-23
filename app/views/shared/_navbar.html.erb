@@ -2,7 +2,14 @@
   <div class="title">
     <h6>Newsboard</h6>
   </div>
-  <div class="sign_in">
-    <%= link_to "Se connecter",new_user_session_path, class: "btn btn-outline-dark" %>
-  </div>
+
+  <% if user_signed_in? %>
+    <div class="user_connect">
+      <%= link_to "Se deconnecter",destroy_user_session_path, method: 'delete', class: "btn btn-outline-red" %>
+    </div>
+  <% else %>
+    <div class="user_sign_in">
+      <%= link_to "Se connecter",new_user_session_path, class: "btn btn-outline-dark" %>
+    </div>
+  <% end %>
 </div>
