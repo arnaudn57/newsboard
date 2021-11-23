@@ -1,2 +1,66 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="first-text">
+  <h4> Lire l'info différement</h4>
+  <h6> Vos News revisitées</h6>
+</div>
+
+
+<%# -----------Carousel------------- %>
+
+<!--Carousel Wrapper-->
+<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <!--First slide-->
+    <div class="carousel-item active">
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <div class="home-card">
+            <div class="home-card-img">
+              <img src="https://source.unsplash.com/random" alt="random">
+            </div>
+            <div class="home-card-text">
+              <h6>Felix</h6>
+              <p>Lorem ipsum dolor sit amet, consectet</p>
+              <a href="#" class="btn btn-outline-primary">Je découvre</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.First slide-->
+
+    <!--Second slide-->
+    <div class="carousel-item">
+
+      <div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <div class="home-card">
+            <div class="home-card-img">
+              <img src="https://source.unsplash.com/random" alt="random">
+            </div>
+            <div class="home-card-text">
+              <h6>Felix</h6>
+              <p>Lorem ipsum dolor sit amet, consectet</p>
+              <a href="#" class="btn btn-outline-primary">Je découvre</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.Second slide-->
+  </div>
+  <!--/.Slides-->
+</div>
+<!--/.Carousel Wrapper-->
+
+
+<%# -------------Content---------- %>
+</div>
+<div class="btn-sign_up">
+  <%= link_to "S'inscrire", new_user_registration_path ,class:'btn btn-dark'%>
+</div>
+<div class="text-content">
+  <p>Newsboard est le nouveau média qui rassemble toutes vos news au meme endroit.
+   Choisissez en un clic vos topics préférés, votre temps de lecture journalier.
+    On s’occupe du reste</p>
+</div>
