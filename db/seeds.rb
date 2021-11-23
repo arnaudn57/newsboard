@@ -26,5 +26,4 @@ Article.create!(title: "Les gens sont malades", content: "Bonjour, c'est Jean-Pi
 Article.create!(title: "Le sport c'est cool", content: "Bonjour, c'est Jean-Pierre Pernault, le sport c'est cool, bisous", category: "sport", publish_date: "22/11/2021", source: "L'Equipe")
 Article.create!(title: "La tech ça tue", content: "Bonjour, c'est Jean-Pierre Pernault, la tech ça tue, bisous", category: "tech", publish_date: "22/11/2021", source: "Les Numériques")
 
-
 puts "Finished !"
