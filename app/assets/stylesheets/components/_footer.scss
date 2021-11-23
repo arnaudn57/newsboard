@@ -1,0 +1,17 @@
+.footer {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid black;
+}
+
+.footer .list-social ul{
+  display: inline-flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.footer-text p {
+  font-weight: bold;
+}
