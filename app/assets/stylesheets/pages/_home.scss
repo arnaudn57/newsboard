@@ -42,3 +42,14 @@
   margin-right: 20px;
   margin-bottom: 100px;
 }
+
+.controls-top {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.card {
+  background-color: transparent !important;
+  border: none !important;
+}
