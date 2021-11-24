@@ -2,15 +2,25 @@
 <%# <%= @dashboard_media.mediable.time_reading %>
 <%# <%= @user.available_time %>
 <p class="text-center"><%= "#{@user_time} minutes de lecture" %></p>
-<div class="card-container">
-<% @medias.each do |media| %>
-  <div class="card-product">
-    <img src="https://source.unsplash.com/daily?news" />
-    <div class="card-product-infos">
-      <h2><%= media.title %></h2>
-      <p><%= media.content %></p>
-      <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
-    </div>
-  </div>
-<% end %>
+
+
+
+  <!--Slides-->
+        <div class="card-container">
+          <% @medias.each do |media| %>
+            <div class="card-product">
+              <img src="https://source.unsplash.com/daily?news" />
+                <div class="card-product-infos">
+                  <div class="card-product-title">
+                    <h2><%= media.title %></h2>
+                  </div>
+                  <div class="card-product-content">
+                    <p><%= media.content %></p>
+                  </div>
+                  <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
+                  <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
+                </div>
+            </div>
+          <% end %>
+        </div>
 </div>
