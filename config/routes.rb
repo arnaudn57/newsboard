@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  resources :users
   resources :user_media_types, only: [:create, :destroy]
   resources :user_categories, only: [:create, :destroy]
   resources :favoris, only: [:create, :destroy, :index]

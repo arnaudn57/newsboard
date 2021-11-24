@@ -1,4 +1,5 @@
 class UserMediaTypesController < ApplicationController
+
   def create
     @user_media_type = User_media_type.new(user_media_type)
     @user = User.find(params[:user_id])

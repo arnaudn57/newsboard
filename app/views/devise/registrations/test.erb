@@ -1,7 +1,7 @@
-
+<%#
 <div class="container px-4 py-5 mx-auto ">
-  <div class= "center"><h2>Hello <%= resource_name.to_s.humanize %></h2> </div>
-    <div class= "center"><div class="marg"><h5> Choisi les thèmes que tu préferes !</h5></div></div>
+  <%# <div class= "center"><h2>Hello <%= resource_name.to_s.humanize %>
+    <%# <div class= "center"><div class="marg"><h5> Choisi les thèmes que tu préferes !</h5></div></div>
       <div id=ligne></div>
 
     <div class= "row justify-content-center">
@@ -73,4 +73,9 @@
                 </div>
           </div>
 
-</div>
+</div> %>
+
+<%= simple_form_for edit_user_registration_path(@user) do |f| %>
+  <%= f.input :username %>
+
+<% end %>
