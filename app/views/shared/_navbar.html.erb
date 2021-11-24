@@ -1,15 +1,22 @@
-<div class="navbar">
-  <div class="title">
-    <h6>Newsboard</h6>
-  </div>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Newsboard</a>
   <% if user_signed_in? %>
-    <div class="user_connect">
-      <%= link_to "Se deconnecter",destroy_user_session_path, method: 'delete', class: "btn btn-outline-red" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ">
+        <li class="nav-item" id="1">
+          <a class="nav-link"href="#">Mon Newsboard <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <div><a class="nav-link"><%= link_to"Se deconnecter",destroy_user_session_path, method: 'delete' %></a></div>
+        </li>
+      </ul>
     </div>
   <% else %>
     <div class="user_sign_in">
       <%= link_to "Se connecter",new_user_session_path, class: "btn btn-outline-dark" %>
     </div>
   <% end %>
-</div>
+</nav>
