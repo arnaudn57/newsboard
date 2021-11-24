@@ -12,40 +12,41 @@
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
     <div class="carousel-item active">
-      <div class="col-md-3" style="float:left">
-       <div class="card mb-2">
-          <div class="home-card">
-            <div class="home-card-img">
-              <img src="https://source.unsplash.com/random" alt="random">
+      <div class="card-container-home">
+            <div class="card-product">
+              <img src="https://source.unsplash.com/daily?news" />
+                <div class="card-product-infos">
+                  <div class="card-product-title">
+                    <h2><%= "Coronavirus : le Parlement autorise le recours au pass sanitaire jusqu'au 31 juillet 2022" %></h2>
+                  </div>
+                  <div class="card-product-content">
+                    <p><%="Le recours au pass sanitaire est désormais autorisé jusqu'au 31 juillet 2022, suite au vote par l'Assemblée.." %></p>
+                  </div>
+                  <footer class="blockquote-footer"><cite title="Source Title"><%= "Le Monde"%></cite></footer>
+                  <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
+                </div>
             </div>
-            <div class="home-card-text">
-              <h6>Felix</h6>
-              <p>Lorem ipsum dolor sit amet, consectet</p>
-              <a href="#" class="btn btn-outline-primary">Je découvre</a>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
     <!--/.First slide-->
 
     <!--Second slide-->
     <div class="carousel-item">
-
-      <div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <div class="home-card">
-            <div class="home-card-img">
-              <img src="https://source.unsplash.com/random" alt="random">
-            </div>
-            <div class="home-card-text">
-              <h6>Felix</h6>
-              <p>Lorem ipsum dolor sit amet, consectet</p>
-              <a href="#" class="btn btn-outline-primary">Je découvre</a>
-            </div>
+      <div class="card-container-home">
+        <div class="card-product">
+                <img src="https://source.unsplash.com/daily?news" />
+                  <div class="card-product-infos">
+                    <div class="card-product-title">
+                      <h2><%= "Coronavirus : le Parlement autorise le recours au pass sanitaire jusqu'au 31 juillet 2022" %></h2>
+                    </div>
+                    <div class="card-product-content">
+                      <p><%="Le recours au pass sanitaire est désormais autorisé jusqu'au 31 juillet 2022, suite au vote par l'Assemblée.." %></p>
+                    </div>
+                    <footer class="blockquote-footer"><cite title="Source Title"><%= "Le Monde"%></cite></footer>
+                    <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
     </div>
     <!--/.Second slide-->
   </div>
@@ -53,12 +54,12 @@
 </div>
 <!--/.Carousel Wrapper-->
 
-
 <%# -------------Content---------- %>
 </div>
 <div class="btn-sign_up">
   <%= link_to "S'inscrire", new_user_registration_path ,class:'btn btn-dark'%>
 </div>
+
 <div class="text-content">
   <p>Newsboard est le nouveau média qui rassemble toutes vos news au meme endroit.
    Choisissez en un clic vos topics préférés, votre temps de lecture journalier.

@@ -1,22 +1,30 @@
 <h2 class="text-center"><%= "Hi #{@user.username} !" %></h2>
 <%# <%= @dashboard_media.mediable.time_reading %>
 <%# <%= @user.available_time %>
-<p class="text-center"><%= "#{current_user.available_time} minutes de lecture" %></p>
-<% @user_categories.each do |user_categorie| %>
- <% user_categorie.category.each do |category_name|%>
-    <p class="text-center"><%= category_name %></p>
-    <% end %>
- <% end %>
 
-<div class="card-container">
-<% @medias.each do |media| %>
-  <div class="card-product">
-    <img src="https://source.unsplash.com/daily?news" />
-    <div class="card-product-infos">
-      <h2><%= media.title %></h2>
-      <p><%= media.content %></p>
-      <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
-    </div>
-  </div>
-<% end %>
-</div>
+<p class="text-center"><%= "#{current_user.available_time}} minutes de lecture" %></p>
+
+    <% @user_categories.each do |user_categorie| %>
+     <% user_categorie.category.each do |category_name|%>
+        <p class="text-center"><%= category_name %></p>
+        <% end %>
+     <% end %>
+
+  <!--Slides-->
+        <div class="card-container">
+          <% @medias.each do |media| %>
+            <div class="card-product">
+              <img src="https://source.unsplash.com/daily?news" />
+                <div class="card-product-infos">
+                  <div class="card-product-title">
+                    <h2><%= media.title %></h2>
+                  </div>
+                  <div class="card-product-content">
+                    <p><%= media.content %></p>
+                  </div>
+                  <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
+                  <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
+                </div>
+            </div>
+          <% end %>
+        </div>
