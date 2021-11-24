@@ -1,4 +1,5 @@
 class UserCategoriesController < ApplicationController
+
   def create
     @user_category = User_category.new(user_category)
     @user = User.find(params[:user_id])
