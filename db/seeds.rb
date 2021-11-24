@@ -25,3 +25,7 @@ Article.create!(title: "Les pauvres sont pauvres", content: "Bonjour, c'est Jean
 Article.create!(title: "Les gens sont malades", content: "Bonjour, c'est Jean-Pierre Pernault, les gens sont malades, bisous", category: "santé", publish_date: "22/11/2021", source: "Le Figaro")
 Article.create!(title: "Le sport c'est cool", content: "Bonjour, c'est Jean-Pierre Pernault, le sport c'est cool, bisous", category: "sport", publish_date: "22/11/2021", source: "L'Equipe")
 Article.create!(title: "La tech ça tue", content: "Bonjour, c'est Jean-Pierre Pernault, la tech ça tue, bisous", category: "tech", publish_date: "22/11/2021", source: "Les Numériques")
+
+Dashboard.create!(time_reading: "13", user_id: "1", date: "22/11/2021")
+Dashboard.create!(time_reading: "14", user_id: "2", date: "23/11/2021")
+Dashboard.create!(time_reading: "16", user_id: "3", date: "21/11/2021")

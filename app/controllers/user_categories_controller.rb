@@ -13,6 +13,7 @@ class UserCategoriesController < ApplicationController
     redirect_to user_path(@user_category.user)
   end
 
+
    private
 
   def user_category_params

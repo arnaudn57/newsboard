@@ -1,4 +1,4 @@
-.btn-group-toggle .btn {
+.btn-group-toggle-a .btn {
   width: 150px;
   margin: 10px;
   border-radius: 20px;
@@ -7,11 +7,11 @@
 background-color: rgb(104, 115, 212);
 }
 
- i {
+ #ligne .i {
   margin-top: 10px;
   color: rgb(62, 63, 158);
 }
- i:hover {
+ #ligne .i:hover {
   color: rgb(101, 104, 240);
 }
 
@@ -27,7 +27,7 @@ background-color: rgb(104, 115, 212);
   margin-bottom: 20px;
 }
 
-.btn-outline-dark {
+.center .btn-outline-dark {
   font-weight: bold;
   border-radius: 30px;
   margin-bottom: 30px;
