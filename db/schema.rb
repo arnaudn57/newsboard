@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_11_24_151427) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,15 +38,6 @@ ActiveRecord::Schema.define(version: 2021_11_24_151427) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_dashboards_on_user_id"
-  end
-
-  create_table "favoris", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "medium_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["medium_id"], name: "index_favoris_on_medium_id"
-    t.index ["user_id"], name: "index_favoris_on_user_id"
   end
 
   create_table "media", force: :cascade do |t|
@@ -108,8 +101,6 @@ ActiveRecord::Schema.define(version: 2021_11_24_151427) do
   end
 
   add_foreign_key "dashboards", "users"
-  add_foreign_key "favoris", "media"
-  add_foreign_key "favoris", "users"
   add_foreign_key "media", "dashboards"
   add_foreign_key "user_categories", "users"
   add_foreign_key "user_media_types", "users"

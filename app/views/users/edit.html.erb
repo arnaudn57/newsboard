@@ -1,0 +1,18 @@
+<%= simple_form_for (@user) do |f| %>
+  <%# --------Category-------- %>
+  <p>Category</p>
+  <%= f.association :user_categories, as: :check_boxes, collection: ['Economie', 'Sport', 'Politique'] %>
+
+  <%# ---------Media_type--------- %>
+  <p>Media</p>
+  <%= f.association :user_media_types , as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video']%>
+
+  <%# ---------------Time available------------- %>
+  <p>Temps dispo:</p>
+  <%= f.input :available_time, collection: 5..30 %>
+
+
+  <%# ----------Submit-------------- %>
+  <%= f.submit :submit %>
+
+<% end %>

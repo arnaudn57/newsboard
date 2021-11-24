@@ -1,4 +1,5 @@
 class UserCategoriesController < ApplicationController
+
   def create
     @user_category = User_category.new(user_category)
     @user = User.find(params[:user_id])
@@ -12,6 +13,7 @@ class UserCategoriesController < ApplicationController
     @user_category.destroy
     redirect_to user_path(@user_category.user)
   end
+
 
    private
 
