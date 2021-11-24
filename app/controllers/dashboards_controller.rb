@@ -2,8 +2,11 @@ class DashboardsController < ApplicationController
   def index
     @user = current_user
     @dashboard = Dashboard.find(@user.id)
-    @user_time = @dashboard.user.available_time
     @user_categories = @dashboard.user.user_categories
+    # @user_categories.each do |user_categorie|
+    #   @user_categorie = user_categorie.category
+    # end
+    # @media_categories = Article.where(category: @user_categorie)
     if (10..20).include?(@user_time)
       @three_articles = Article.limit(3)
       @medias = @three_articles.each do |article|
