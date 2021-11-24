@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_140051) do
+ActiveRecord::Schema.define(version: 2021_11_24_151427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_140051) do
 
   create_table "user_categories", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "category"
+    t.string "category", array: true
     t.boolean "sub_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_140051) do
 
   create_table "user_media_types", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "media_types"
+    t.string "media_types", array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_media_types_on_user_id"

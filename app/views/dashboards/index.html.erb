@@ -2,6 +2,12 @@
 <%# <%= @dashboard_media.mediable.time_reading %>
 <%# <%= @user.available_time %>
 <p class="text-center"><%= "#{@user_time} minutes de lecture" %></p>
+<% @user_categories.each do |user_categorie| %>
+ <% user_categorie.category.each do |category_name|%>
+    <p class="text-center"><%= category_name %></p>
+    <% end %>
+ <% end %>
+
 <div class="card-container">
 <% @medias.each do |media| %>
   <div class="card-product">
