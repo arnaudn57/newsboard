@@ -30,11 +30,13 @@
 // --------CONTENT--------
 
 .content {
-  margin-top: 75px;
-  margin-bottom: 34px;
-  display: flex;
-  justify-content: center;
+  margin: 75px auto;
   text-align: center;
+  width: 343px;
+  border: 1px solid black;
+  border-radius: 34px;
+  padding: 50px;
+  box-shadow: 0px 0px 3px black;
 }
 
 .text-edit {

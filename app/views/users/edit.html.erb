@@ -1,21 +1,16 @@
-  <h5 class="text-edit"> <%= current_user.email %> Personnalise ta revue de presse</h5>
+  <h5 class="text-edit"> <%= current_user.username %> Personnalise ta revue de presse <br> en fonction de tes envies et de ton temps disponibles</h5>
 <div class="content">
   <%= simple_form_for (@user) do |f| %>
     <%# --------Category-------- %>
-    <p>Category</p>
-    <%= f.association :user_categories, as: :check_boxes, collection: ['Economie', 'Sport', 'Politique'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item' %>
-
+    <%= f.association :user_categories, label: "Choisissez la ou les catégories qui vous intéresse :", as: :check_boxes, collection: ['Economie', 'Sport', 'Politique', 'Informatique', 'Travail', 'Sante', 'Automobile', 'Etranger', 'Science', 'Autres'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item' %>
     <%# ---------Media_type--------- %>
-    <p>Media</p>
-    <%= f.association :user_media_types , as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
-
+    <%= f.association :user_media_types , label: "Choisissez quels types de média souhaitez vous être informé :", as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
     <%# ---------------Time available------------- %>
-    <p>Temps dispo:</p>
-    <%= f.input :available_time, collection: 5..30 %>
+    <%= f.input :available_time, label: "Quel est votre disponible ?", collection: 5..30 %>
 
   <%# as: :range, :min =>11, :max => 30 %>
     <%# ----------Submit-------------- %>
-    <%= f.submit :submit %>
+    <%= f.submit 'Créer ma NewsBoard', class: 'btn btn-primary' %>
 
   <% end %>
 
