@@ -35,9 +35,12 @@ Dashboard.create!(time_reading: 15, date: "22/11/2021", user_id: 1)
 Dashboard.create!(time_reading: 40, date: "22/11/2021", user_id: 2)
 Dashboard.create!(time_reading: 25, date: "22/11/2021", user_id: 3)
 
-UserCategory.create!(category: ['Sport', 'General'], user_id: 1)
-UserCategory.create!(category: ['Economy', 'General'], user_id: 2)
-UserCategory.create!(category: ['Santé', 'Sport'], user_id: 3)
+UserCategory.create!(category: 'Sport', user_id: 1)
+UserCategory.create!(category: 'General', user_id: 1)
+UserCategory.create!(category: 'Sport', user_id: 2)
+UserCategory.create!(category: 'Economy', user_id: 2)
+UserCategory.create!(category: 'Santé', user_id: 3)
+UserCategory.create!(category: 'Tech', user_id: 3)
 
 
 puts "Finished !"
