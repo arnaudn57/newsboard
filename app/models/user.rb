@@ -10,12 +10,11 @@ class User < ApplicationRecord
   has_many :user_media_types
   has_many :user_categories
 
-  CATEGORIES = ["sport", "cinema", "tech", 'politique']
 
   def self.create_all_users_new_dashboards
     self.find_each do |user|
       new_dashboard = Dashboard.create(user: user, date: Date.today)
-      categories = CATEGORIES.sample(user.number_of_articles)
+      categories = Medium::CATEGORIES.sample(user.number_of_articles)
       categories.each do |category|
         # api
         url = "https://api.newscatcherapi.com/v2/search?q=#{category}&lang=fr"
@@ -36,7 +35,7 @@ class User < ApplicationRecord
   end
 
   def number_of_articles
-    3
+    6
     # a calculer en fonction du temps souhaite
   end
 end
