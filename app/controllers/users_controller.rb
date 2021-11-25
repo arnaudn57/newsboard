@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     user_media_type = UserMediaType.find_or_create_by(user_id: @user.id)
     user_media_type.update(media_types: params[:user][:user_media_type_ids].reject(&:empty?))
     @user.update(user_params)
-
+    redirect_to dashboards_path
   end
 
   private
