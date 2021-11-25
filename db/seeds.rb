@@ -14,7 +14,7 @@ User.destroy_all
 
 puts "Creating Users..."
 
-User.create!(email: "romain.jumeau@hotmail.fr", username: "Romain", password: "secret", available_time: 30)
+User.create!(email: "romain.jumeau@hotmail.fr", username: "Romain", password: "secret", available_time: 10)
 User.create!(email: "felix.dubois@hotmail.fr", username: "Felix", password: "secret", available_time: 45)
 User.create!(email: "arnaud.nicastro@sfr.fr", username: "Arnaud", password: "secret", available_time: 20)
 
