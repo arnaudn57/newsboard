@@ -6,7 +6,7 @@
     <%# ---------Media_type--------- %>
     <%= f.association :user_media_types , label: "Choisissez quels types de média souhaitez vous être informé :", as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
     <%# ---------------Time available------------- %>
-    <%= f.input :available_time, label: "Quel est votre disponible ?", collection: 5..30 %>
+    <%= f.input :available_time, label: "Quel est votre disponible ?", collection: 10..40 %>
 
   <%# as: :range, :min =>11, :max => 30 %>
     <%# ----------Submit-------------- %>

@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     @user = User.find(params[:id])
 
     user_category = UserCategory.find_or_create_by(user_id: @user.id)
@@ -13,7 +12,9 @@ class UsersController < ApplicationController
     user_media_type = UserMediaType.find_or_create_by(user_id: @user.id)
     user_media_type.update(media_types: params[:user][:user_media_type_ids].reject(&:empty?))
     @user.update(user_params)
-    redirect_to dashboards_path
+    dashboard = Dashboard.find_or_create_by(user_id: @user.id)
+    # redirect_to dashboards_path
+
   end
 
   private
