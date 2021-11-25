@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    # raise
+
     @user = User.find(params[:id])
 
     # ? ----------------------------CATEGORY-------------------
@@ -24,11 +24,9 @@ class UsersController < ApplicationController
 
     # user_category = UserCategory.find_or_create_by(user_id: @user.id)
     # user_category.update(category: params[:user][:user_category_ids].reject(&:empty?))
-
     # ? -------------------------------------------------------------
 
     # ! -----------------------MEDIA---------------------
-
     selected_medias = params[:user][:user_media_type_ids].reject(&:empty?)
     current_medias = @user.user_media_types.map {|uc| uc.media_types}
 
