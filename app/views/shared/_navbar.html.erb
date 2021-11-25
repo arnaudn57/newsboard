@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Newsboard</a>
+  <%= link_to "Newsboard", root_path, class: "navbar-brand" %>
   <% if user_signed_in? %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,16 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ">
         <li class="nav-item" id="1">
-          <a class="nav-link"href="#">Mon Newsboard <span class="sr-only">(current)</span></a>
+          <%= link_to "Mon Newsboard", dashboards_path %>
         </li>
-        <li class="nav-item">
-          <div><a class="nav-link"><%= link_to"Se deconnecter",destroy_user_session_path, method: 'delete' %></a></div>
+        <li class="nav-item" id="2">
+          <%= link_to "Modifier ma NewsBoard", edit_user_path(current_user) %>
+        </li>
+        <li class="nav-item btn-logout" id="3">
+          <%= link_to "Se deconnecter", destroy_user_session_path, method: 'delete'%>
         </li>
       </ul>
     </div>
   <% else %>
     <div class="user_sign_in">
-      <%= link_to "Se connecter",new_user_session_path, class: "btn btn-outline-dark" %>
+      <%= link_to "Se connecter",new_user_session_path, class: "danger" %>
     </div>
   <% end %>
 </nav>
