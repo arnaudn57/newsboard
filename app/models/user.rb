@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :user_media_types
   has_many :user_categories
 
+
 end
