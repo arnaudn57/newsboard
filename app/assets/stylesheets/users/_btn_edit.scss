@@ -26,6 +26,15 @@ background-color: rgb(104, 115, 212);
   margin-top: 10px;
   margin-bottom: 20px;
 }
+#ligne_milieu {
+  height: 2px;
+  background-color: black;
+  border-radius: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 200px;
+  margin-left: 90px;
+}
 
 .center .btn-outline-dark {
   font-weight: bold;

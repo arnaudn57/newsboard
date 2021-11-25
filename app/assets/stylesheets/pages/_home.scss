@@ -6,7 +6,8 @@
 
 .first-text h6{
   color: grey;
-  margin-top: 45px;
+  margin-top: 35px;
+  font-size: 20px ;
 }
 
 
@@ -27,4 +28,10 @@
   display: flex;
   justify-content: space-around;
   text-align: center;
+}
+
+.carousel-inner-home{
+  width: 200px;
+  margin-left: 70px;
+  margin-top: 20px;
 }
