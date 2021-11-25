@@ -1,13 +1,14 @@
-  <h5 class="text-edit"> <%= current_user.username %> Personnalise ta revue de presse <br> en fonction de tes envies et de ton temps disponibles</h5>
+  <h5 class="text-edit">Hey <%= current_user.username.capitalize %>. Ici tu peux personnaliser ta revue de presse <br> en fonction de tes envies et de ton temps disponibles</h5>
 <div class="content">
   <%= simple_form_for (@user) do |f| %>
     <%# --------Category-------- %>
     <p>Category</p>
-    <%= f.association :user_categories, as: :check_boxes, collection: ['Economie', 'Sport', 'Politique'], checked: @user.user_categories.map {|uc| uc.category}, input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item' %>
+    <%= f.association :user_categories, as: :check_boxes, collection: Medium::CATEGORIES, checked: @user.user_categories.map {|uc| uc.category}, input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item' %>
     <%# ---------Media_type--------- %>
-    <%= f.association :user_media_types , label: "Choisissez quels types de média souhaitez vous être informé :", as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
+    <%= f.association :user_media_types , label: "Choisissez quels types de média :", as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], checked: @user.user_media_types.map {|uc| uc.media_types}, input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
     <%# ---------------Time available------------- %>
-    <%= f.input :available_time, label: "Quel est votre disponible ?", collection: 10..40 %>
+    <%= f.input :available_time, label: "Quel est votre temps disponible ?", collection: 10..40 %>
+
 
   <%# as: :range, :min =>11, :max => 30 %>
     <%# ----------Submit-------------- %>
