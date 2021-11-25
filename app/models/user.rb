@@ -39,5 +39,4 @@ class User < ApplicationRecord
     3
     # a calculer en fonction du temps souhaite
   end
-
 end
