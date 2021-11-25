@@ -15,10 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  def edit
-    # @user = current_user
-    raise
-  end
+  # def edit
+
+  # end
 
   # PUT /resource
   # def update

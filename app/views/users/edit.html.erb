@@ -2,7 +2,8 @@
 <div class="content">
   <%= simple_form_for (@user) do |f| %>
     <%# --------Category-------- %>
-    <%= f.association :user_categories, label: "Choisissez la ou les catégories qui vous intéresse :", as: :check_boxes, collection: ['Economie', 'Sport', 'Politique', 'Informatique', 'Travail', 'Sante', 'Automobile', 'Etranger', 'Science', 'Autres'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item' %>
+    <p>Category</p>
+    <%= f.association :user_categories, as: :check_boxes, collection: ['Economie', 'Sport', 'Politique'], checked: @user.user_categories.map {|uc| uc.category}, input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item' %>
     <%# ---------Media_type--------- %>
     <%= f.association :user_media_types , label: "Choisissez quels types de média souhaitez vous être informé :", as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
     <%# ---------------Time available------------- %>
