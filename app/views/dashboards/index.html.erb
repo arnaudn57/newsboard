@@ -29,17 +29,20 @@
   <!--/.Controls-->
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
-    <div class="carousel-item ">
-
-      <div class="col-md-3" style="float:left">
-       <div class="card mb-2">
-          <img class="card-img-top"
-            src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title"><%= ar.join("").capitalize %></h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
+    <div class="carousel-item active">
+      <div class="card-container-home">
+        <div class="card-product">
+          <img src="https://source.unsplash.com/daily?news" />
+          <div class="card-product-infos">
+            <div class="card-product-title">
+              <h6><%= Article.first.category %></h6>
+              <h2><%= Article.first.title %></h2>
+            </div>
+            <div class="card-product-content">
+              <p><%=Article.first.content %></p>
+            </div>
+            <footer class="blockquote-footer"><cite title="Source Title"><%= "Le Monde"%></cite></footer>
+            <div class="card-product-bouton"><%= link_to "Je Decouvre", class: "btn btn-outline success", :target => "_blank" %></div>
           </div>
         </div>
       </div>
