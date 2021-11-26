@@ -7,7 +7,8 @@
 }
 
 .navbar-nav {
-  align-items: center;
+ font-weight: 500;
+ margin-top: 10px;
 }
 
 
@@ -16,6 +17,7 @@
   border-color: black;
   margin: 0 auto;
   border-top: none;
+  background-color: #304d6d;
 }
 
 .nav-item a {
