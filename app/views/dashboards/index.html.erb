@@ -18,7 +18,7 @@
                     <h2><%= media.title %></h2>
                   </div>
                   <div class="card-product-content">
-                    <p><%=media.content %></p>
+                    <p><%=truncate(media.content, length: 110) %></p>
                   </div>
                   <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
                   <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
