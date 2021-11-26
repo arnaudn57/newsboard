@@ -3,7 +3,7 @@ class Dashboard < ApplicationRecord
   has_many :media, dependent: :destroy
 
   def elements
-    medium.map(&:mediable)
+    media.map(&:mediable)
   end
 
   def articles
