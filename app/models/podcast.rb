@@ -1,3 +1,3 @@
 class Podcast < ApplicationRecord
-  has_many :medium, as: :mediable
+  has_many :media, as: :mediable
 end
