@@ -9,12 +9,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :user_media_types
   has_many :user_categories
+  has_many :dashboards
+
 
   def self.create_all_users_new_dashboards
     self.find_each do |user|
       new_dashboard = Dashboard.create(user: user, date: Date.today)
-      categories = Medium::CATEGORIES.sample(user.number_of_articles)
-      categories.each do |category|
+      all_user_categories = user.user_categories.map do |user_categorie|
+        user_categorie.category
+      end
+      all_user_categories.each do |category|
+
         # api
         url = "https://api.newscatcherapi.com/v2/search?q=#{category}&lang=fr"
         uri = URI.parse(url)
@@ -24,17 +29,12 @@ class User < ApplicationRecord
         http.use_ssl = true
         response = http.request(request)
         hash = JSON.parse response.body.gsub('=>', ':')
-        article = hash["articles"].first
-
-        article = Article.create!(title: article["title"], content: article["excerpt"], category: category, source: article["clean_url"], url: article["link"], image: article["media"])
-        Medium.create!(dashboard: new_dashboard, mediable: article)
-        sleep(1) # car 1 requete api /s max
+        article= hash["articles"].first
+            article = Article.create!(title: article["title"], content: article["excerpt"], category: category, source: article["clean_url"], url: article["link"], image: article["media"])
+            Medium.create!(dashboard: new_dashboard, mediable: article)
+            sleep(1) # car 1 requete api /s max
+        end
       end
     end
   end
 
-  def number_of_articles
-    3
-    # a calculer en fonction du temps souhaite
-  end
-end

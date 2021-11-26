@@ -22,9 +22,13 @@ class UsersController < ApplicationController
       UserCategory.find_by(category: current_category, user: @user).destroy unless selected_categories.include?(current_category)
     end
 
-    # user_category = UserCategory.find_or_create_by(user_id: @user.id)
-    # user_category.update(category: params[:user][:user_category_ids].reject(&:empty?))
     # ? -------------------------------------------------------------
+
+    # # TODO -----------Carousel Dashboard Index---------------
+    # UserCategory.find_by(user_id: @user.id)
+    # @user_category = params[:user][:user_category_ids].reject(&:empty?)
+
+    # # TODO -------------Carousel Dashboard Index--------------
 
     # ! -----------------------MEDIA---------------------
     selected_medias = params[:user][:user_media_type_ids].reject(&:empty?)
