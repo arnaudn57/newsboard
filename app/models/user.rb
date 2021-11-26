@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :user_categories
   has_many :dashboards
 
+
   def self.create_all_users_new_dashboards
     self.find_each do |user|
       new_dashboard = Dashboard.create(user: user, date: Date.today)
