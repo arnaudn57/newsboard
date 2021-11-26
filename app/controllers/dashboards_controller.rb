@@ -1,5 +1,9 @@
 class DashboardsController < ApplicationController
   def index
+
+    @user_categories = @dashboard.user.user_categories
+
+
     @user = current_user
     @dashboards = @user.dashboards
     @articles = []
@@ -8,6 +12,7 @@ class DashboardsController < ApplicationController
      @articles << @article = Article.find(medium.id)
     end
     end
+
   end
     # @media_categories = []
     # @user_categories.each do |user_categorie|

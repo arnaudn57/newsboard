@@ -18,6 +18,7 @@ class User < ApplicationRecord
         user_categorie.category
       end
       all_user_categories.each do |category|
+
         # api
         url = "https://api.newscatcherapi.com/v2/search?q=#{category}&lang=fr"
         uri = URI.parse(url)
@@ -35,3 +36,4 @@ class User < ApplicationRecord
       end
     end
   end
+
