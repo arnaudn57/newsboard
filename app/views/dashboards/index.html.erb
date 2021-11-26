@@ -17,60 +17,53 @@
   <% first_category_slide = ar.first %> <%# Selectionne le premier element pour afficher le slider avec la class active  %>
 
 
+
+
   <!--Slides-->
   <% if ar.count == 1 %> <%# Si user à qu'une seule catégorie, alors afficher suelement cette categorie  %>
   <!--Controls-->
-  <div class="controls-top">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <%= ar.join("") %>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
-  </div>
-  <!--/.Controls-->
-  <div class="carousel-inner" role="listbox">
-    <!--First slide-->
-    <div class="carousel-item active">
-      <div class="card-container-home">
-        <div class="card-product">
-          <img src="https://source.unsplash.com/daily?news" />
-          <div class="card-product-infos">
-            <div class="card-product-title">
-              <h6><%= Article.first.category %></h6>
-              <h2><%= Article.first.title %></h2>
 
-        <div class="card-container">
-          <% @articles.each do |media| %>
-            <div class="card-product">
-              <img src="https://source.unsplash.com/daily?news" />
-                <div class="card-product-infos">
-                  <div class="card-product-title">
-                    <h2><%= media.title %></h2>
-                  </div>
-                  <div class="card-product-content">
-                    <p><%= media.content %></p>
-                  </div>
-                  <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
-                  <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
-                </div>
+      <% @articles.each do |article| %>
+    <p class="text-center"><%= ar.join("") %></p>
 
-            </div>
-            <div class="card-product-content">
-              <p><%=Article.first.content %></p>
-            </div>
-            <footer class="blockquote-footer"><cite title="Source Title"><%= "Le Monde"%></cite></footer>
-            <div class="card-product-bouton"><%= link_to "Je Decouvre", class: "btn btn-outline success", :target => "_blank" %></div>
+    <div class="carousel-inner" role="listbox">
+            <div class="card-container-home">
+              <div class="card-product">
+                <img src="<%=article.image%>"/>
+                  <div class="card-product-infos">
+                    <div class="card-product-title">
+                      <h2><%= article.title  %></h2>
+                    </div>
+                    <div class="card-product-content">
+                      <p><%=truncate(article.content, length: 110) %></p>
+                    </div>
+                    <footer class="blockquote-footer"><cite title="Source Title"><%= article.source%></cite></footer>
+                    <div class="card-product-bouton"><a class="btn btn-primary" href="<%=article.url%>">Je découvre</a></div>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+    <% end %>
     <!--/.First slide-->
+
+
+
+
+<%# --------------------Premiere Presentation----------------------------- %>
+
+
+
+
+
 
   <% else %>
     <%# --------Other slide category -le premier ----------- %>
     <% other_categories_slide = [] %> <%# Initialisation d'un array vide pour stocker %>
     <% other_first_slide = er.first %> <%# Isolement du premier element pour pouvoir crer une nouvelle colonnes  %>
+
+    <h2></h2>
 <div class="controls-top">
     <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-
     <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
   </div>
 
@@ -93,16 +86,16 @@
     <% er.delete(er.first) %> <%# Prend les categories de l'user et supprime le premier car deja utilisé plus haut %>
     <% other_categories_slide = er %> <%# Contient les categories sauf le premier  %>
 
-    <% other_categories_slide.each do |category| %> <%# Iteration sur les categories restants pour crer les autres colonnes du carousel  %>
+    <% other_categories_slide.each do |reste_categorie| %> <%# Iteration sur les categories restants pour crer les autres colonnes du carousel  %>
 
     <!--Other slide-->
      <div class="carousel-item">
-      <p class="text-center"><%= category.capitalize %></p>
+      <p class="text-center"><%= reste_categorie.capitalize %></p>
       <div class="col-md-3" style="float:left">
         <div class="card mb-2">
           <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title"><%= category %></h4>
+            <h4 class="card-title"><%= reste_categorie %></h4>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
             <a class="btn btn-primary">Button</a>
           </div>
@@ -110,7 +103,13 @@
       </div>
     </div>
 
+
+
+
     <!--/.Other slide-->
     <% end %>
 
   <% end %>
+
+ <%# iterer sur @articles et aller chercher ceux qui ont la category (.where)
+ iterer sur ce resultat pour les afficher en Card %>
