@@ -9,6 +9,12 @@
   margin-top: 35px;
   font-size: 20px ;
 }
+.first-text h1 {
+  font-family: patron bold,helvetica,arial,sans-serif;
+  font-size: 2.125em;
+  font-weight: 700;
+  color: #304d6d;
+    }
 
 
 .btn-sign_up {
@@ -18,10 +24,51 @@
 }
 
 .text-content {
-  text-align: center;
+  text-align: left;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 100px;
+
+}
+
+.fond-color {
+  font-size: 16px ;
+  background-color: #304d6d;
+  color: white;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  margin-left: -20px;
+  margin-right: -20px;
+  height: 830px;
+}
+
+.text_noye {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.feedback .msg {
+    background-color: #82A0BC;
+    border-radius: 10px;
+    padding: 25px 20px;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+.text_noye  h1 {
+    font-family: patron bold,helvetica,arial,sans-serif;
+    font-size: 2.125em;
+    font-weight: 700;
+    color: #fff;
+  }
+
+.paraph p {
+  font-size: 19px;
+  color: #fff;
+  margin: 0;
+  line-height: 30px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .controls-top {
@@ -31,7 +78,11 @@
 }
 
 .carousel-inner-home{
-  width: 200px;
-  margin-left: 70px;
+  width: 250px;
+  margin-left: 50px;
   margin-top: 20px;
+}
+
+.btn_home .btn {
+  background-color: #304d6d;
 }

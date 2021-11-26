@@ -30,16 +30,46 @@
 // --------CONTENT--------
 
 .content {
-  margin: 75px auto;
+  margin: 26px auto;
   text-align: center;
   width: 343px;
   border: 1px solid black;
   border-radius: 34px;
-  padding: 50px;
+  padding: 16px;
   box-shadow: 0px 0px 3px black;
+  height: 500px;
 }
 
 .text-edit {
   text-align: center;
-  margin-top: 56px;
+  margin-top: 40px;
+}
+
+#ligne_milieu_2 {
+  height: 2px;
+  background-color: #304d6d;
+  border-radius: 40px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  width: 200px;
+  margin-left: 50px;
+}
+
+.text-edit h1 {
+  font-family: patron bold,helvetica,arial,sans-serif;
+  font-size: 1.325em;
+  font-weight: 700;
+  color: #304d6d;
+}
+.content p {
+  font-family: patron bold,helvetica,arial,sans-serif;
+  font-size: 1.425em;
+  font-weight: 700;
+  color: #304d6d;
+}
+
+.text-edit h5 {
+  font-size: 19px;
+  margin: 0;
+  line-height: 30px;
 }
