@@ -1,18 +1,15 @@
 class DashboardsController < ApplicationController
   def index
-
-    @user_categories = @dashboard.user.user_categories
-
+    # @user_categories = @dashboard.user.user_categories
 
     @user = current_user
     @dashboards = @user.dashboards
     @articles = []
     @dashboards.each do |dashboard|
       dashboard.media.map do |medium|
-     @articles << @article = Article.find(medium.id)
+        @articles << @article = Article.find(medium.id)
+      end
     end
-    end
-
   end
     # @media_categories = []
     # @user_categories.each do |user_categorie|
