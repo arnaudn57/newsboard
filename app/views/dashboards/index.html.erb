@@ -1,10 +1,19 @@
+  <!--Slides-->
+        <div class="card-container">
+          <% @articles.each do |media| %>
+            <div class="card-product">
+              <img src="https://source.unsplash.com/daily?news" />
+                <div class="card-product-infos">
+                  <div class="card-product-title">
+                    <h2><%= media.title %></h2>
+                  </div>
+                  <div class="card-product-content">
+                    <p><%=truncate(media.content, length: 110) %></p>
+                  </div>
+                  <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
+                  <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
+                </div>
+            </div>
+          <% end %>
+        </div>
 
-
-<% @articles.each do |article| %>
-  <%= article.title %>
-  <br>
-  <%= article.content %>
-  <br>
-  <%= article.category %>
-
-<% end %>
