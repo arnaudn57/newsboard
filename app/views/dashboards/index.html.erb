@@ -1,19 +1,100 @@
-  <!--Slides-->
-        <div class="card-container">
-          <% @articles.each do |media| %>
-            <div class="card-product">
-              <img src="https://source.unsplash.com/daily?news" />
-                <div class="card-product-infos">
-                  <div class="card-product-title">
-                    <h2><%= media.title %></h2>
-                  </div>
-                  <div class="card-product-content">
-                    <p><%=truncate(media.content, length: 110) %></p>
-                  </div>
-                  <footer class="blockquote-footer"><cite title="Source Title"><%= media.source %></cite></footer>
-                  <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
-                </div>
-            </div>
-          <% end %>
-        </div>
 
+<!--Carousel Wrapper-->
+<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+  <!--Controls-->
+  <div class="controls-top">
+    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+        class="fas fa-chevron-right"></i></a>
+  </div>
+  <!--/.Controls-->
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+
+    <!--First slide-->
+    <div class="carousel-item active">
+      <% @first_dashboard = @user.dashboards.order(:created_at).last%>
+      <% @y = @user.dashboards.last.articles %>
+      <%= @first_dashboard.created_at %>
+      <% @y.each do |article| %>
+         <div class="col-md-3" style="float:left">
+            <div class="card mb-2">
+              <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title"><%= article.title %></h4>
+                  <p class="card-text"><%= article.content %></p>
+                  <a class="btn btn-primary" href="<%= article.url %>">Button</a>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    </div>
+    <!--/.First slide-->
+
+    <!--Second slide-->
+    <% @u = @user.dashboards.order(:created_at).last(7) %>
+    <% @y = @u.clone %>
+    <% @y.pop %>
+    <% @y.each do |old_dashboard| %>
+      <div class="carousel-item">
+      <%= old_dashboard.created_at %>
+      <% @old = old_dashboard.articles %>
+
+        <% @old.each do |article| %>
+          <div class="col-md-3" style="float:left">
+            <div class="card mb-2">
+              <img class="card-img-top" src="<%= article.image %>" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title"><%= article.title %></h4>
+                <p class="card-text"><%= article.content %></p>
+                <a class="btn btn-primary" href="<%=article.url %>">Button</a>
+              </div>
+            </div>
+          </div>
+
+
+    <% end %>
+    </div>
+    <% end %>
+    <!--/.Second slide-->
+  </div>
+  <!--/.Slides-->
+</div>
+<!--/.Carousel Wrapper-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%#Premier dashboard pour la classe active du carousel%>
+      <%# Iterer sur les articles de ce dashboard pour pouvoir afficher des cards  %>
+      <%# <% raise %>
+
+
+
+
+
+
+
+
+
+
+
+
+        <%# @first_dashboard.each do |dashboard| %>
+            <%#= dashboard.articles.title %>
+        <%# end %>
+ <%# Autres Dashboards pour les autres colonnes du carousel  %>
+         <%# Iterer sur ces autres dashboards pour crer des secondes slides   %>
+         <%# Iterer sur les articles de ces dashboards pour pouvoir afficher des cards dans ces slides  %>
