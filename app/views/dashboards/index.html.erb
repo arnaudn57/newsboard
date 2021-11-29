@@ -11,7 +11,7 @@
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
-    <div class="carousel-item active" data-interval="15000">
+    <div class="carousel-item active" data-interval="30000">
       <% @first_dashboard = @user.dashboards.order(:created_at).last%>
       <% @y = @user.dashboards.last.articles %>
       <p class="text-center date"><%= @first_dashboard.created_at.to_date %></p>
@@ -29,6 +29,20 @@
               </div>
             </div>
         <% end %>
+        <% @podcasts = @user.dashboards.last.podcasts %>
+        <% @podcasts.each do |podcast|%>
+          <div class="col-md-3" style="float:left">
+            <div class="card mb-2">
+              <img class="card-player-img-top" src="<%= podcast.image %>" alt="Card image cap" width="200px">
+              <div class="card-body-player">
+                <p><strong><%= podcast.title %></strong></p>
+                <audio controls>
+                  <source src="<%= podcast.audio %>" type="audio/mp3">
+                </audio>
+              </div>
+            </div>
+          </div>
+        <% end %>
     </div>
     <!--/.First slide-->
     <!--Second slide-->
@@ -36,7 +50,7 @@
     <% @y = @u.clone %>
     <% @y.pop %>
     <% @y.each do |old_dashboard| %>
-      <div class="carousel-item" data-interval="none">
+      <div class="carousel-item" data-interval="300000">
       <p class="text-center date"><%= old_dashboard.created_at.to_date %></p>
       <% @old = old_dashboard.articles %>
         <% @old.each do |article| %>
@@ -53,6 +67,21 @@
             </div>
           </div>
         <% end %>
+        <% @old_podcasts = old_dashboard.podcasts %>
+        <% @old_podcasts.each do |old_podcast| %>
+        <div class="col-md-3" style="float:left">
+          <div class="card mb-2">
+            <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="200px">
+            <div class="card-body-player">
+              <p><strong><%= old_podcast.title %></strong></p>
+              <audio controls>
+                <source src="<%= old_podcast.audio %>" type="audio/mp3">
+                <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="<%= old_podcast.url %>" >lien vers le fichier audio</a> à la place.</p>
+              </audio>
+            </div>
+          </div>
+        </div>
+        <% end %>
       </div>
     <% end %>
     <!--/.Second slide-->
@@ -60,21 +89,3 @@
   <!--/.Slides-->
 </div>
 <!--/.Carousel Wrapper-->
-
-
-
-
-<div class="col-md-3" style="float:left">
-        <div class="card mb-2">
-          <img class="card-img-top"
-            src="https://cdn-images-1.listennotes.com/podcasts/star-wars-7x7-the-daily-star-wars-podcast-HN08OoDE7pc-AIg3cZVKCsL.1400x1400.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <audio
-              controls src="https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1638185306&hwt=7e61869bda51b616eb7dcd4a639ea20e"> Your browser does not support the
-              <code>audio</code> element.
-            </audio>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
