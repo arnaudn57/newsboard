@@ -4,25 +4,27 @@
   <!--Controls-->
   <div class="controls-top">
     <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-        class="fas fa-chevron-right"></i></a>
+    <p>DATE</p>
+    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
   </div>
   <!--/.Controls-->
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
-    <div class="carousel-item active">
+    <div class="carousel-item active" data-interval="15000">
       <% @first_dashboard = @user.dashboards.order(:created_at).last%>
       <% @y = @user.dashboards.last.articles %>
-      <%= @first_dashboard.created_at %>
+      <p class="text-center date"><%= @first_dashboard.created_at.to_date %></p>
       <% @y.each do |article| %>
          <div class="col-md-3" style="float:left">
             <div class="card mb-2">
+              <p class="text-center"> Categorie :<%= article.category.capitalize %></p>
               <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
                 <div class="card-body">
                   <h4 class="card-title"><%= article.title %></h4>
                   <p class="card-text"><%= article.content %></p>
-                  <a class="btn btn-primary" href="<%= article.url %>">Button</a>
+                  <cite class="source">Source: <%= article.source %> </cite>
+                  <a class="btn btn-primary" href="<%= article.url %>">Voir l'article</a>
                 </div>
               </div>
             </div>
@@ -34,22 +36,23 @@
     <% @y = @u.clone %>
     <% @y.pop %>
     <% @y.each do |old_dashboard| %>
-      <div class="carousel-item">
-      <%= old_dashboard.created_at %>
+      <div class="carousel-item" data-interval="none">
+      <p class="text-center date"><%= old_dashboard.created_at.to_date %></p>
       <% @old = old_dashboard.articles %>
-
         <% @old.each do |article| %>
           <div class="col-md-3" style="float:left">
             <div class="card mb-2">
+              <p class="text-center"> Categorie :<%= article.category.capitalize %></p>
               <img class="card-img-top" src="<%= article.image %>" alt="Card image cap">
               <div class="card-body">
                 <h4 class="card-title"><%= article.title %></h4>
                 <p class="card-text"><%= article.content %></p>
-                <a class="btn btn-primary" href="<%=article.url %>">Button</a>
+                <cite class="source">Source: <%= article.source %> </cite>
+                <a class="btn btn-primary" href="<%=article.url %>">Voir l'article</a>
               </div>
             </div>
           </div>
-      <% end %>
+        <% end %>
       </div>
     <% end %>
     <!--/.Second slide-->
@@ -57,3 +60,21 @@
   <!--/.Slides-->
 </div>
 <!--/.Carousel Wrapper-->
+
+
+
+
+<div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="https://cdn-images-1.listennotes.com/podcasts/star-wars-7x7-the-daily-star-wars-podcast-HN08OoDE7pc-AIg3cZVKCsL.1400x1400.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <audio
+              controls src="https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1638185306&hwt=7e61869bda51b616eb7dcd4a639ea20e"> Your browser does not support the
+              <code>audio</code> element.
+            </audio>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
