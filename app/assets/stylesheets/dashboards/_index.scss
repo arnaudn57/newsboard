@@ -1,13 +1,17 @@
 .date {
-  border: 1px solid black;
+  border: 1px solid rgb(98, 165, 188);
   margin-left: 140px;
   margin-right: 140px;
   padding: 5px;
   border-radius: 10px;
+  color: rgb(98, 165, 188);
 }
 
 .carousel {
   margin-top: 30px;
+}
+.card-title {
+  text-decoration: underline;
 }
 
 .source {
@@ -45,4 +49,8 @@
   color: white;
   border-radius:30px;
   border: none;
+}
+
+.controls-top .btn-controls {
+  color: rgb(98, 165, 188) ;
 }
