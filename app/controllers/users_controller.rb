@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     # ! -----------------------MEDIA---------------------
     selected_medias = params[:user][:user_media_type_ids].reject(&:empty?)
-    current_medias = @user.user_media_types.map {|uc| uc.media_types}
+    current_medias = @user.user_media_types.map {|umt| umt.media_types}
 
     # Ajouter les medias manquants
     selected_medias.each do |selected_media|
@@ -38,15 +38,16 @@ class UsersController < ApplicationController
 
     # Suppression des media deselectionnées
     current_medias.each do |current_media|
-      UserMediaType.find_by(media_types: current_media, user: @user).destroy unless selected_medias.include?(current_media)
+      # raise
+      UserMediaType.find_by(media_types: current_media, user: @user).destroy! unless selected_medias.include?(current_media)
     end
-    @user.update(user_params)
-    if @user.dashboards.empty?
-      @user.update_user_dashboard
-    else @user.dashboards.last.destroy
-      @user.update_user_dashboard
-    end
-      redirect_to dashboards_path
+
+    @user.update!(user_params)
+
+
+    @user.dashboards.last.destroy unless @user.dashboards.empty?
+    @user.create_user_dashboard
+    redirect_to dashboards_path
   end
 
   private
