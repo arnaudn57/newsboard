@@ -11,7 +11,7 @@
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
-    <div class="carousel-item active">
+    <div class="carousel-item active" data-interval="15000">
       <% @first_dashboard = @user.dashboards.order(:created_at).last%>
       <% @y = @user.dashboards.last.articles %>
       <p class="text-center date"><%= @first_dashboard.created_at.to_date %></p>
@@ -36,7 +36,7 @@
     <% @y = @u.clone %>
     <% @y.pop %>
     <% @y.each do |old_dashboard| %>
-      <div class="carousel-item">
+      <div class="carousel-item" data-interval="none">
       <p class="text-center date"><%= old_dashboard.created_at.to_date %></p>
       <% @old = old_dashboard.articles %>
         <% @old.each do |article| %>
@@ -60,3 +60,21 @@
   <!--/.Slides-->
 </div>
 <!--/.Carousel Wrapper-->
+
+
+
+
+<div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="https://cdn-images-1.listennotes.com/podcasts/star-wars-7x7-the-daily-star-wars-podcast-HN08OoDE7pc-AIg3cZVKCsL.1400x1400.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <audio
+              controls src="https://hwcdn.libsyn.com/p/9/2/6/926a07b50daa5c9d/2016-11-14-StarWars7x7Show864-Tem12n.mp3?c_id=13325370&cs_id=13325370&destination_id=207880&expiration=1638185306&hwt=7e61869bda51b616eb7dcd4a639ea20e"> Your browser does not support the
+              <code>audio</code> element.
+            </audio>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
