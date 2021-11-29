@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
 
 
+
   #---------Méthode de création de dashboard récupérant les méthodes d'insertions---------
 
   def self.create_all_users_new_dashboards
