@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :user_categories, dependent: :destroy
   has_many :dashboards, dependent: :destroy
 
+
+
   #---------Méthode de création de dashboard récupérant les méthodes d'insertions---------
 
   def self.create_all_users_new_dashboards
