@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :user_categories
   has_many :dashboards
 
+
+
   #---------Méthode de création de dashboard récupérant les méthodes d'insertions---------
 
   def self.create_all_users_new_dashboards

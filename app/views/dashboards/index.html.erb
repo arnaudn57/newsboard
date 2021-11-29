@@ -23,7 +23,7 @@
                 <div class="card-body">
                   <h4 class="card-title"><%= article.title %></h4>
                   <p class="card-text"><%= article.content %></p>
-                  <cite class="source">Source: <%= article.source %> </cite>
+                  <cite class="source">-<%= article.source %> </cite>
                   <a class="btn btn-primary" href="<%= article.url %>">Voir l'article</a>
                 </div>
               </div>
@@ -61,7 +61,7 @@
               <div class="card-body">
                 <h4 class="card-title"><%= article.title %></h4>
                 <p class="card-text"><%= article.content %></p>
-                <cite class="source">Source: <%= article.source %> </cite>
+                <cite class="source">- <%= article.source %> </cite>
                 <a class="btn btn-primary" href="<%=article.url %>">Voir l'article</a>
               </div>
             </div>
