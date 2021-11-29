@@ -14,18 +14,14 @@ class DashboardsController < ApplicationController
 
     # !-----------------DASHBOARD CAROUSEL----------------------
       # ?-------------CLASS ACTIVE------------------
-
         # @first_dashboard = @user.dashboards.order(:created_at).last
         # @y = @user.dashboards.last.articles
-
       # ?-----------END CLASS ACTIVE-------------------------------
 
       # ?-----------OTHER DASHBOARDS-----------------------------
-      # @u = @user.dashboards.order(:created_at).last(7)
-      # @y = @u.clone
-      # @y.pop
-
-
+      #  @u = @user.dashboards.order(:created_at).last(7)
+      #  @y = @u.clone
+      #  @y.pop
       # ?-----------END OTHERDASHBOARDS-----------------------
     # !------------------END CAROUSEL----------------------------
   end
