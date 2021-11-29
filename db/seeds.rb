@@ -49,5 +49,4 @@ UserMediaType.create!(media_types: 'Articles', user_id: 2)
 UserMediaType.create!(media_types: 'Podcast', user_id: 3)
 UserMediaType.create!(media_types: 'Articles', user_id: 3)
 
-
 puts "Finished !"
