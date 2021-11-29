@@ -1,7 +1,6 @@
 
 <!--Carousel Wrapper-->
 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
   <!--Controls-->
   <div class="controls-top">
     <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
@@ -9,10 +8,8 @@
         class="fas fa-chevron-right"></i></a>
   </div>
   <!--/.Controls-->
-
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
-
     <!--First slide-->
     <div class="carousel-item active">
       <% @first_dashboard = @user.dashboards.order(:created_at).last%>
@@ -32,7 +29,6 @@
         <% end %>
     </div>
     <!--/.First slide-->
-
     <!--Second slide-->
     <% @u = @user.dashboards.order(:created_at).last(7) %>
     <% @y = @u.clone %>
@@ -53,48 +49,11 @@
               </div>
             </div>
           </div>
-
-
-    <% end %>
-    </div>
+      <% end %>
+      </div>
     <% end %>
     <!--/.Second slide-->
   </div>
   <!--/.Slides-->
 </div>
 <!--/.Carousel Wrapper-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%#Premier dashboard pour la classe active du carousel%>
-      <%# Iterer sur les articles de ce dashboard pour pouvoir afficher des cards  %>
-      <%# <% raise %>
-
-
-
-
-
-
-
-
-
-
-
-
-        <%# @first_dashboard.each do |dashboard| %>
-            <%#= dashboard.articles.title %>
-        <%# end %>
- <%# Autres Dashboards pour les autres colonnes du carousel  %>
-         <%# Iterer sur ces autres dashboards pour crer des secondes slides   %>
-         <%# Iterer sur les articles de ces dashboards pour pouvoir afficher des cards dans ces slides  %>
