@@ -11,43 +11,42 @@ class User < ApplicationRecord
   has_many :user_categories
   has_many :dashboards
 
-  # def self.create_all_new_articles
-  #     all_categories = Medium::CATEGORIES
-  #     all_categories.each do |category|
-  #       # api
-  #       url = "https://api.newscatcherapi.com/v2/search?q=#{category}&lang=fr"
-  #       uri = URI.parse(url)
-  #       http = Net::HTTP.new(uri.host, uri.port)
-  #       request = Net::HTTP::Get.new(uri.request_uri)
-  #       request['x-api-key'] = ENV["NEWSBOARD_API_KEY"]
-  #       http.use_ssl = true
-  #       response = http.request(request)
-  #       hash = JSON.parse response.body.gsub('=>', ':')
-  #       article = hash["articles"].first
-  #           article = Article.create!(title: article["title"], content: article["excerpt"], category: category, source: article["clean_url"], url: article["link"], image: article["media"])
-  #           sleep(1) # car 1 requete api /s max
-  #     end
-  #   end
-  # end
+  #---------Méthode de création de dashboard récupérant les méthodes d'insertions---------
 
   def self.create_all_users_new_dashboards
     self.find_each do |user|
       new_dashboard = Dashboard.create(user: user, date: Date.today)
-      all_user_categories = user.user_categories.map(&:category)
-      all_user_categories.each do |category|
-        if (10..20).include?(user.available_time)
-          articles = Article.where(category: category).last(1)
-        elsif (20..30).include?(user.available_time)
-          articles = Article.where(category: category).last(2)
-        elsif (30..45).include?(user.available_time)
-          articles = Article.where(category: category).last(3)
-        end
-        articles.each do |article|
-          Medium.create!(dashboard: new_dashboard, mediable: article)
-        end
+      all_user_media_types = user.user_media_types.map(&:media_types)
+      user.insert_articles_into_dashboards(new_dashboard) if all_user_media_types.include?("Articles")
+      user.insert_podcast_into_dashboards(new_dashboard) if all_user_media_types.include?("Podcast")
+    end
+  end
+
+  #------Méthodes d'insertion d'articles / podcasts / vidéos dans les dashboards des users-------
+
+  def insert_articles_into_dashboards(dashboard)
+    all_user_categories = self.user_categories.map(&:category)
+    all_user_categories.each do |category|
+      if (10..20).include?(self.available_time)
+        articles = Article.where(category: category).last(1)
+      elsif (20..30).include?(self.available_time)
+        articles = Article.where(category: category).last(2)
+      elsif (30..45).include?(self.available_time)
+        articles = Article.where(category: category).last(3)
+      end
+      articles.each do |article|
+        Medium.create!(dashboard: dashboard, mediable: article)
       end
     end
   end
+
+  def insert_podcast_into_dashboards(dashboard)
+    # new_dashboard = Dashboard.create(user: self, date: Date.today)
+    podcast = Podcast.last
+    Medium.create!(dashboard: dashboard, mediable: podcast)
+  end
+
+#----------Méthode d'update de dashboard pour un user quand il édit ou quand il crée son premier dashboard----------
 
   def update_user_dashboard
     new_dashboard = Dashboard.create(user_id: self.id, date: Date.today)
