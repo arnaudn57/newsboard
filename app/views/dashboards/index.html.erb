@@ -18,6 +18,7 @@
       <% @y.each do |article| %>
          <div class="col-md-3" style="float:left">
             <div class="card mb-2">
+              <p class="text-center"> Categorie :<%= article.category.capitalize %></p>
               <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
                 <div class="card-body">
                   <h4 class="card-title"><%= article.title %></h4>
@@ -41,6 +42,7 @@
         <% @old.each do |article| %>
           <div class="col-md-3" style="float:left">
             <div class="card mb-2">
+              <p class="text-center"> Categorie :<%= article.category.capitalize %></p>
               <img class="card-img-top" src="<%= article.image %>" alt="Card image cap">
               <div class="card-body">
                 <h4 class="card-title"><%= article.title %></h4>
