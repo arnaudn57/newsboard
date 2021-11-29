@@ -42,4 +42,12 @@ UserCategory.create!(category: 'business', user_id: 2)
 UserCategory.create!(category: 'music', user_id: 3)
 UserCategory.create!(category: 'gaming', user_id: 3)
 
+UserMediaType.create!(media_types: 'Podcast', user_id: 1)
+UserMediaType.create!(media_types: 'Articles', user_id: 1)
+UserMediaType.create!(media_types: 'Podcast', user_id: 2)
+UserMediaType.create!(media_types: 'Articles', user_id: 2)
+UserMediaType.create!(media_types: 'Podcast', user_id: 3)
+UserMediaType.create!(media_types: 'Articles', user_id: 3)
+
+
 puts "Finished !"

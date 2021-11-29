@@ -10,6 +10,8 @@ class Medium < ApplicationRecord
 
 CATEGORIES = ['news', 'sport', 'tech', 'politics', 'business', 'music', 'gaming']
 
+#-----------Méthodes de créations d'articles / podcasts / vidéos en utilisant chaque API-----------
+
   def self.create_all_new_articles
     all_categories = Medium::CATEGORIES
     all_categories.each do |category|
