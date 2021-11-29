@@ -6,4 +6,11 @@ class Favori < ApplicationRecord
     Favori.all.select { |favori| favori.medium.mediable_type == 'Article' }
   end
 
+  def podcasts
+    Favori.all.select { |favori| favori.medium.mediable_type == 'Podcast' }
+  end
+
+  def videos
+    Favori.all.select { |favori| favori.medium.mediable_type == 'Video' }
+  end
 end

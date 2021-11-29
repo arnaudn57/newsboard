@@ -1,6 +1,6 @@
 class Dashboard < ApplicationRecord
   belongs_to :user
-  has_many :media, dependent: :destroy
+  has_many :media
 
   def elements
     media.map(&:mediable)

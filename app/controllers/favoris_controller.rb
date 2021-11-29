@@ -1,6 +1,6 @@
 class FavorisController < ApplicationController
   def index
-    @favoris = Favori.where(user: current_user)
+    @favoris = Favori.where(user_id: current_user)
   end
 
   def create
@@ -12,9 +12,9 @@ class FavorisController < ApplicationController
     redirect_to dashboards_path
   end
 
-  private
-
-  # def favori_params
-  #   params.require(:favori).permit(:medium)
-  # end
+  def destroy
+    @favori = Favori.find(params[:id])
+    @favori.destroy
+    redirect_to user_favoris_path(current_user)
+  end
 end

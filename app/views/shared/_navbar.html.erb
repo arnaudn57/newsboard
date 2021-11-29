@@ -12,6 +12,9 @@
         <li class="nav-item" id="2">
           <%= link_to "Modifier ma NewsBoard", edit_user_path(current_user) %>
         </li>
+        <li class="nav-item" id="4">
+          <%= link_to "Voir mes favoris", user_favoris_path(current_user) %>
+        </li>
         <li class="nav-item btn-logout" id="3">
           <%= link_to "Se deconnecter", destroy_user_session_path, method: 'delete'%>
         </li>
