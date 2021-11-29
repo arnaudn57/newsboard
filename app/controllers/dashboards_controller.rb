@@ -1,8 +1,11 @@
 class DashboardsController < ApplicationController
   def index
     @user = current_user
-    # @user_categories = @user.user_categories
-    # categories = @user_categories.map(&:category)
+    @favori = Favori.new
+    @user_categories = @user.user_categories
+    categories = @user_categories.map(&:category)
+
+  
 
     #Arriver a retrouvé le dernier dashboard du user et le mettre dans @dashboard
     @dashboard = @user.dashboards.order(:created_at).last

@@ -16,18 +16,20 @@
       <% @y = @user.dashboards.last.articles %>
       <p class="text-center date"><%= @first_dashboard.created_at.to_date %></p>
       <% @y.each do |article| %>
-         <div class="col-md-3" style="float:left">
-            <div class="card mb-2">
-              <p class="text-center"> Categorie :<%= article.category.capitalize %></p>
-              <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title"><%= article.title %></h4>
-                  <p class="card-text"><%= article.content %></p>
-                  <cite class="source">-<%= article.source %> </cite>
-                  <a class="btn btn-primary" href="<%= article.url %>">Voir l'article</a>
-                </div>
-              </div>
+        <div class="col-md-3" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title"><%= article.title %></h4>
+              <p class="card-text"><%= article.content %></p>
+              <a class="btn btn-primary" href="<%= article.url %>">Button</a>
+              <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
+                <%= f.hidden_field :medium_id, value: article.media.first.id %>
+                <%= f.submit class: "btn btn-secondary" %>
+              <% end %>
             </div>
+          </div>
+        </div>
         <% end %>
         <% @podcasts = @user.dashboards.last.podcasts %>
         <% @podcasts.each do |podcast|%>
@@ -39,6 +41,10 @@
                 <audio controls>
                   <source src="<%= podcast.audio %>" type="audio/mp3">
                 </audio>
+                 <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
+                      <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
+                      <%= f.submit class: "btn btn-secondary" %>
+                    <% end %>
               </div>
             </div>
           </div>
@@ -61,7 +67,8 @@
               <div class="card-body">
                 <h4 class="card-title"><%= article.title %></h4>
                 <p class="card-text"><%= article.content %></p>
-                <cite class="source">- <%= article.source %> </cite>
+                <a class="btn btn-primary" href="<%=article.url %>">Button</a>
+                <cite class="source">Source: <%= article.source %> </cite>
                 <a class="btn btn-primary" href="<%=article.url %>">Voir l'article</a>
               </div>
             </div>
@@ -73,6 +80,10 @@
           <div class="card mb-2">
             <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="200px">
             <div class="card-body-player">
+                    <%= simple_form_for(@favori) do |f| %>
+                      <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
+                      <%= f.submit class: "btn btn-secondary" %>
+                    <% end %>
               <p><strong><%= old_podcast.title %></strong></p>
               <audio controls>
                 <source src="<%= old_podcast.audio %>" type="audio/mp3">
