@@ -2,7 +2,6 @@ class Dashboard < ApplicationRecord
   belongs_to :user
   has_many :media, dependent: :destroy
 
-
   def elements
     media.map(&:mediable)
   end
@@ -18,5 +17,4 @@ class Dashboard < ApplicationRecord
   def videos
     elements.select { |element| element.is_a?(Video)}
   end
-
 end
