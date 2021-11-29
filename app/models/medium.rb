@@ -3,6 +3,7 @@ require 'podcast_api'
 class Medium < ApplicationRecord
   belongs_to :dashboard
   belongs_to :mediable, polymorphic: true
+  has_many :favoris
 
   has_many :articles, :through => :media, :source_type => "Article"
   has_many :podcasts, :through => :media, :source_type => "Podcast"

@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   def index
     @user = current_user
+    @favori = Favori.new
     @user_categories = @user.user_categories
     categories = @user_categories.map(&:category)
 

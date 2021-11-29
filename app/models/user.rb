@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :user_media_types
   has_many :user_categories
   has_many :dashboards
+  has_many :favoris, dependent: :destroy
 
   # def self.create_all_new_articles
   #     all_categories = Medium::CATEGORIES

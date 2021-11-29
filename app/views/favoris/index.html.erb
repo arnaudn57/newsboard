@@ -1,0 +1,8 @@
+<h1>Voici mes favoris</h1>
+
+<ul class="list-group">
+
+  <% @favoris.each do |favori| %>
+    <li><%= favori.medium.mediable.title %></li>
+  <% end %>
+</ul>
