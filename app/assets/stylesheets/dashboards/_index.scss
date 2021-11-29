@@ -24,3 +24,25 @@
   border-radius:none;
 
 }
+
+.card-btn {
+  display: flex;
+  justify-content:space-between;
+  margin-right: 30px;
+}
+
+.card-btn .btn-favori {
+  background-color: rgb(218, 167, 86);
+  padding: 10px;
+  color: white;
+  border-radius:30px;
+  border: none;
+}
+
+.card-btn .btn-view {
+  background-color: rgb(98, 165, 188);
+  padding: 10px;
+  color: white;
+  border-radius:30px;
+  border: none;
+}

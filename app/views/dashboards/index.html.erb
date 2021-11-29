@@ -21,12 +21,15 @@
             <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title"><%= article.title %></h4>
-              <p class="card-text"><%= article.content %></p>
-              <a class="btn btn-primary" href="<%= article.url %>">Button</a>
-              <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
-                <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                <%= f.submit class: "btn btn-secondary" %>
-              <% end %>
+              <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '... (continued)') %></p>
+              <p>Source: <cite><%= article.source %></cite></p>
+              <div class="card-btn">
+                <a class="btn-view" href="<%= article.url %>">Voir</a>
+                <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
+                  <%= f.hidden_field :medium_id, value: article.media.first.id %>
+                  <%= f.submit "Ajouter aux favoris", class: "btn-favori"%>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
