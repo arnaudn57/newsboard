@@ -6,7 +6,7 @@ class Medium < ApplicationRecord
 
   has_many :articles, :through => :media, :source_type => "Article"
   has_many :podcasts, :through => :media, :source_type => "Podcast"
-  # has_many :articles, :through => :media, :source_type => "Video"
+  has_many :videos, :through => :media, :source_type => "Video"
 
 CATEGORIES = ['news', 'sport', 'tech', 'politics', 'business', 'music', 'gaming']
 

@@ -41,15 +41,19 @@ class User < ApplicationRecord
   end
 
   def insert_podcast_into_dashboards(dashboard)
-    # new_dashboard = Dashboard.create(user: self, date: Date.today)
     podcast = Podcast.last
     Medium.create!(dashboard: dashboard, mediable: podcast)
   end
 
 #----------Méthode d'update de dashboard pour un user quand il édit ou quand il crée son premier dashboard----------
-
   def update_user_dashboard
     new_dashboard = Dashboard.create(user_id: self.id, date: Date.today)
+    all_user_media_types = self.user_media_types.map(&:media_types)
+        self.update_user_dashboard_by_articles(new_dashboard) if all_user_media_types.include?("Articles")
+        self.insert_podcast_into_dashboards(new_dashboard) if all_user_media_types.include?("Podcast")
+  end
+
+  def update_user_dashboard_by_articles(dashboard)
     all_user_categories = UserCategory.where(user: self).map do |user_categorie|
       user_categorie.category
     end
@@ -62,7 +66,7 @@ class User < ApplicationRecord
         articles = Article.where(category: category).last(3)
       end
       articles.each do |article|
-        Medium.create!(dashboard: new_dashboard, mediable: article)
+        Medium.create!(dashboard: dashboard, mediable: article)
       end
     end
   end
