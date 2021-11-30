@@ -93,7 +93,7 @@
           <div class="card-player mb-2">
             <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="250px">
             <div class="card-body-player">
-              <%= simple_form_for(@favori) do |f| %>
+              <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
                 <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
                 <%= f.submit class: "btn btn-secondary" %>
               <% end %>

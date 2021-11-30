@@ -1,40 +1,47 @@
-<h1>Voici mes favoris</h1>
-
-<ul class="list-group">
-
-    <div class="carousel-item active">
-      <p class="text-center date"></p>
-      <% @favoris.each do |favori| %>
-        <% if favori.medium.mediable_type.include?("Article") %>
-        <div class="col-md-3" style="float:left">
-          <div class="card mb-2">
-            <img class="card-img-top" src="<%= favori.medium.mediable.image%>" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title"><%= favori.medium.mediable.title %></h4>
-              <p class="card-text"><%= favori.medium.mediable.content %></p>
-              <a class="btn btn-primary" href="<%= favori.medium.mediable.url %>">Découvir</a>
-              <li class="list-group-item">
-                <%= link_to "Supprimer ce favori",
-                  favori_path(favori),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-              </li>
-            </div>
-          </div>
-        </div>
-        <% else %>
-          <div class="col-md-3" style="float:left">
-            <div class="card mb-2">
-              <img class="card-player-img-top" src="<%= favori.medium.mediable.image %>" alt="Card image cap" width="200px">
-              <div class="card-body-player">
-                <p><strong><%= favori.medium.mediable.title %></strong></p>
-                <audio controls>
-                  <source src="<%= favori.medium.mediable.audio %>" type="audio/mp3">
-                </audio>
-                <a class="btn btn-primary" href="<%= favori.medium.mediable.url %>">Découvir</a>
+<div class="container">
+  <div class="description_favoris">
+    <h1 id="favoris_title">Mes favoris</h1>
+    <p><%= "Ici, nous gardons vos favoris pendant 7 jours. Découvrez ou (re)découvrez les articles qui vous ont marqué." %></p>
+  </div>
+   <ul class="list-group">
+      <div class="carousel-item active">
+        <% @favoris.each do |favori| %>
+<%#=------------- Si c'est un article----------------------------------------------------   %>
+          <% if favori.medium.mediable_type.include?("Article") %>
+        <%= raise %>
+            <%# favori.medium.mediable_type.order(:category) %>
+            <h3 id="favoris_category_title"><%= favori.medium.mediable.category.capitalize %> </h3>
+            <div class="col-md-3" style="float:left">
+              <div class="card mb-2">
+                <img class="card-img-top" src="<%= favori.medium.mediable.image%>" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title"><%= favori.medium.mediable.title %></h4>
+                  <p class="card-text"><%= favori.medium.mediable.content %></p>
+                  <a class="btn btn-primary" href="<%= favori.medium.mediable.url %>">Découvir</a>
+                  <li class="list-group-item">
+                    <%= link_to "Supprimer ce favori",
+                      favori_path(favori),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+                  </li>
+                </div>
               </div>
             </div>
-          </div>
+<%#=------------- Si c'est un podcast-----------------------------------------------   %>
+          <% else %>
+            <div class="col-md-3" style="float:left">
+              <div class="card mb-2">
+                <img class="card-player-img-top" src="<%= favori.medium.mediable.image %>" alt="Card image cap" width="200px">
+                <div class="card-body-player">
+                  <p><strong><%= favori.medium.mediable.title %></strong></p>
+                  <audio controls>
+                    <source src="<%= favori.medium.mediable.audio %>" type="audio/mp3">
+                  </audio>
+                  <a class="btn btn-primary" href="<%= favori.medium.mediable.url %>">Découvir</a>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+</div>
