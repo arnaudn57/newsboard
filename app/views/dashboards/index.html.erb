@@ -86,34 +86,19 @@
         <% end %>
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
-        <div class="col-md-3" style="float:left">
-          <div class="card-player mb-2">
-            <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="250px">
-            <div class="card-body-player">
-              <%= simple_form_for([@user, @favori]) do |f| %>
-                <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
-                <%= f.submit class: "btn btn-secondary" %>
-              <% end %>
-              <p><strong><%= old_podcast.title %></strong></p>
+          <div class="col-md-3" style="float:left">
+          <div class="card-product mb-2">
+            <img src="<%=  old_podcast.image %>" />
+            <div class="card-product-infos">
+              <h2><%= old_podcast.title %></h2>
               <audio controls>
                 <source src="<%= old_podcast.audio %>" type="audio/mp3">
-                <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="<%= old_podcast.url %>" >lien vers le fichier audio</a> à la place.</p>
+                <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
               </audio>
             </div>
           </div>
+          <% end %>
         </div>
-        <div class="card-product">
-          <img src="<%=  old_podcast.image %>" />
-          <div class="card-product-infos">
-            <h2><%= old_podcast.title %></h2>
-            <audio controls>
-              <source src="<%= old_podcast.audio %>" type="audio/mp3">
-              <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
-            </audio>
-          </div>
-        </div>
-        <% end %>
-      </div>
     <% end %>
     <!--/.Second slide-->
   </div>
