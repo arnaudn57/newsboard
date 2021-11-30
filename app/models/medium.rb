@@ -1,4 +1,5 @@
 require 'podcast_api'
+require 'yt'
 
 class Medium < ApplicationRecord
   belongs_to :dashboard
@@ -45,8 +46,10 @@ CATEGORIES = ['news', 'sport', 'tech', 'politics', 'business', 'music', 'gaming'
     Podcast.create!(title: podcast["title"], description: podcast["description"], audio: podcast["audio"], image: podcast["image"], url: podcast["link"])
   end
 
-  # def self.create_new_videos
-  #   Yt.configuration.api_key = ENV["YOUTUBE_API_KEY"]
-  #   playlist = Yt::PlaylistItem.new id:
-  # end
+  def self.create_new_videos
+    Yt.configuration.api_key = ENV["YOUTUBE_API_KEY"]
+    video = Yt::Channel.new id: "UCAcAnMF0OrCtUep3Y4M-ZPw"
+    daily_video = video.videos.first
+    Video.create!(title: daily_video.title, url: "https://www.youtube.com/watch?v=#{daily_video.id}")
+  end
 end
