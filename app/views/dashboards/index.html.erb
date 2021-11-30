@@ -39,7 +39,13 @@
             </div>
           </div>
         </div>
-      <% end %>
+
+        <%# end %>
+                       
+      <%# end %>
+      
+      
+      
       <% podcasts = last_dashboard.podcasts %>
       <% podcasts.each do |podcast|%>
       <h2>Podcast</h2>
@@ -52,6 +58,10 @@
               <source src="<%= podcast.audio %>" type="audio/mp3">
               <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
             </audio>
+            <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+                  <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
+                  <%= f.submit class: "btn-favori" %>
+                <% end %>
           </div>
         </div>
         </div>
