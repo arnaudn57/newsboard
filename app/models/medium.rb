@@ -44,4 +44,9 @@ CATEGORIES = ['news', 'sport', 'tech', 'politics', 'business', 'music', 'gaming'
     podcast = hash["episodes"].first
     Podcast.create!(title: podcast["title"], description: podcast["description"], audio: podcast["audio"], image: podcast["image"], url: podcast["link"])
   end
+
+  # def self.create_new_videos
+  #   Yt.configuration.api_key = ENV["YOUTUBE_API_KEY"]
+  #   playlist = Yt::PlaylistItem.new id:
+  # end
 end
