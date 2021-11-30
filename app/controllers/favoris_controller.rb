@@ -1,15 +1,17 @@
 class FavorisController < ApplicationController
   def index
-    @favoris = Favori.where(user_id: current_user)
+    @user = current_user
+    @favoris = Favori.where(user: @user)
   end
 
   def create
+    @user = current_user
     @favori = Favori.new
     @medium = Medium.find(params[:favori][:medium_id])
     @favori.medium = @medium
-    @favori.user = current_user
+    @favori.user = @user
     @favori.save!
-    redirect_to dashboards_path
+    redirect_to user_dashboards_path(@user)
   end
 
   def destroy
