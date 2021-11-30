@@ -50,6 +50,6 @@ CATEGORIES = ['news', 'sport', 'tech', 'politics', 'business', 'music', 'gaming'
     Yt.configuration.api_key = ENV["YOUTUBE_API_KEY"]
     video = Yt::Channel.new id: "UCAcAnMF0OrCtUep3Y4M-ZPw"
     daily_video = video.videos.first
-    Video.create!(title: daily_video.title, url: "https://www.youtube.com/watch?v=#{daily_video.id}")
+    Video.create!(title: daily_video.title, url: "https://www.youtube.com/embed/#{daily_video.id}")
   end
 end
