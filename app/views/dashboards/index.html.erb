@@ -19,6 +19,7 @@
       <% last_dashboard = @dashboards.last%>
       <% last_article = last_dashboard.articles %>
       <p class="text-center date"><%= last_dashboard.date %></p>
+      <h2>Articles</h2>
       <% last_article.each do |article| %>
         <div class="col-md-3" style="float:left">
           <div class="card mb-2">
@@ -41,6 +42,7 @@
       <% end %>
       <% podcasts = last_dashboard.podcasts %>
       <% podcasts.each do |podcast|%>
+      <h2>Podcast</h2>
       <div class="col-md-3" style="float:left">
         <div class="card-product mb-2">
           <img src="<%= podcast.image %>"/>
@@ -53,6 +55,11 @@
           </div>
         </div>
         </div>
+      <% end %>
+      <% videos = last_dashboard.videos %>
+      <% videos.each do |video|%>
+        <h2>Video</h2>
+        <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <% end %>
     </div>
     <!--/.First slide-->
@@ -99,6 +106,11 @@
             </div>
           <% end %>
         </div>
+        <% videos = old_dashboard.videos %>
+        <% videos.each do |video|%>
+            <h2>Video</h2>
+          <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <% end %>
       <% end %>
     <!--/.Second slide-->
   </div>
