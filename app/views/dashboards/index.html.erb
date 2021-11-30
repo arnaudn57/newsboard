@@ -87,19 +87,19 @@
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
-          <div class="card-product mb-2">
-            <img src="<%=  old_podcast.image %>" />
-            <div class="card-product-infos">
-              <h2><%= old_podcast.title %></h2>
-              <audio controls>
-                <source src="<%= old_podcast.audio %>" type="audio/mp3">
-                <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
-              </audio>
+            <div class="card-product mb-2">
+              <img src="<%=  old_podcast.image %>" />
+              <div class="card-product-infos">
+                <h2><%= old_podcast.title %></h2>
+                <audio controls>
+                  <source src="<%= old_podcast.audio %>" type="audio/mp3">
+                  <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
+                </audio>
+              </div>
             </div>
-          </div>
           <% end %>
         </div>
-    <% end %>
+      <% end %>
     <!--/.Second slide-->
   </div>
   <!--/.Slides-->
