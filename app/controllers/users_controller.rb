@@ -39,11 +39,10 @@ class UsersController < ApplicationController
     # Suppression des media deselectionnées
     current_medias.each do |current_media|
       # raise
-      UserMediaType.find_by(media_types: current_media, user: @user).destroy! unless selected_medias.include?(current_media)
+      UserMediaType.find_by(media_types: current_media, user: @user).update! unless selected_medias.include?(current_media)
     end
 
     @user.update!(user_params)
-
 
     @user.dashboards.last.destroy unless @user.dashboards.empty?
     @user.create_user_dashboard
