@@ -40,17 +40,18 @@ class UsersController < ApplicationController
     current_medias.each do |current_media|
       UserMediaType.find_by(media_types: current_media, user: @user).destroy! unless selected_medias.include?(current_media)
     end
-
-    @user.update!(user_params)
-
-    @user.dashboards.last.update!(active: false) unless @user.dashboards.empty?
-
-    new_dashboard = Dashboard.create(user: @user, date: Date.today)
-    all_user_media_types = UserMediaType.where(user: @user).map(&:media_types)
-    current_user.create_dashboard_by_articles(new_dashboard) if all_user_media_types.include?("Articles")
-    current_user.insert_podcast_into_dashboards(new_dashboard) if all_user_media_types.include?("Podcasts")
-    current_user.insert_video_into_dashboards(new_dashboard) if all_user_media_types.include?("Video")
-    redirect_to user_dashboards_path(@user)
+    if user_params.present?
+      @user.update!(user_params)
+      @user.dashboards.last.update!(active: false) unless @user.dashboards.empty?
+      new_dashboard = Dashboard.create(user: @user, date: Date.today)
+      all_user_media_types = UserMediaType.where(user: @user).map(&:media_types)
+      current_user.create_dashboard_by_articles(new_dashboard) if all_user_media_types.include?("Articles")
+      current_user.insert_podcast_into_dashboards(new_dashboard) if all_user_media_types.include?("Podcasts")
+      current_user.insert_video_into_dashboards(new_dashboard) if all_user_media_types.include?("Video")
+      redirect_to user_dashboards_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
