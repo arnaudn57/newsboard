@@ -1,6 +1,6 @@
 
 <div class="btn-to-top">
-  <i class="fas fa-arrow-up icone"></i>
+  <a href="#"><i class="fas fa-arrow-up icone"></i></a>
 </div>
 
 <!--Carousel Wrapper-->
@@ -18,7 +18,8 @@
     <div class="carousel-item active" data-interval="30000">
       <% last_dashboard = @dashboards.last%>
       <% last_article = last_dashboard.articles %>
-      <p class="text-center date">FIRST DASHBOARD<%= last_dashboard.created_at.to_date %></p>
+      <p class="text-center date"><%= last_dashboard.date %></p>
+      <h2>Articles</h2>
       <% last_article.each do |article| %>
         <div class="col-md-3" style="float:left">
           <div class="card mb-2">
@@ -38,26 +39,38 @@
             </div>
           </div>
         </div>
-        <% end %>
-<%#=--------------------------Caroussel Podcast-----------------------------------  %>
-        <% podcasts = last_dashboard.podcasts %>
-        <% podcasts.each do |podcast|%>
-          <div class="col-md-3" style="float:left">
-            <div class="card-player mb-2">
-              <img class="card-player-img-top" src="<%= podcast.image %>" alt="Card image cap" width="250px">
-              <div class="card-body-player">
-                <p><strong><%= podcast.title %></strong></p>
-                <audio controls>
-                  <source src="<%= podcast.audio %>" type="audio/mp3">
-                </audio>
-                <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+
+        <%# end %>
+                       
+      <%# end %>
+      
+      
+      
+      <% podcasts = last_dashboard.podcasts %>
+      <% podcasts.each do |podcast|%>
+      <h2>Podcast</h2>
+      <div class="col-md-3" style="float:left">
+        <div class="card-product mb-2">
+          <img src="<%= podcast.image %>"/>
+          <div class="card-product-infos">
+            <h2><%= podcast.title %></h2>
+            <audio controls>
+              <source src="<%= podcast.audio %>" type="audio/mp3">
+              <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
+            </audio>
+            <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
                   <%= f.submit class: "btn-favori" %>
                 <% end %>
-              </div>
-            </div>
           </div>
-        <% end %>
+        </div>
+        </div>
+      <% end %>
+      <% videos = last_dashboard.videos %>
+      <% videos.each do |video|%>
+        <h2>Video</h2>
+        <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <% end %>
     </div>
     <!--/.First slide-->
      <!--Second slide-->
@@ -66,7 +79,7 @@
     <% y.pop %> <%# 7 derniers dashboards - le dernier %>
     <% y.each do |old_dashboard| %>
       <div class="carousel-item" data-interval="300000">
-      <p class="text-center date"><%= old_dashboard.created_at.to_date %></p>
+      <p class="text-center date"><%= old_dashboard.date %></p>
       <% old = old_dashboard.articles %>
         <% old.each do |article| %>
           <div class="col-md-3" style="float:left">
@@ -90,25 +103,25 @@
         <% end %>
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
-        <div class="col-md-3" style="float:left">
-          <div class="card-player mb-2">
-            <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="250px">
-            <div class="card-body-player">
-              <%= simple_form_for([@user, @favori]) do |f| %>
-                <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
-                <%= f.submit class: "btn btn-secondary" %>
-              <% end %>
-              <p><strong><%= old_podcast.title %></strong></p>
-              <audio controls>
-                <source src="<%= old_podcast.audio %>" type="audio/mp3">
-                <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="<%= old_podcast.url %>" >lien vers le fichier audio</a> à la place.</p>
-              </audio>
+          <div class="col-md-3" style="float:left">
+            <div class="card-product mb-2">
+              <img src="<%=  old_podcast.image %>" />
+              <div class="card-product-infos">
+                <h2><%= old_podcast.title %></h2>
+                <audio controls>
+                  <source src="<%= old_podcast.audio %>" type="audio/mp3">
+                  <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
+                </audio>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
+        <% videos = old_dashboard.videos %>
+        <% videos.each do |video|%>
+            <h2>Video</h2>
+          <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
     <!--/.Second slide-->
   </div>
   <!--/.Slides-->

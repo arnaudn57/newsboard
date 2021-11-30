@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     all_user_media_types = UserMediaType.where(user: @user).map(&:media_types)
     current_user.create_dashboard_by_articles(new_dashboard) if all_user_media_types.include?("Articles")
     current_user.insert_podcast_into_dashboards(new_dashboard) if all_user_media_types.include?("Podcasts")
+    current_user.insert_video_into_dashboards(new_dashboard) if all_user_media_types.include?("Video")
     redirect_to user_dashboards_path(@user)
   end
 

@@ -1,6 +1,4 @@
 // ---------------BTN TO TOP--------------------------
-
-
 .btn-to-top {
   height: 50px;
   width: 50px;
@@ -13,11 +11,17 @@
   right: 20px;
   bottom: 20px;
   cursor: pointer;
+  z-index: 10;
+  opacity: 0.7;
 }
 
-.icone i{
-  width: 300px;
+.btn-to-top .icone {
+  text-decoration: none;
   color: white;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 // ---------------------------------------------
@@ -33,7 +37,8 @@
 
 .carousel {
   margin-top: 30px;
-
+  position: relative;
+  z-index: 1;
 }
 
 .controls-top .btn-controls {
@@ -142,3 +147,52 @@ text-align: center;
   margin-top: 20px;
 }
 // ----------------CARD PODCAST END---------------------
+
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 0 2px;
+  width: 357px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 80px;
+  margin-left: -8px;
+}
+
+.card-product .card-product-infos h2{
+  margin-left: -27px;
+}
+
+.card-product .card-product-infos audio {
+  width: 176px;
+  margin-left: -53px;
+  height: 40px;
+}
