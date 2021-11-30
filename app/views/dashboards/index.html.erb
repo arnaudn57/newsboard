@@ -59,7 +59,7 @@
         <% end %>
     </div>
     <!--/.First slide-->
-    <!--Second slide-->
+     <!--Second slide-->
     <% @last_dashboards = @user.dashboards.order(:created_at).last(7) %>
     <% @y = @last_dashboards.clone %>
     <% @y.pop %> <%# 7 derniers dashboards - le dernier %>
