@@ -60,7 +60,7 @@
 <div class="btn_home">
 <% if user_signed_in? %>
   <div class="btn-sign_up">
-  <%= link_to "Mon Dashboard", dashboards_path ,class:'btn btn-dark'%>
+  <%= link_to "Mon Dashboard", user_dashboards_path(current_user) ,class:'btn btn-dark'%>
 </div>
 <% else %>
 </div>
