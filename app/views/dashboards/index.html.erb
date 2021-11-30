@@ -1,30 +1,35 @@
 
+<div class="btn-to-top">
+  <i class="fas fa-arrow-up icone"></i>
+</div>
+
 <!--Carousel Wrapper-->
 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
   <!--Controls-->
   <div class="controls-top">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <p>DATE</p>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+    <a class="btn-floating btn-controls" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+    <p class="date">DATE</p>
+    <a class="btn-floating btn-controls" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
   </div>
   <!--/.Controls-->
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
     <div class="carousel-item active" data-interval="30000">
-      <% @first_dashboard = @user.dashboards.order(:created_at).last%>
-      <% @y = @user.dashboards.last.articles %>
-      <p class="text-center date"><%= @first_dashboard.created_at.to_date %></p>
-      <% @y.each do |article| %>
+      <% @last_dashboard = @user.dashboards.order(:created_at).last%>
+      <% @last_article = @user.dashboards.last.articles %>
+      <p class="text-center date"><%= @last_dashboard.created_at.to_date %></p>
+      <% @last_article.each do |article| %>
         <div class="col-md-3" style="float:left">
           <div class="card mb-2">
             <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
             <div class="card-body">
+              <p class="text-center category"> #<%= article.category.upcase %></p>
               <h4 class="card-title"><%= article.title %></h4>
               <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '... (continued)') %></p>
               <p>Source: <cite><%= article.source %></cite></p>
               <div class="card-btn">
-                <a class="btn-view" href="<%= article.url %>">Voir</a>
+                <a class="btn-view" href="<%= article.url %>">Voir l'article</a>
                 <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: article.media.first.id %>
                   <%= f.submit "Ajouter aux favoris", class: "btn-favori"%>
@@ -37,27 +42,27 @@
         <% @podcasts = @user.dashboards.last.podcasts %>
         <% @podcasts.each do |podcast|%>
           <div class="col-md-3" style="float:left">
-            <div class="card mb-2">
-              <img class="card-player-img-top" src="<%= podcast.image %>" alt="Card image cap" width="200px">
+            <div class="card-player mb-2">
+              <img class="card-player-img-top" src="<%= podcast.image %>" alt="Card image cap" width="250px">
               <div class="card-body-player">
                 <p><strong><%= podcast.title %></strong></p>
                 <audio controls>
                   <source src="<%= podcast.audio %>" type="audio/mp3">
                 </audio>
-                 <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
-                      <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
-                      <%= f.submit class: "btn btn-secondary" %>
-                    <% end %>
+                <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
+                  <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
+                  <%= f.submit class: "btn-favori" %>
+                <% end %>
               </div>
             </div>
           </div>
         <% end %>
     </div>
     <!--/.First slide-->
-    <!--Second slide-->
-    <% @u = @user.dashboards.order(:created_at).last(7) %>
-    <% @y = @u.clone %>
-    <% @y.pop %>
+     <!--Second slide-->
+    <% @last_dashboards = @user.dashboards.order(:created_at).last(7) %>
+    <% @y = @last_dashboards.clone %>
+    <% @y.pop %> <%# 7 derniers dashboards - le dernier %>
     <% @y.each do |old_dashboard| %>
       <div class="carousel-item" data-interval="300000">
       <p class="text-center date"><%= old_dashboard.created_at.to_date %></p>
@@ -65,14 +70,19 @@
         <% @old.each do |article| %>
           <div class="col-md-3" style="float:left">
             <div class="card mb-2">
-              <p class="text-center"> Categorie :<%= article.category.capitalize %></p>
               <img class="card-img-top" src="<%= article.image %>" alt="Card image cap">
               <div class="card-body">
+                <p class="text-center category"> #<%= article.category.upcase %></p>
                 <h4 class="card-title"><%= article.title %></h4>
                 <p class="card-text"><%= article.content %></p>
-                <a class="btn btn-primary" href="<%=article.url %>">Button</a>
-                <cite class="source">Source: <%= article.source %> </cite>
-                <a class="btn btn-primary" href="<%=article.url %>">Voir l'article</a>
+                <p>Source: <cite><%= article.source %></cite></p>
+                <div class="card-btn">
+                  <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
+                  <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
+                    <%= f.hidden_field :medium_id, value: article.media.first.id %>
+                    <%= f.submit "Ajouter aux favoris", class: "btn-favori" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
@@ -80,13 +90,13 @@
         <% @old_podcasts = old_dashboard.podcasts %>
         <% @old_podcasts.each do |old_podcast| %>
         <div class="col-md-3" style="float:left">
-          <div class="card mb-2">
-            <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="200px">
+          <div class="card-player mb-2">
+            <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="250px">
             <div class="card-body-player">
-                    <%= simple_form_for(@favori) do |f| %>
-                      <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
-                      <%= f.submit class: "btn btn-secondary" %>
-                    <% end %>
+              <%= simple_form_for(@favori) do |f| %>
+                <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
+                <%= f.submit class: "btn btn-secondary" %>
+              <% end %>
               <p><strong><%= old_podcast.title %></strong></p>
               <audio controls>
                 <source src="<%= old_podcast.audio %>" type="audio/mp3">
