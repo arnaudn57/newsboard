@@ -1,4 +1,8 @@
 
+<div class="btn-to-top">
+  <i class="fas fa-arrow-up icone"></i>
+</div>
+
 <!--Carousel Wrapper-->
 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
   <!--Controls-->
@@ -20,11 +24,12 @@
           <div class="card mb-2">
             <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
             <div class="card-body">
+              <p class="text-center category"> #<%= article.category.upcase %></p>
               <h4 class="card-title"><%= article.title %></h4>
               <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '... (continued)') %></p>
               <p>Source: <cite><%= article.source %></cite></p>
               <div class="card-btn">
-                <a class="btn-view" href="<%= article.url %>">Voir</a>
+                <a class="btn-view" href="<%= article.url %>">Voir l'article</a>
                 <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: article.media.first.id %>
                   <%= f.submit "Ajouter aux favoris", class: "btn-favori"%>
@@ -37,8 +42,8 @@
         <% @podcasts = @user.dashboards.last.podcasts %>
         <% @podcasts.each do |podcast|%>
           <div class="col-md-3" style="float:left">
-            <div class="card mb-2">
-              <img class="card-player-img-top" src="<%= podcast.image %>" alt="Card image cap" width="200px">
+            <div class="card-player mb-2">
+              <img class="card-player-img-top" src="<%= podcast.image %>" alt="Card image cap" width="250px">
               <div class="card-body-player">
                 <p><strong><%= podcast.title %></strong></p>
                 <audio controls>
@@ -46,7 +51,7 @@
                 </audio>
                 <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
-                  <%= f.submit class: "btn btn-secondary" %>
+                  <%= f.submit class: "btn-favori" %>
                 <% end %>
               </div>
             </div>
@@ -65,17 +70,17 @@
         <% @old.each do |article| %>
           <div class="col-md-3" style="float:left">
             <div class="card mb-2">
-              <p class="text-center"> Categorie :<%= article.category.capitalize %></p>
               <img class="card-img-top" src="<%= article.image %>" alt="Card image cap">
               <div class="card-body">
+                <p class="text-center category"> #<%= article.category.upcase %></p>
                 <h4 class="card-title"><%= article.title %></h4>
                 <p class="card-text"><%= article.content %></p>
                 <p>Source: <cite><%= article.source %></cite></p>
                 <div class="card-btn">
-                  <a class="btn-view" href="<%=article.url %>">Voir</a>
+                  <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
                   <%= simple_form_for([@current_user, @favori], remote: true) do |f| %>
                     <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                    <%= f.submit class: "btn-favori" %>
+                    <%= f.submit "Ajouter aux favoris", class: "btn-favori" %>
                   <% end %>
                 </div>
               </div>
@@ -85,8 +90,8 @@
         <% @old_podcasts = old_dashboard.podcasts %>
         <% @old_podcasts.each do |old_podcast| %>
         <div class="col-md-3" style="float:left">
-          <div class="card mb-2">
-            <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="200px">
+          <div class="card-player mb-2">
+            <img class="card-player-img-top text-center" src="<%= old_podcast.image %>" alt="Card image cap" width="250px">
             <div class="card-body-player">
               <%= simple_form_for(@favori) do |f| %>
                 <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>

@@ -1,3 +1,27 @@
+// ---------------BTN TO TOP--------------------------
+
+
+.btn-to-top {
+  height: 50px;
+  width: 50px;
+  background: rgb(98, 165, 188);
+  border-radius:50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+}
+
+.icone i{
+  width: 300px;
+  color: white;
+}
+
+// ---------------------------------------------
+// ----------------CAROUSEL GENERAL---------------------
 .date {
   border: 1px solid rgb(98, 165, 188);
   margin-left: 140px;
@@ -9,9 +33,25 @@
 
 .carousel {
   margin-top: 30px;
+
+}
+
+.controls-top .btn-controls {
+  color: rgb(98, 165, 188) ;
+}
+// ----------------CAROUSEL GENERAL END---------------------
+//-----------------CARD ARTICLES---------------------------
+.card {
+  border-radius: 30px;
+}
+
+.card-img-top {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 .card-title {
   text-decoration: underline;
+  color: rgb(98, 165, 188);
 }
 
 .source {
@@ -23,24 +63,41 @@
   margin-left:30px
 }
 
+.card-body cite {
+  color: grey;
+}
+
+.card-body .category {
+  color: rgb(98, 165, 188);
+}
+
 .card-body-player audio {
   width: 100%;
   border-radius:none;
-
 }
 
 .card-btn {
-  display: flex;
-  justify-content:space-between;
-  margin-right: 30px;
+text-align: center;
+}
+
+.card-btn .btn-view {
+  padding: 10px;
+  margin-right: 24px;
 }
 
 .card-btn .btn-favori {
-  background-color: rgb(218, 167, 86);
+  background-color: white;
   padding: 10px;
-  color: white;
+  color: rgb(218, 167, 86);
   border-radius:30px;
-  border: none;
+  border: 1px solid rgb(218, 167, 86);
+  margin-top: 20px;
+}
+
+
+.card-btn .btn-favori:hover {
+  background-color: rgb(218, 167, 86);
+  color: white;
 }
 
 .card-btn .btn-view {
@@ -51,6 +108,37 @@
   border: none;
 }
 
-.controls-top .btn-controls {
-  color: rgb(98, 165, 188) ;
+// ----------------CARD ARTICLES END---------------------
+// ----------------CARD PODCAST---------------------
+.card-player {
+  text-align: center;
+  width: 250px;
+  margin: 0 auto;
 }
+
+.card-player-img-top {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.card-body-player {
+  width: 250px;
+  background-color: white;
+  padding: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.card-body-player p {
+  color: rgb(98, 165, 188);
+}
+
+.card-body-player .btn-favori {
+  background-color: white;
+  padding: 10px;
+  color: rgb(218, 167, 86);
+  border-radius:30px;
+  border: 1px solid rgb(218, 167, 86);
+  margin-top: 20px;
+}
+// ----------------CARD PODCAST END---------------------
