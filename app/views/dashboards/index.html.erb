@@ -22,7 +22,6 @@
       <% selected_media = @user.user_media_types.map {|umt| umt.media_types} %>
 
       <% if selected_media.include?("Articles") %>
-
       <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= last_article.count %>) </h2>
       <div class="articles-scroll">
       <% last_article.each do |article| %>
