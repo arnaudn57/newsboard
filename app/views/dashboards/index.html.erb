@@ -103,6 +103,7 @@
       <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
       <%# if selected_media.include?("Articles") %>
       <% old = old_dashboard.articles %>
+      <% if old.count > 0 %>
       <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= old.count %>) </h2>
       <div class="articles-scroll">
         <% old.each do |article| %>
@@ -125,12 +126,15 @@
             </div>
           </div>
         <% end %>
+
       </div>
+      <% end %>
       <%# end %>
 
       <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
         <%# if selected_media.include?("Podcasts") %>
         <% old_podcasts = old_dashboard.podcasts %>
+        <% if old_podcasts.count > 0 %>
          <h2 class="text-center category_title animate__animated animate__bounceIn">Podcast (<%= old_podcasts.count %>) </h2>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
@@ -150,6 +154,7 @@
             </div>
           <% end %>
         </div>
+        <% end %>
         <%#end %>
 
         <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
