@@ -32,12 +32,13 @@
 
 #favoris_categorie {
   font-family: patron bold,helvetica,arial,sans-serif;
-  font-size: 1.725em;
+  font-size: 1.425em;
   font-weight: 700;
   color: #304d6d;
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px;
+  width: 300px;
 }
 
 .favori_page .btn-btn-supp-favori {
@@ -62,4 +63,14 @@
     margin-left: 10px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.btn-link {
+  width: 350px ;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.scroll-favori {
+  overflow: auto;
 }

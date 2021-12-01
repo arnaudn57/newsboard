@@ -1,3 +1,12 @@
+// -------FONT IMPORT-------------
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto:wght@500&display=swap');
+
 // ---------------BTN TO TOP--------------------------
 .btn-to-top {
   height: 50px;
@@ -55,7 +64,7 @@ html {
   border-top-right-radius: 30px;
 }
 .card-title {
-  text-decoration: underline;
+
   color: rgb(98, 165, 188);
 }
 
@@ -77,7 +86,7 @@ html {
 }
 
 .card-body-player audio {
-  width: 100%;
+  width: 199px;
   border-radius:none;
 }
 
@@ -90,7 +99,7 @@ text-align: center;
   margin-right: 24px;
 }
 
-.card-btn .btn-favori {
+.btn-favori {
   background-color: white;
   padding: 10px;
   color: rgb(218, 167, 86);
@@ -100,7 +109,7 @@ text-align: center;
 }
 
 
-.card-btn .btn-favori:hover {
+.btn-favori:hover {
   background-color: rgb(218, 167, 86);
   color: white;
 }
@@ -146,12 +155,28 @@ text-align: center;
   border: 1px solid rgb(218, 167, 86);
   margin-top: 20px;
 }
+
+.btn-favori-podcast {
+  background-color: white;
+  padding: 10px;
+  color: rgb(218, 167, 86);
+  border-radius:30px;
+  border: 1px solid rgb(218, 167, 86);
+  margin-left: -36px;
+  margin-top: 8px;
+}
+
+.btn-favori-podcast:hover {
+  background-color: rgb(218, 167, 86);
+  color: white;
+}
+
 // ----------------CARD PODCAST END---------------------
 
 
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 225px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -171,7 +196,8 @@ text-align: center;
 .card-product h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  margin-top: -26px;
+  margin-bottom: 15px;
 }
 
 .card-product p {
@@ -192,7 +218,59 @@ text-align: center;
 }
 
 .card-product .card-product-infos audio {
-  width: 176px;
-  margin-left: -53px;
+  width: 199px;
+  margin-left: -45px;
   height: 40px;
+}
+
+
+// ---------------CARD VIDEO------------------
+
+.card-video {
+  text-align: center;
+}
+
+.btn-favori-video {
+  background-color: white;
+  padding: 10px;
+  color: rgb(218, 167, 86);
+  border-radius:30px;
+  border: 1px solid rgb(218, 167, 86);
+  margin-top: 8px;
+  // margin-left: 106px;
+}
+
+.btn-favori-video:hover {
+  background-color: rgb(218, 167, 86);
+  color: white;
+}
+
+.video-iframe {
+  // margin-left: 37px;
+}
+
+
+
+// CONTAINER ARTICLES
+
+.articles-scroll {
+  overflow: scroll;
+  width: 350px;
+  height: 650px;
+  margin: 0 auto;
+}
+
+
+.video-container {
+  width: 78%;
+  background-color: white;
+  margin: 0 auto;
+  text-align:center;
+  border-radius: 30px;
+}
+
+.category_title {
+  color: rgb(98, 165, 188);
+  font-family: roboto;
+  margin-top: 20px;
 }
