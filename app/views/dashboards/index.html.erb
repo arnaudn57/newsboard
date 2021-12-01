@@ -76,17 +76,18 @@
       <%# -----------VIDEO DU JOUR------------------ %>
       <% if selected_media.include?("Video") %>
       <% videos = last_dashboard.videos %>
-        <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>)</h2>
+        <h2 class="text-center category_title animate__animated animate__bounceIn video-card-container">Video (<%= videos.count %>)</h2>
+      <div class="video-container">
       <% videos.each do |video|%>
         <div class="video-container">
         <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p> <%= video.title %> </p>
         <%= simple_form_for([@user, @favori], remote: true) do |f| %>
           <%= f.hidden_field :medium_id, value: video.media.first.id %>
           <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
         <% end %>
         </div>
       <% end %>
+    </div>
     </div>
     <% end %>
 
@@ -155,22 +156,26 @@
 
         <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
          <%# if selected_media.include?("Video") %>
-        <% videos = old_dashboard.videos %>
-        <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>) </h2>
-        <% videos.each do |video|%>
-
-          <div class="video-container">
-          <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <%= simple_form_for([@user, @favori], remote: true) do |f| %>
-            <%= f.hidden_field :medium_id, value: video.media.first.id %>
-            <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
-          <% end %>
+        <% if selected_media.include?("Video") %>
+            <% videos = last_dashboard.videos %>
+              <h2 class="text-center category_title animate__animated animate__bounceIn video-card-container">Video (<%= videos.count %>)</h2>
+            <div class="video-container">
+            <% videos.each do |video|%>
+              <div class="video-container">
+              <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+                <%= f.hidden_field :medium_id, value: video.media.first.id %>
+                <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
+              <% end %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+          </div>
+          <% end %>
       <%# end %>
     <!--/.Second slide-->
-  </div>
-      <% end %>
+      </div>
+    <% end %>
   <!--/.Slides-->
 </div>
 
