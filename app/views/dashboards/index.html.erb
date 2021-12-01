@@ -21,6 +21,7 @@
 
       <% selected_media = @user.user_media_types.map {|umt| umt.media_types} %>
 
+      <%# -------------ARTICLES DU JOUR---------------- %>
       <% if selected_media.include?("Articles") %>
 
       <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= last_article.count %>) </h2>
@@ -48,6 +49,8 @@
       <% end %>
       </div>
       <% end %>
+
+      <%# ----------PODCAST DU JOUR----------------- %>
       <% if selected_media.include?("Podcasts") %>
       <% podcasts = last_dashboard.podcasts %>
       <h2 class="text-center category_title animate__animated animate__bounceIn">Podcast (<%= podcasts.count %>) </h2>
@@ -70,7 +73,7 @@
         </div>
       <% end %>
       <% end %>
-
+      <%# -----------VIDEO DU JOUR------------------ %>
       <% if selected_media.include?("Video") %>
       <% videos = last_dashboard.videos %>
         <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>)</h2>
@@ -95,7 +98,9 @@
     <% y.each do |old_dashboard| %>
       <div class="carousel-item" data-interval="300000">
       <p class="text-center date"><%= old_dashboard.date %></p>
-      <% if selected_media.include?("Articles") %>
+
+      <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
+      <%if selected_media.include?("Articles") %>
       <% old = old_dashboard.articles %>
       <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= old.count %>) </h2>
       <div class="articles-scroll">
@@ -119,8 +124,10 @@
             </div>
           </div>
         <% end %>
-        <% end %>
-        </div>
+      </div>
+      <% end %>
+
+      <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
         <% if selected_media.include?("Podcasts") %>
         <% old_podcasts = old_dashboard.podcasts %>
         <h2 class="text-center category_title animate__animated animate__bounceIn">Podcast (<%= old_podcasts.count %>) </h2>
@@ -142,8 +149,10 @@
             </div>
           <% end %>
         </div>
-        <% end %>
-        <% if selected_media.include?("Video") %>
+        <%end %>
+
+        <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
+         <% if selected_media.include?("Video") %>
         <% videos = old_dashboard.videos %>
         <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>) </h2>
         <% videos.each do |video|%>
