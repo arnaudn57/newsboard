@@ -1,3 +1,12 @@
+// -------FONT IMPORT-------------
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto:wght@500&display=swap');
+
 // ---------------BTN TO TOP--------------------------
 .btn-to-top {
   height: 50px;
@@ -167,7 +176,7 @@ text-align: center;
 
 .card-product {
   overflow: hidden;
-  height: 200px;
+  height: 225px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -258,4 +267,10 @@ text-align: center;
   margin: 0 auto;
   text-align:center;
   border-radius: 30px;
+}
+
+.category_title {
+  color: rgb(98, 165, 188);
+  font-family: roboto;
+  margin-top: 20px;
 }

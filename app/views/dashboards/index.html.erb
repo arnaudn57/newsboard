@@ -23,7 +23,7 @@
 
       <% if selected_media.include?("Articles") %>
 
-      <h2 class="text-center">Articles (<%= last_article.count %>) </h2>
+      <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= last_article.count %>) </h2>
       <div class="articles-scroll">
 
       <% last_article.each do |article| %>
@@ -50,7 +50,7 @@
       <% end %>
       <% if selected_media.include?("Podcasts") %>
       <% podcasts = last_dashboard.podcasts %>
-      <h2 class="text-center">Podcast (<%= podcasts.count %>) </h2>
+      <h2 class="text-center category_title animate__animated animate__bounceIn">Podcast (<%= podcasts.count %>) </h2>
       <% podcasts.each do |podcast|%>
       <div class="col-md-3" style="float:left">
         <div class="card-product mb-2">
@@ -73,7 +73,7 @@
 
       <% if selected_media.include?("Video") %>
       <% videos = last_dashboard.videos %>
-        <h2 class="text-center">Video (<%= videos.count %>)</h2>
+        <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>)</h2>
       <% videos.each do |video|%>
         <div class="video-container">
         <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -97,6 +97,7 @@
       <p class="text-center date"><%= old_dashboard.date %></p>
       <% if selected_media.include?("Articles") %>
       <% old = old_dashboard.articles %>
+      <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= old.count %>) </h2>
       <div class="articles-scroll">
         <% old.each do |article| %>
           <div class="col-md-3" style="float:left">
@@ -122,6 +123,7 @@
         </div>
         <% if selected_media.include?("Podcasts") %>
         <% old_podcasts = old_dashboard.podcasts %>
+        <h2 class="text-center category_title animate__animated animate__bounceIn">Podcast (<%= old_podcast.count %>) </h2>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
             <div class="card-product mb-2">
@@ -143,7 +145,7 @@
         <% end %>
         <% if selected_media.include?("Video") %>
         <% videos = old_dashboard.videos %>
-            <h2 class="text-center">Video</h2>
+        <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>) </h2>
         <% videos.each do |video|%>
           <div class="video-container">
           <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
