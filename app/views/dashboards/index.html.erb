@@ -164,13 +164,13 @@
           <%= simple_form_for([@user, @favori], remote: true) do |f| %>
             <%= f.hidden_field :medium_id, value: video.media.first.id %>
             <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
-        <% end %>
+          <% end %>
           </div>
         <% end %>
-      <% end %>
       <%# end %>
     <!--/.Second slide-->
   </div>
+      <% end %>
   <!--/.Slides-->
 </div>
 
