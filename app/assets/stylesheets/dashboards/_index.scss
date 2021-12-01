@@ -57,6 +57,7 @@ html {
 //-----------------CARD ARTICLES---------------------------
 .card {
   border-radius: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-img-top {
@@ -94,10 +95,7 @@ html {
 text-align: center;
 }
 
-.card-btn .btn-view {
-  padding: 10px;
-  margin-right: 24px;
-}
+
 
 .btn-favori {
   background-color: white;
@@ -128,6 +126,7 @@ text-align: center;
   text-align: center;
   width: 250px;
   margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-player-img-top {
@@ -228,6 +227,7 @@ text-align: center;
 
 .card-video {
   text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .btn-favori-video {
@@ -246,9 +246,24 @@ text-align: center;
 }
 
 .video-iframe {
-  // margin-left: 37px;
+  margin-left:-31px;
 }
 
+.video-iframe p{
+  color:red;
+  margin-left: 2px;
+}
+
+.video-container {
+  width: 78%;
+  height: 380px;
+  background-color: white;
+  margin: 0 auto;
+  text-align:center;
+  border-radius: 30px;
+  padding-bottom: 10px;
+
+}
 
 
 // CONTAINER ARTICLES
@@ -258,15 +273,6 @@ text-align: center;
   width: 350px;
   height: 650px;
   margin: 0 auto;
-}
-
-
-.video-container {
-  width: 78%;
-  background-color: white;
-  margin: 0 auto;
-  text-align:center;
-  border-radius: 30px;
 }
 
 .category_title {
