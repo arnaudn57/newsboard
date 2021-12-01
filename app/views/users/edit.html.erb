@@ -1,21 +1,21 @@
   <div class="container">
   <div class="text-edit">
     <h1>Hey <%= current_user.username.capitalize %> 👋🏻</h1>
-    <h5> Ici tu peux personnaliser ta revue de presse en fonction de tes envies et de ton temps disponible</h5>
+    <h5 class="text-center"> Ici tu peux personnaliser ta revue de presse en fonction de tes envies et de ton temps disponible</h5>
   </div>
 
 <div class="content">
   <%= simple_form_for (@user) do |f| %>
     <%# --------Category-------- %>
-    <p>Category</p>
+    <p>Let's go !</p>
     <div id="ligne_milieu_2"></div>
     <%= f.association :user_categories, label: "Catégories 📋", as: :check_boxes, collection: Medium::CATEGORIES, checked: @user.user_categories.map {|uc| uc.category}, input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item' %>
     <%# ---------Media_type--------- %>
     <%= f.association :user_media_types , label: "Choisissez vos médias 📰 :", as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], checked: @user.user_media_types.map {|uc| uc.media_types}, input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
     <%# ---------------Time available------------- %>
-    <%= f.input :available_time, label: "Quel est votre temps de lecture disponible ⌚️ ?", collection: 10..40 %>
+    <%= f.input :available_time, label: "Quel est votre temps de lecture disponible ⌚️ ?", collection: 10..40, required: true %>
     <%# ----------Submit-------------- %>
-    <%= f.submit 'Créer ma NewsBoard', class: 'btn btn-primary' %>
+    <%= f.submit 'Créer ma NewsBoard', class: 'btn-submit' %>
   <% end %>
 
   </div>

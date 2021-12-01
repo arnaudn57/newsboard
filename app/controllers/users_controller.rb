@@ -42,9 +42,7 @@ class UsersController < ApplicationController
     end
 
     @user.update!(user_params)
-
     @user.dashboards.last.update!(active: false) unless @user.dashboards.empty?
-
     new_dashboard = Dashboard.create(user: @user, date: Date.today)
     all_user_media_types = UserMediaType.where(user: @user).map(&:media_types)
     current_user.create_dashboard_by_articles(new_dashboard) if all_user_media_types.include?("Articles")
