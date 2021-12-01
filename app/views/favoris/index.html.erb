@@ -10,39 +10,41 @@
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <h4 id="favoris_categorie"> ⬇️ Vos articles favoris ⬇️</h4>
+          <h4 id="favoris_categorie"> Vos articles favoris</h4> <i class="fas fa-arrow-down"></i>
         </button>
       </h2>
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-        <% @favoris.each do |favori|%>
-          <%#=------------- Si c'est un article----------------------------------------------------   %>
-          <% @articles_favoris = favori.medium.mediable_type.include?("Article") %>
-            <% if @articles_favoris %>
-              <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="<%= favori.medium.mediable.image%>" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="text-center category"> #<%= favori.medium.mediable.category.upcase %></p>
-                    <h4 class="card-title"><%= favori.medium.mediable.title %></h4>
-                    <p class="card-text"><%= truncate("#{favori.medium.mediable.content}", :length => 90, :omission => '... (continued)') %></p>
-                    <p> Source: <cite><%= favori.medium.mediable.source %></cite></p>
-                    <div class="card-btn">
-                      <div class="favori_page">
-                        <a class="btn-decouvrir-favori" href="<%= favori.medium.mediable.url %>">Lire</a>
-                          <%= link_to "Supprimer ce favori",
-                              favori_path(favori),
-                              method: :delete,
-                              data: { confirm: "Are you sure?" }, class: "btn-btn-supp-favori" %>
+        <div class="scroll-favori">
+          <% @favoris.each do |favori|%>
+            <%#=------------- Si c'est un article----------------------------------------------------   %>
+            <% @articles_favoris = favori.medium.mediable_type.include?("Article") %>
+              <% if @articles_favoris %>
+                <div class="col-md-3" style="float:left">
+                  <div class="card mb-2">
+                    <img class="card-img-top" src="<%= favori.medium.mediable.image%>" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="text-center category"> #<%= favori.medium.mediable.category.upcase %></p>
+                      <h4 class="card-title"><%= favori.medium.mediable.title %></h4>
+                      <p class="card-text"><%= truncate("#{favori.medium.mediable.content}", :length => 90, :omission => '... (continued)') %></p>
+                      <p> Source: <cite><%= favori.medium.mediable.source %></cite></p>
+                      <div class="card-btn">
+                        <div class="favori_page">
+                          <a class="btn-decouvrir-favori" href="<%= favori.medium.mediable.url %>">Lire</a>
+                            <%= link_to "Supprimer ce favori",
+                                favori_path(favori),
+                                method: :delete,
+                                data: { confirm: "Are you sure?" }, class: "btn-btn-supp-favori" %>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
-        <% end %>
+              <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -51,7 +53,7 @@
     <div class="card-header" id="headingTwo">
       <h2 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <h4 id="favoris_categorie"> ⬇️ Vos podcasts favoris ⬇️</h4>
+          <h4 id="favoris_categorie"> Vos podcasts favoris</h4> <i class="fas fa-arrow-down"></i>
         </button>
       </h2>
     </div>
@@ -81,7 +83,7 @@
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <h4 id="favoris_categorie"> ⬇️ Vos videos favorites ⬇️</h4>
+          <h4 id="favoris_categorie"> Vos vidéos favorites </h4> <i class="fas fa-arrow-down"></i>
         </button>
       </h2>
     </div>

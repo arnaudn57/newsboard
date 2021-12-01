@@ -20,6 +20,7 @@
       <% last_article = last_dashboard.articles %>
       <p class="text-center date"><%= last_dashboard.date %></p>
       <h2>Articles</h2>
+
       <% last_article.each do |article| %>
         <div class="col-md-3" style="float:left">
           <div class="card mb-2">
@@ -33,7 +34,7 @@
                 <a class="btn-view" href="<%= article.url %>">Voir l'article</a>
                 <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                  <%= f.submit "Ajouter aux favoris", class: "btn-favori"%>
+                  <%= f.submit "Ajouter aux favoris" , class: "btn-favori"%>
                 <% end %>
               </div>
             </div>
