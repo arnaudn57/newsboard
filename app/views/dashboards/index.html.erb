@@ -76,7 +76,6 @@
         <h2 class="text-center">Video (<%= videos.count %>)</h2>
       <% videos.each do |video|%>
         <div class="video-container">
-
         <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p> <%= video.title %> </p>
         <%= simple_form_for([@user, @favori], remote: true) do |f| %>
@@ -98,6 +97,7 @@
       <p class="text-center date"><%= old_dashboard.date %></p>
       <% if selected_media.include?("Articles") %>
       <% old = old_dashboard.articles %>
+      <div class="articles-scroll">
         <% old.each do |article| %>
           <div class="col-md-3" style="float:left">
             <div class="card mb-2">
@@ -119,6 +119,7 @@
           </div>
         <% end %>
         <% end %>
+        </div>
         <% if selected_media.include?("Podcasts") %>
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
@@ -142,13 +143,15 @@
         <% end %>
         <% if selected_media.include?("Video") %>
         <% videos = old_dashboard.videos %>
+            <h2 class="text-center">Video</h2>
         <% videos.each do |video|%>
-            <h2>Video</h2>
+          <div class="video-container">
           <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <%= simple_form_for([@user, @favori], remote: true) do |f| %>
             <%= f.hidden_field :medium_id, value: video.media.first.id %>
             <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
         <% end %>
+          </div>
         <% end %>
       <% end %>
       <% end %>
