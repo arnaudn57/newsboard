@@ -37,10 +37,10 @@
               <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '...') %></p>
               <p>Source: <cite><%= article.source %></cite></p>
               <div class="card-btn">
-                <a class="btn-view" href="<%= article.url %>">Voir l'article</a>
+                <a class="btn-view" href="<%= article.url %>">Lire l'article</a>
                 <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                  <%= f.submit "Ajouter aux favoris" , class: "btn-favori"%>
+                  <%= button_tag do %> <i class="fas fa-clock"></i> <% end %>
                 <% end %>
               </div>
             </div>
@@ -64,7 +64,7 @@
             </audio>
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
               <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
-              <%= f.submit "Ajouter aux favoris", class: "btn-favori-podcast" %>
+              <%= button_tag do %> <i class="fas fa-clock"></i> <% end %>
             <% end %>
           </div>
         </div>
@@ -81,7 +81,7 @@
         <p> <%= video.title %> </p>
         <%= simple_form_for([@user, @favori], remote: true) do |f| %>
           <%= f.hidden_field :medium_id, value: video.media.first.id %>
-          <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
+          <%= button_tag do %> <i class="fas fa-clock"></i> <% end %>
         <% end %>
         </div>
       <% end %>
