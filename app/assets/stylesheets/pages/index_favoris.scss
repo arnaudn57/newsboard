@@ -44,15 +44,16 @@
     color: #daa756;
     border-radius: 30px;
     border: 1px solid #daa756;
-    margin-top: 20px;
+    margin-top: -20px;
     font-size: 14px;
     margin-left: 25px;
+
 }
 
 
 .favori_page .btn-decouvrir-favori {
   background-color: #62a5bc;
-  padding: 10px;
+  padding: 5px;
   color: white;
   border-radius: 30px;
   border: none;
@@ -60,6 +61,9 @@
   margin-left: -12px;
   padding-left: 41px;
   padding-right: 41px;
+  height: 43px;
+  margin-top: 22px;
+  padding-top: 11px;
 }
 
 .btn-link {
@@ -73,19 +77,39 @@
 }
 
 .card-body i {
-  color: #304d6d;
-  font-size: 20px;
+  color: #fdfeff;
+  font-size: 15px;
+  margin-top: 11px;
+  padding: 5px;
+  border-radius: 50%;
+}
+.fa-trash-alt:before {
+  color: #fdfeff;
+  font-size: 15px;
+  margin-top: 11px;
+  background-color: #62a5bc;
+  padding: 20px;
+  border-radius: 50%;
+}
+.card-body i:active {
+  color: #3c7abd;
+  font-size: 25px;
+  margin-top: 11px;
+
 }
 
 .favori_page {
   margin-bottom: 7px;
   margin-top: 26px;
+  display: flex;
+  margin-left: 10px;
 }
 
 .mb-0 i {
   font-size: 20px ;
   color: #304d6d;
   margin-right: 8px;
+
 }
 
 .card-header {

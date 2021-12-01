@@ -80,18 +80,25 @@
 
 
 .card-btn button {
-  border: none;
-  background-color:rgba(218, 167, 86, 0);
-  margin-top: 20px;
-}
-.card-btn button:active {
-  color: rgb(32, 65, 156);
+  border: 1px;
+  background-color:rgba(218, 167, 86, 0.705);
+  margin-top: 14px;
+  margin-top: 14px;
+  color: #fdfdfd;
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 2px;
+  align-content: center;
+  padding-bottom: 7px;
+  height: 0px;
+  padding-bottom: 48px;
 }
 
+
 .fa-clock:before {
-  font-size: 35px;
+  font-size: 15px;
   padding: 10px;
-  color: #62a5bc;
+  color: #f5f5f5;
   margin-top: 20px;
 }
 .fa-clock:active {
@@ -100,14 +107,33 @@
 }
 
 .card-product-infos button {
-  border: none;
-  background-color:rgba(218, 167, 86, 0);
-  margin-top: 7px;
-  margin-left: 100px;
+  border: 1px;
+  background-color:rgba(218, 167, 86, 0.705);
+  margin-top: 14px;
+  color: rgb(253, 253, 253);
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 8px;
+  width: 200px;
+  align-content: center;
+  margin-left: -50px;
+}
+
+.card-product-infos button:hover {
+  background-color:rgba(245, 171, 52, 0.836);
+
 }
 
 .video-container button {
-  border: none;
-  background-color:rgba(218, 167, 86, 0);
+  border: 1px;
+  background-color:rgba(218, 167, 86, 0.705);
+  margin-top: 14px;
+  color: rgb(253, 253, 253);
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 8px;
+  align-content: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
 
 }
