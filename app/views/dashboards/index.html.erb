@@ -1,4 +1,3 @@
-
 <div class="btn-to-top">
   <a href="#"><i class="fas fa-arrow-up icone"></i></a>
 </div>
@@ -19,7 +18,14 @@
       <% last_dashboard = @dashboards.last%>
       <% last_article = last_dashboard.articles %>
       <p class="text-center date"><%= last_dashboard.date %></p>
+
+      <% selected_media = @user.user_media_types.map {|umt| umt.media_types} %>
+
+      <% if selected_media.include?("Articles") %>
+
       <h2>Articles</h2>
+      <div class="articles-scroll">
+
       <% last_article.each do |article| %>
         <div class="col-md-3" style="float:left">
           <div class="card mb-2">
@@ -41,8 +47,10 @@
         </div>
 
       <% end %>
+      </div>
+      <% end %>
 
-
+      <% if selected_media.include?("Podcasts") %>
 
       <% podcasts = last_dashboard.podcasts %>
       <% podcasts.each do |podcast|%>
@@ -64,12 +72,17 @@
         </div>
         </div>
       <% end %>
+      <% end %>
+
+      <% if selected_media.include?("Video") %>
       <% videos = last_dashboard.videos %>
       <% videos.each do |video|%>
         <h2>Video</h2>
         <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <% end %>
     </div>
+    <% end %>
+
     <!--/.First slide-->
      <!--Second slide-->
     <% last_dashboards = @dashboards.last(7) %>
@@ -78,6 +91,7 @@
     <% y.each do |old_dashboard| %>
       <div class="carousel-item" data-interval="300000">
       <p class="text-center date"><%= old_dashboard.date %></p>
+      <% if selected_media.include?("Articles") %>
       <% old = old_dashboard.articles %>
         <% old.each do |article| %>
           <div class="col-md-3" style="float:left">
@@ -99,6 +113,8 @@
             </div>
           </div>
         <% end %>
+        <% end %>
+        <% if selected_media.include?("Podcasts") %>
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
@@ -114,11 +130,14 @@
             </div>
           <% end %>
         </div>
+        <% end %>
+        <% if selected_media.include?("Video") %>
         <% videos = old_dashboard.videos %>
         <% videos.each do |video|%>
             <h2>Video</h2>
           <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <% end %>
+      <% end %>
       <% end %>
     <!--/.Second slide-->
   </div>

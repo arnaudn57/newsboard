@@ -13,6 +13,9 @@ class DashboardsController < ApplicationController
 
     # @dashboard.articles = Articles deja trier selon l'utilisateur
 
+
+    # current_medias = @user.user_media_types.map {|umt| umt.media_types}
+
     # !-----------------DASHBOARD CAROUSEL----------------------
       # ?-------------CLASS ACTIVE------------------
         # @first_dashboard = @user.dashboards.order(:created_at).last
