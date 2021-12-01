@@ -53,3 +53,6 @@ CATEGORIES = ['news', 'sport', 'tech', 'politics', 'business', 'music', 'gaming'
     Video.create!(title: daily_video.title, url: "https://www.youtube.com/embed/#{daily_video.id}")
   end
 end
+
+
+#

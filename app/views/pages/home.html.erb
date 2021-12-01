@@ -1,66 +1,80 @@
 <div class="first-text">
-  <h1> Lire l'info différement</h1>
+  <h1 class="first-text"> Lire l'info différement</h1>
   <div id="ligne_milieu"></div>
-  <h6> Vos News revisitées</h6>
 </div>
 
 
 <%# -----------Carousel------------- %>
 
 <!--Carousel Wrapper-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
-    <!--First slide-->
-    <div class="carousel-item active">
-      <div class="card-container-home">
-            <div class="card-product">
-              <img src="https://img-4.linternaute.com/g-Zj6z-13vjBwIXNxHmYgL8JUcc=/1500x/smart/04cadb0f42594ab8b211347d99dca27e/ccmcms-linternaute/29761354.jpg" />
-                <div class="card-product-infos">
-                  <div class="card-product-title">
-                    <h2><%= "Coronavirus : le Parlement autorise le recours au pass sanitaire jusqu'au 31 juillet 2022" %></h2>
-
+  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <!--First slide-->
+        <div class="carousel-item active">
+          <h6 class="slide-text"> Vos préférences </h6>
+            <div class="card-container-home">
+              <div class="col-md-3" style="float:left">
+                  <div class="card mb-2">
+                    <img class="card-img-top" src="<%= Article.where(category: "music").last.image%>" alt="Card image cap">
+                      <div class="card-body">
+                          <p class="text-center category"> #<%= Article.where(category: "music").last.category.upcase %></p>
+                          <h4 class="card-title"><%= Article.where(category: "music").last.title %></h4>
+                          <p class="card-text"><%= truncate(Article.where(category: "music").last.content, :length => 90, :omission => '...')%></p>
+                      </div>
                   </div>
-                  <div class="card-product-content">
-                    <p><%=truncate("Jeudi 25 novembre 2021, Envoyé spécial doit dévoiler les témoignages de cinq femmes accusant Nicolas Hulot d'agressions sexuelles.", length: 110) %></p>
-                  </div>
-                  <footer class="blockquote-footer"><cite title="Source Title"><%= "Le Monde"%></cite></footer>
-                  <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--/.First slide-->
+      <!--/.First slide-->
 
-    <!--Second slide-->
-    <div class="carousel-item">
-      <div class="card-container-home">
-        <div class="card-product">
-                <img src="https://cdn.radiofrance.fr/s3/cruiser-production/2021/11/82cc8548-d79e-4ddb-9b12-3e060fba5b85/870x489_000_9tc8w6.webp" />
-                  <div class="card-product-infos">
-                    <div class="card-product-title">
-                      <h2><%= "EN DIRECT - OLIVIER VÉRAN: NI CONFINEMENT, NI COUVRE-FEU" %></h2>
-                    </div>
-                    <div class="card-product-content">
-                      <p><%= truncate("Le ministre de la Santé Olivier Véran doit annoncer ce jeudi, lors d'une conférence de presse à 12h30.", length: 110) %></p>
-                    </div>
-                    <footer class="blockquote-footer"><cite title="Source Title"><%= "BFMTV"%></cite></footer>
-                    <div class="card-product-bouton"><button type="button" class="btn btn-outline-success">Je découvre</button></div>
+      <!--Second slide-->
+        <div class="carousel-item">
+          <h6 class="slide-text"> Des infos </h6>
+            <div class="card-container-home">
+                <div class="col-md-3" style="float:left">
+                  <div class="card mb-2">
+                    <img class="card-img-top" src="<%= Article.where(category: "sport").last.image%>" alt="Card image cap">
+                      <div class="card-body">
+                        <p class="text-center category"> #<%= Article.where(category: "sport").last.category.upcase %></p>
+                        <h4 class="card-title"><%= Article.where(category: "sport").last.title %></h4>
+                        <p class="card-text"><%= truncate(Article.where(category: "sport").last.content, :length => 90, :omission => '...')%></p>
+                      </div>
                   </div>
-              </div>
-          </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+          <h6 class="slide-text"> Une Newsboard</h6>
+            <div class="card-container-home">
+                <div class="col-md-3" style="float:left">
+                  <div class="card mb-2">
+                    <img class="card-img-top" src="<%= Article.where(category: "politics").last.image%>" alt="Card image cap">
+                      <div class="card-body">
+                        <p class="text-center category"> #<%= Article.where(category: "politics").last.category.upcase %></p>
+                        <h4 class="card-title"><%= Article.where(category: "politics").last.title %></h4>
+                        <p class="card-text"><%= truncate(Article.where(category: "politics").last.content, :length => 90, :omission => '...')%></p>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      <!--/.Second slide-->
     </div>
-    <!--/.Second slide-->
+    <!--/.Slides-->
   </div>
-  <!--/.Slides-->
-</div>
 <!--/.Carousel Wrapper-->
 
 <%# -------------Content---------- %>
 <div class="btn_home">
 <% if user_signed_in? %>
   <div class="btn-sign_up">
-  <%= link_to "Mon Dashboard", user_dashboards_path(current_user) ,class:'btn btn-dark'%>
+    <% if !current_user.dashboards.empty? %>
+  <%= link_to "Mes Newsboard", user_dashboards_path(current_user) ,class:'btn btn-dark'%>
+    <% else %>
+  <%= link_to "Créer ma Newsboard", edit_user_path(current_user),class:'btn btn-dark'%>
+    <% end %>
 </div>
 <% else %>
 </div>
@@ -76,19 +90,19 @@
         <h1>Noyé sous l'info ?</h1>
           <div class="paraph">
           <p >Chaque jour, Newsboard fait le tri dans l'actualité du jour et vous résume ce qui est important.
-            On s’occupe du reste</p>
+            On s’occupe du reste 😛</p>
           </div>
             <div class="feedback">
               <div class="msg" style="/* backface-visibility: visible; *//* z-index: 0; *//* visibility: inherit; *//* opacity: 1; *//* transform: matrix(1, 0, 0, 1, 0, 0); */">
-              <p><i class="dbl-quote-enter"></i>&nbsp;Je me suis <span class="color">désabonné de tant de newsletters</span> grâce à <strong>NewsBoard</strong>&nbsp;<i class="dbl-quote-exit"></i></p>
+              <p><i class="dbl-quote-enter"></i>Je me suis <span class="color">désabonné de tant de newsletters</span> grâce à <strong>NewsBoard</strong>&nbsp;<i class="dbl-quote-exit"></i></p>
               <p>— Guillaume Frat, 41 ans</p>
               </div>
               <div class="msg" style="backface-visibility: visible; z-index: 0; visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
-              <p><i class="dbl-quote-enter"></i>&nbsp;Je me sentais <span class="color">noyé dans l’info</span> et maintenant j’ai une <span class="color">bouée pour mes lectures</span>&nbsp;<i class="dbl-quote-exit"></i></p>
+              <p><i class="dbl-quote-enter"></i>Je me sentais <span class="color">noyé dans l’info</span> et maintenant j’ai une <span class="color">bouée pour mes lectures</span>&nbsp;<i class="dbl-quote-exit"></i></p>
               <p>— Matthieu Sibille, 33 ans</p>
               </div>
               <div class="msg" style="backface-visibility: visible; z-index: 0; visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
-              <p><i class="dbl-quote-enter"></i>&nbsp;Un rendez-vous quotidien avec l’actualité <span class="color">clair et concis</span>&nbsp;<i class="dbl-quote-exit"></i></p>
+              <p><i class="dbl-quote-enter"></i>Un rendez-vous quotidien avec l’actualité <span class="color">clair et concis</span>&nbsp;<i class="dbl-quote-exit"></i></p>
               <p>— Marthe Bachès, 25 ans</p>
               </div>
             </div>
@@ -96,12 +110,12 @@
       </div>
     </div>
   </div>
-    <div class="first-text">
+    <%# <div class="first-text">
       <h6> Ils parlent de nous..</h6>
-    </div>
+    </div> %>
 
 <%# -------------Carousel ils parlent de nous---------- %>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<%# <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
   <div class="carousel-inner-home">
     <div class="carousel-item active">
@@ -113,4 +127,4 @@
   </div>
 
 
-</div>
+</div> %>

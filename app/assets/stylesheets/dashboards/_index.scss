@@ -1,3 +1,12 @@
+// -------FONT IMPORT-------------
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto:wght@500&display=swap');
+
 // ---------------BTN TO TOP--------------------------
 .btn-to-top {
   height: 50px;
@@ -48,6 +57,7 @@ html {
 //-----------------CARD ARTICLES---------------------------
 .card {
   border-radius: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-img-top {
@@ -117,6 +127,7 @@ html {
   text-align: center;
   width: 250px;
   margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-player-img-top {
@@ -165,7 +176,7 @@ html {
 
 .card-product {
   overflow: hidden;
-  height: 200px;
+  height: 225px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -217,6 +228,7 @@ html {
 
 .card-video {
   text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .btn-favori-video {
@@ -235,9 +247,24 @@ html {
 }
 
 .video-iframe {
-  // margin-left: 37px;
+  margin-left:-31px;
 }
 
+.video-iframe p{
+  color:red;
+  margin-left: 2px;
+}
+
+.video-container {
+  width: 78%;
+  height: 380px;
+  background-color: white;
+  margin: 0 auto;
+  text-align:center;
+  border-radius: 30px;
+  padding-bottom: 10px;
+
+}
 
 
 // CONTAINER ARTICLES
@@ -249,11 +276,8 @@ html {
   margin: 0 auto;
 }
 
-
-.video-container {
-  width: 78%;
-  background-color: white;
-  margin: 0 auto;
-  text-align:center;
-  border-radius: 30px;
+.category_title {
+  color: rgb(98, 165, 188);
+  font-family: roboto;
+  margin-top: 20px;
 }

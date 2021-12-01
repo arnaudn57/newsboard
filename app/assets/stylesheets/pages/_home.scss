@@ -1,14 +1,19 @@
 // Specific CSS for your home-page
+#multi-item-example {
+  height: 50vh,
+}
+
 .first-text {
   text-align: center;
   margin-top: 45px;
 }
 
-.first-text h6{
+.slide-text {
+  text-align: center;
   color: grey;
-  margin-top: 35px;
   font-size: 20px ;
 }
+
 .first-text h1 {
   font-family: patron bold,helvetica,arial,sans-serif;
   font-size: 2.125em;
@@ -21,6 +26,7 @@
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+  padding: 110px;
 }
 
 .text-content {
@@ -85,4 +91,5 @@
 
 .btn_home .btn {
   background-color: #304d6d;
+  border-radius: 30px;
 }
