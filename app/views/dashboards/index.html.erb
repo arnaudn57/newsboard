@@ -40,7 +40,7 @@
                 <a class="btn-view" href="<%= article.url %>">Lire l'article</a>
                 <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                  <%= button_tag do %> <i class="fas fa-clock"></i> <% end %>
+                  <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
                 <% end %>
               </div>
             </div>
@@ -66,7 +66,7 @@
             </audio>
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
               <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
-              <%= button_tag do %> <i class="fas fa-clock"></i> <% end %>
+              <%= button_tag  do %>Ecouter plus tard<i class="fas fa-clock"></i> <% end %>
             <% end %>
           </div>
         </div>
@@ -83,7 +83,7 @@
         <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <%= simple_form_for([@user, @favori], remote: true) do |f| %>
           <%= f.hidden_field :medium_id, value: video.media.first.id %>
-          <%= button_tag do %> <i class="fas fa-clock"></i> <% end %>
+          <%= button_tag  do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
         <% end %>
         </div>
       <% end %>
