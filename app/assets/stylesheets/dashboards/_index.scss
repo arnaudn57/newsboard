@@ -55,7 +55,7 @@ html {
   border-top-right-radius: 30px;
 }
 .card-title {
-  text-decoration: underline;
+
   color: rgb(98, 165, 188);
 }
 
@@ -161,6 +161,7 @@ text-align: center;
   background-color: rgb(218, 167, 86);
   color: white;
 }
+
 // ----------------CARD PODCAST END---------------------
 
 
@@ -218,15 +219,43 @@ text-align: center;
 
 .card-video {
   text-align: center;
+}
 
+.btn-favori-video {
+  background-color: white;
+  padding: 10px;
+  color: rgb(218, 167, 86);
+  border-radius:30px;
+  border: 1px solid rgb(218, 167, 86);
+  margin-top: 8px;
+  // margin-left: 106px;
+}
+
+.btn-favori-video:hover {
+  background-color: rgb(218, 167, 86);
+  color: white;
+}
+
+.video-iframe {
+  // margin-left: 37px;
 }
 
 
-// -----------TEST----------------
+
+// CONTAINER ARTICLES
 
 .articles-scroll {
   overflow: scroll;
-  background-color: red;
   width: 350px;
   height: 650px;
+  margin: 0 auto;
+}
+
+
+.video-container {
+  width: 78%;
+  background-color: white;
+  margin: 0 auto;
+  text-align:center;
+  border-radius: 30px;
 }

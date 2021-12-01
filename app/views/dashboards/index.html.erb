@@ -23,7 +23,7 @@
 
       <% if selected_media.include?("Articles") %>
 
-      <h2>Articles</h2>
+      <h2 class="text-center">Articles (<%= last_article.count %>) </h2>
       <div class="articles-scroll">
 
       <% last_article.each do |article| %>
@@ -33,7 +33,7 @@
             <div class="card-body">
               <p class="text-center category"> #<%= article.category.upcase %></p>
               <h4 class="card-title"><%= article.title %></h4>
-              <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '... (continued)') %></p>
+              <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '...') %></p>
               <p>Source: <cite><%= article.source %></cite></p>
               <div class="card-btn">
                 <a class="btn-view" href="<%= article.url %>">Voir l'article</a>
@@ -45,16 +45,13 @@
             </div>
           </div>
         </div>
-
       <% end %>
       </div>
       <% end %>
-
       <% if selected_media.include?("Podcasts") %>
-
       <% podcasts = last_dashboard.podcasts %>
+      <h2 class="text-center">Podcast (<%= podcasts.count %>) </h2>
       <% podcasts.each do |podcast|%>
-      <h2>Podcast</h2>
       <div class="col-md-3" style="float:left">
         <div class="card-product mb-2">
           <img src="<%= podcast.image %>"/>
@@ -65,9 +62,9 @@
               <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
             </audio>
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
-                  <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
-                  <%= f.submit class: "btn-favori" %>
-                <% end %>
+              <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
+              <%= f.submit "Ajouter aux favoris", class: "btn-favori-podcast" %>
+            <% end %>
           </div>
         </div>
         </div>
@@ -76,9 +73,17 @@
 
       <% if selected_media.include?("Video") %>
       <% videos = last_dashboard.videos %>
+        <h2 class="text-center">Video (<%= videos.count %>)</h2>
       <% videos.each do |video|%>
-        <h2>Video</h2>
-        <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-container">
+
+        <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p> <%= video.title %> </p>
+        <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+          <%= f.hidden_field :medium_id, value: video.media.first.id %>
+          <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
+        <% end %>
+        </div>
       <% end %>
     </div>
     <% end %>
@@ -100,7 +105,7 @@
               <div class="card-body">
                 <p class="text-center category"> #<%= article.category.upcase %></p>
                 <h4 class="card-title"><%= article.title %></h4>
-                <p class="card-text"><%= article.content %></p>
+                <p class="card-text"><%=truncate("#{article.content}", :length => 90, :omission => '...') %></p>
                 <p>Source: <cite><%= article.source %></cite></p>
                 <div class="card-btn">
                   <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
@@ -126,6 +131,10 @@
                   <source src="<%= old_podcast.audio %>" type="audio/mp3">
                   <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
                 </audio>
+                <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+                  <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
+                  <%= f.submit "Ajouter aux favoris", class: "btn-favori-podcast" %>
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -135,7 +144,11 @@
         <% videos = old_dashboard.videos %>
         <% videos.each do |video|%>
             <h2>Video</h2>
-          <iframe width="300" height="300" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+            <%= f.hidden_field :medium_id, value: video.media.first.id %>
+            <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
+        <% end %>
         <% end %>
       <% end %>
       <% end %>
