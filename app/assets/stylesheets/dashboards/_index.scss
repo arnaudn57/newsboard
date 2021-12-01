@@ -74,10 +74,6 @@ html {
   margin-left: -15px;
 }
 
-.card-body a {
-  margin-left:30px
-}
-
 .card-body cite {
   color: grey;
 }
@@ -92,9 +88,10 @@ html {
 }
 
 .card-btn {
-text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -15px;
 }
-
 
 
 .btn-favori {
@@ -113,11 +110,15 @@ text-align: center;
 }
 
 .card-btn .btn-view {
-  background-color: rgb(98, 165, 188);
-  padding: 10px;
+  background-color: #62a5bc;
+  padding: 9px;
   color: white;
-  border-radius:30px;
+  border-radius: 30px;
   border: none;
+  height: 41px;
+  margin-top: 21px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 // ----------------CARD ARTICLES END---------------------

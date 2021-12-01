@@ -18,8 +18,8 @@
 }
 
 .description_favoris p {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 38px;
+  margin-right: 38px;
   text-align: center;
 }
 
@@ -30,14 +30,11 @@
   text-align: center;
 }
 
-#favoris_categorie {
+#favoris_categorie  {
   font-family: patron bold,helvetica,arial,sans-serif;
   font-size: 1.425em;
-  font-weight: 700;
+  font-weight: 500;
   color: #304d6d;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
   width: 300px;
 }
 
@@ -54,15 +51,15 @@
 
 
 .favori_page .btn-decouvrir-favori {
-    background-color: #62a5bc;
-    padding: 10px;
-    color: white;
-    border-radius: 30px;
-    border: none;
-    margin-right: 0px;
-    margin-left: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+  background-color: #62a5bc;
+  padding: 10px;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  margin-right: 103px;
+  margin-left: -12px;
+  padding-left: 41px;
+  padding-right: 41px;
 }
 
 .btn-link {
@@ -72,5 +69,37 @@
 }
 
 .scroll-favori {
-  overflow: auto;
+  overflow: scroll;
+}
+
+.card-body i {
+  color: #304d6d;
+  font-size: 20px;
+}
+
+.favori_page {
+  margin-bottom: 7px;
+  margin-top: 26px;
+}
+
+.mb-0 i {
+  font-size: 20px ;
+  color: #304d6d;
+  margin-right: 8px;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.125);
+}
+
+#ligne_milieu_favoris {
+  color: white;
+  height: 1px;
+  background-color: white;
+  width: 200px;
+  border-radius: 20px;
+  margin-left: 115px;
+  margin-bottom: 10px;
 }

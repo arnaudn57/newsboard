@@ -1,7 +1,8 @@
 
   <div class="description_favoris">
     <h1 id="favoris_title">Mes favoris</h1>
-    <p><%= "Ici, nous gardons vos favoris pendant 7 jours. Découvrez ou (re)découvrez les articles qui vous ont marqué." %></p>
+    <div id="ligne_milieu_favoris"></div>
+    <p><%= "Ici, nous gardons vos favoris pendant 7 jours. Découvrez ou (re)découvrez les articles, podcasts ou vidéos qui vous ont marqué." %></p>
   </div>
 
   <%#=------------- Début accordéon----------------------------------------------------   %>
@@ -10,7 +11,7 @@
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <h4 id="favoris_categorie"> Vos articles favoris</h4> <i class="fas fa-arrow-down"></i>
+          <h4 id="favoris_categorie">  <i class="fas fa-arrow-down"></i> Vos articles favoris </h4>
         </button>
       </h2>
     </div>
@@ -33,10 +34,9 @@
                       <div class="card-btn">
                         <div class="favori_page">
                           <a class="btn-decouvrir-favori" href="<%= favori.medium.mediable.url %>">Lire</a>
-                            <%= link_to "Supprimer ce favori",
-                                favori_path(favori),
-                                method: :delete,
-                                data: { confirm: "Are you sure?" }, class: "btn-btn-supp-favori" %>
+                           <%= link_to favori_path(favori), method: :delete, data: { confirm: 'Voulez vous supprimer cet article des favoris?' }, remote: true do %>
+                               <i class="fas fa-trash-alt"></i>
+                            <% end %>
                         </div>
                       </div>
                     </div>
@@ -53,16 +53,15 @@
     <div class="card-header" id="headingTwo">
       <h2 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <h4 id="favoris_categorie"> Vos podcasts favoris</h4> <i class="fas fa-arrow-down"></i>
+          <h4 id="favoris_categorie"> <i class="fas fa-arrow-down"></i> Vos podcasts favoris</h4>
         </button>
       </h2>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
           <% @favoris.each do |favori|%>
-          <% @podcast_favoris = favori.medium.mediable_type.include?("Podcast")  %>
+            <% @podcast_favoris = favori.medium.mediable_type.include?("Podcast")  %>
             <% if @podcast_favoris %>
-            <div class="col-md-3" style="float:left">
                 <div class="card-product mb-2">
                   <img src="<%= favori.medium.mediable.image %>"/>
                   <div class="card-product-infos">
@@ -71,11 +70,13 @@
                       <source src="<%= favori.medium.mediable.audio %>" type="audio/mp3">
                       <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
                     </audio>
-                    </div>
+                    <%= link_to favori_path(favori), method: :delete, data: { confirm: 'Voulez vous supprimer ce podcast des favoris?' }, remote: true do %>
+                               <i class="fas fa-trash-alt"></i>
+                            <% end %>
+                  </div>
                 </div>
             <% end %>
         <% end %>
-
       </div>
     </div>
   </div>
@@ -83,13 +84,24 @@
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <h4 id="favoris_categorie"> Vos vidéos favorites </h4> <i class="fas fa-arrow-down"></i>
+          <h4 id="favoris_categorie"> <i class="fas fa-arrow-down"></i> Vos vidéos favorites </h4>
         </button>
       </h2>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      <% @favoris.each do |favori|%>
+            <% @video_favoris = favori.medium.mediable_type.include?("Video")  %>
+            <% if @video_favoris %>
+                <div class="video-container">
+                  <iframe width="300" height="300" class="video-iframe" src="<%=favori.medium.mediable.url%>" title="<%= favori.medium.mediable.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <p> <%= favori.medium.mediable.title %> </p>
+                  <%= link_to favori_path(favori), method: :delete, data: { confirm: 'Voulez vous supprimer cette vidéo des favoris?' }, remote: true do %>
+                               <i class="fas fa-trash-alt"></i>
+                            <% end %>
+                  </div>
+            <% end %>
+        <% end %>
       </div>
     </div>
   </div>
