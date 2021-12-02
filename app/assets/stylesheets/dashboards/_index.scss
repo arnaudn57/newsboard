@@ -58,6 +58,11 @@ html {
 .fas {
   color: rgb(98, 165, 188) ;
 }
+
+.media_title {
+  color: rgb(98, 165, 188) ;
+  text-decoration: underline;
+}
 // ----------------CAROUSEL GENERAL END---------------------
 //-----------------CARD ARTICLES---------------------------
 .card {
@@ -186,6 +191,7 @@ html {
   align-items: center;
   margin: 0 2px;
   width: 357px;
+  border-radius: 30px;
 }
 
 .card-product img {
@@ -284,4 +290,8 @@ html {
   color: rgb(98, 165, 188);
   font-family: roboto;
   margin-top: 20px;
+}
+
+.tester {
+  background-color: grey;
 }
