@@ -13,8 +13,7 @@
   <!--Controls-->
   <div class="controls-top">
     <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-        class="fas fa-chevron-right"></i></a>
+    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
   </div>
   <!--/.Controls-->
   <!--Slides-->
@@ -23,6 +22,7 @@
     <!--First slide-->
       <%# -------------ARTICLES DU JOUR---------------- %>
     <div class="carousel-item active" data-interval="3000000">
+      <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p>
       <div class="articles-scroll">
         <% last_article.each do |article| %>
           <div class="col-md-3" style="float:left">
@@ -86,6 +86,7 @@
     <% y.pop %> <%# 7 derniers dashboards - le dernier %>
     <% y.each do |old_dashboard| %>
       <div class="carousel-item" data-interval="3000000">
+        <p class="text-center date"> <%= old_dashboard.date.strftime("%d/%m/%Y") %> </p>
         <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
         <% old = old_dashboard.articles %>
         <% old.each do |article| %>
@@ -102,7 +103,7 @@
                     <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
                     <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                       <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                      <%= f.submit "Ajouter aux favoris", class: "btn-favori" %>
+                      <%= f.submit "Ajouter aux favoris", class: "fas fa-clock" %>
                     <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
                   </div>
                 </div>
@@ -111,9 +112,7 @@
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES DERNIERS ARTICLES DES AUTRES DASHBOARD%>
 
-
-
-      <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
+        <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
@@ -127,26 +126,22 @@
                 </audio>
                 <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
-                  <%= f.submit "Ajouter aux favoris", class: "btn-favori-podcast" %>
+                  <%= f.submit "Ajouter aux favoris", class: "fas fa-clock" %>
                 <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
               </div>
             </div>
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES DERNIERS PODCAST DES AUTRES DASHBOARD%>
 
-
-
-
-
         <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
 
-        <% videos = last_dashboard.videos %>
+        <% videos = old_dashboard.videos %>
         <% videos.each do |video|%>
           <div class="video-container">
             <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
               <%= f.hidden_field :medium_id, value: video.media.first.id %>
-              <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
+              <%= f.submit "Ajouter aux favoris", class: "fas fa-clock" %>
             <% end %>
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES VIDEOS DES AUTRES DASHBOARDS %>

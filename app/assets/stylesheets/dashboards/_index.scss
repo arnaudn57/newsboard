@@ -33,6 +33,9 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  height: 200vh;
+}
 // ---------------------------------------------
 // ----------------CAROUSEL GENERAL---------------------
 .date {
@@ -51,6 +54,10 @@ html {
 }
 
 .controls-top .btn-controls {
+  color: rgb(98, 165, 188) ;
+}
+
+.fas {
   color: rgb(98, 165, 188) ;
 }
 // ----------------CAROUSEL GENERAL END---------------------
