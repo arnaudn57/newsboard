@@ -60,6 +60,7 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
           <% @favoris.each do |favori|%>
+          <%#=------------- Si c'est un podcast----------------------------------------------------   %>
             <% @podcast_favoris = favori.medium.mediable_type.include?("Podcast")  %>
             <% if @podcast_favoris %>
                 <div class="card-product mb-2">
@@ -91,6 +92,7 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
       <% @favoris.each do |favori|%>
+      <%#=------------- Si c'est une vidéo----------------------------------------------------   %>
             <% @video_favoris = favori.medium.mediable_type.include?("Video")  %>
             <% if @video_favoris %>
                 <div class="video-container">

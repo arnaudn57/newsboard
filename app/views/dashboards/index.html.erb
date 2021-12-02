@@ -34,7 +34,7 @@
                 <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '...') %></p>
                 <p>Source: <cite><%= article.source %></cite></p>
                 <div class="card-btn">
-                  <a class="btn-view" href="<%= article.url %>">Lire l'article</a>
+                  <a class="btn-view" href="<%= article.url %>">Lire l'article <i class="fas fa-book-open"></i></a>
                   <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                     <%= f.hidden_field :medium_id, value: article.media.first.id %>
                     <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
