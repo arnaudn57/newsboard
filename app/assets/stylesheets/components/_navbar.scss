@@ -1,3 +1,11 @@
+.navbar {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 10;
+}
+
+
 .navbar .user_connect a {
   color: rgb(10, 10, 10);
 }

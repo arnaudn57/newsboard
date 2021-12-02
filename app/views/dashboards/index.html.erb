@@ -1,10 +1,11 @@
+<div style="height:76px;"></div>
+
 <div class="btn-to-top">
   <a href="#"><i class="fas fa-arrow-up icone"></i></a>
 </div>
 
 
       <% last_dashboard = @dashboards.last%>
-      <% last_article = last_dashboard.articles %>
       <% selected_media = @user.user_media_types.map {|umt| umt.media_types} %>
 
 <!--Carousel Wrapper-->
@@ -22,33 +23,39 @@
     <!--First slide-->
       <%# -------------ARTICLES DU JOUR---------------- %>
     <div class="carousel-item active" data-interval="3000000">
-      <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p>
-      <div class="articles-scroll">
-        <% last_article.each do |article| %>
-          <div class="col-md-3" style="float:left">
-            <div class="card mb-2">
-              <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
-              <div class="card-body">
-                <p class="text-center category"># <%= article.category.upcase %></p>
-                <h4 class="card-title"><%= article.title %></h4>
-                <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '...') %></p>
-                <p>Source: <cite><%= article.source %></cite></p>
-                <div class="card-btn">
-                  <a class="btn-view" href="<%= article.url %>">Lire l'article <i class="fas fa-book-open"></i></a>
-                  <%= simple_form_for([@user, @favori], remote: true) do |f| %>
-                    <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                    <%# Medium.find_by(mediable_id: article.id, dashboard_id: last_dashboard.id) %>
-                    <%# Favori.find_by(user: current_user, medium: article) %>
-                    <%# <if current_user.favoris.include?(mediable: article)  %>
-                      <%= button_tag id:'create-fav' do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
-                    <%# end %>
-                  <% end %> <%# END DU SIMPLE FORM BTN FAVORI %>
-                </div>
+      <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p
+      <% if selected_media.include?"Articles" %>
+        <div class="tester">
+          <p class="text-center media_title">Articles</p>
+        </div>
+      <% end %>
+
+      <% last_article = last_dashboard.articles %>
+      <% last_article.each do |article| %>
+        <div class="col-md-3" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
+            <div class="card-body">
+              <p class="text-center category"># <%= article.category.upcase %></p>
+              <h4 class="card-title"><%= article.title %></h4>
+              <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '...') %></p>
+              <p>Source: <cite><%= article.source %></cite></p>
+              <div class="card-btn">
+                <a class="btn-view" href="<%= article.url %>">Lire l'article</a>
+                <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+                  <%= f.hidden_field :medium_id, value: article.media.first.id %>
+                  <%= button_tag id:'create-fav' do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
+                <% end %> <%# END DU SIMPLE FORM BTN FAVORI %>
               </div>
             </div>
           </div>
-        <% end %> <%# END DE L'ITERATION SUR LE DERNIER ARTICLE %>
-      </div>
+        </div>
+      <% end %> <%# END DE L'ITERATION SUR LE DERNIER ARTICLE %>
+
+      <% if selected_media.include?"Podcasts" %>
+        <p class="text-center media_title">Podcast</p>
+      <% end %>
+
       <%# ----------PODCAST DU JOUR----------------- %>
       <% last_podcasts = last_dashboard.podcasts %>
       <% last_podcasts.each do |podcast|%>
@@ -69,7 +76,12 @@
           </div>
         </div>
       <% end %> <%# END DE L4ITERATION SUR LE DERNIER PODCAST %>
+
       <%# -----------VIDEO DU JOUR------------------ %>
+      <% if selected_media.include?"Video" %>
+        <p class="text-center media_title">Video</p>
+      <% end %>
+
       <% last_videos = last_dashboard.videos %>
       <% last_videos.each do |video|%>
         <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -90,31 +102,40 @@
     <% last_dashboards.each do |old_dashboard| %>
       <div class="carousel-item" data-interval="3000000">
         <p class="text-center date"> <%= old_dashboard.date.strftime("%d/%m/%Y") %> </p>
+
         <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
+        <% unless old_dashboard.articles.blank? %>
+          <p class="text-center media_title">Articles</p>
+        <% end %>
+
         <% old = old_dashboard.articles %>
         <% old.each do |article| %>
-          <div class="articles-scroll">
-            <div class="col-md-3" style="float:left">
-              <div class="card mb-2">
-                <img class="card-img-top" src="<%= article.image %>" alt="Card image cap">
-                <div class="card-body">
-                  <p class="text-center category"> #<%= article.category.upcase %></p>
-                  <h4 class="card-title"><%= article.title %></h4>
-                  <p class="card-text"><%=truncate("#{article.content}", :length => 90, :omission => '...') %></p>
-                  <p>Source: <cite><%= article.source %></cite></p>
-                  <div class="card-btn">
-                    <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
-                    <%= simple_form_for([@user, @favori], remote: true) do |f| %>
-                      <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                      <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
-                    <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
-                  </div>
+          <div class="col-md-3" style="float:left">
+            <div class="card mb-2">
+              <img class="card-img-top" src="<%= article.image %>" alt="Card image cap">
+              <div class="card-body">
+                <p class="text-center category"> #<%= article.category.upcase %></p>
+                <h4 class="card-title"><%= article.title %></h4>
+                <p class="card-text"><%=truncate("#{article.content}", :length => 90, :omission => '...') %></p>
+                <p>Source: <cite><%= article.source %></cite></p>
+                <div class="card-btn">
+                  <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
+                  <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+                    <%= f.hidden_field :medium_id, value: article.media.first.id %>
+                    <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
+                  <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
                 </div>
               </div>
             </div>
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES DERNIERS ARTICLES DES AUTRES DASHBOARD%>
+
+
         <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
+        <% unless old_dashboard.podcasts.blank? %>
+          <p class="text-center media_title">Podcast</p>
+        <% end %>
+
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
@@ -134,9 +155,15 @@
             </div>
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES DERNIERS PODCAST DES AUTRES DASHBOARD%>
+
+
         <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
-        <% videos = old_dashboard.videos %>
-        <% videos.each do |video|%>
+        <% unless old_dashboard.videos.blank? %>
+          <p class="text-center media_title">Video</p>
+        <% end %>
+
+        <% old_videos = old_dashboard.videos %>
+        <% old_videos.each do |video|%>
           <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="video-container">
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
