@@ -131,8 +131,8 @@
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES DERNIERS PODCAST DES AUTRES DASHBOARD%>
         <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
-        <% videos = old_dashboard.videos %>
-        <% videos.each do |video|%>
+        <% old_videos = old_dashboard.videos %>
+        <% old_videos.each do |video|%>
           <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="video-container">
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
