@@ -23,9 +23,9 @@
 
 .btn-sign_up {
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 110px;
+  margin-top: 86px;
+  margin-bottom: 10px;
+  padding: 50px;
 }
 
 .text-content {
@@ -44,7 +44,7 @@
   padding-top: 30px;
   margin-left: -20px;
   margin-right: -20px;
-  height: 830px;
+  height: 852px;
 }
 
 .text_noye {
@@ -90,4 +90,33 @@
 .btn_home .btn {
   background-color: #304d6d;
   border-radius: 30px;
+}
+
+.container-intro {
+  background-color: #82A0BC;
+  padding: 10px;
+}
+.title-intro {
+  padding-top: 15px;
+}
+.full-bubble {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.bubble {
+	// layout
+	position: relative;
+	max-width: 12em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+	// looks
+	background-color: #fff;
+	padding: 1.125em 1.5em;
+	font-size: 1.25em;
+	border-radius: 1rem;
+  box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
