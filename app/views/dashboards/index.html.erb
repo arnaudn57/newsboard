@@ -46,8 +46,8 @@
         <% end %> <%# END DE L'ITERATION SUR LE DERNIER ARTICLE %>
       </div>
       <%# ----------PODCAST DU JOUR----------------- %>
-      <% podcasts = last_dashboard.podcasts %>
-      <% podcasts.each do |podcast|%>
+      <% last_podcasts = last_dashboard.podcasts %>
+      <% last_podcasts.each do |podcast|%>
         <div class="col-md-3" style="float:left">
           <div class="card-product mb-2">
             <img src="<%= podcast.image%>" alt="Card image cap">
@@ -66,8 +66,8 @@
         </div>
       <% end %> <%# END DE L4ITERATION SUR LE DERNIER PODCAST %>
       <%# -----------VIDEO DU JOUR------------------ %>
-      <% videos = last_dashboard.videos %>
-      <% videos.each do |video|%>
+      <% last_videos = last_dashboard.videos %>
+      <% last_videos.each do |video|%>
         <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="video-container">
           <%= simple_form_for([@user, @favori], remote: true) do |f| %>
@@ -80,10 +80,10 @@
     <!--/.First slide-->
 
     <!--Second slide-->
-    <% last_dashboards = @dashboards.last(7) %>
-    <% y = last_dashboards.clone %>
-    <% y.pop %> <%# 7 derniers dashboards - le dernier %>
-    <% y.each do |old_dashboard| %>
+    <% six_last_dashboards = @dashboards.last(7) %>
+    <% last_dashboards = six_last_dashboards.clone %>
+    <% last_dashboards.pop %> <%# 7 derniers dashboards - le dernier %>
+    <% last_dashboards.each do |old_dashboard| %>
       <div class="carousel-item" data-interval="3000000">
         <p class="text-center date"> <%= old_dashboard.date.strftime("%d/%m/%Y") %> </p>
         <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
