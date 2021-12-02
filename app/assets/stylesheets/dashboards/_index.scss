@@ -98,22 +98,6 @@ body {
   align-content: center;
 }
 
-
-.btn-favori {
-  background-color: white;
-  padding: 10px;
-  color: rgb(218, 167, 86);
-  border-radius:30px;
-  border: 1px solid rgb(218, 167, 86);
-  margin-top: 20px;
-}
-
-
-.btn-favori:hover {
-  background-color: rgb(218, 167, 86);
-  color: white;
-}
-
 .card-btn .btn-view {
   background-color: #62a5bc;
   padding: 9px;
@@ -123,7 +107,9 @@ body {
   height: 41px;
   margin-top: 21px;
   padding-right: 20px;
-  padding-left: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 // ----------------CARD ARTICLES END---------------------

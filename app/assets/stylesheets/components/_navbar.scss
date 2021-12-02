@@ -41,3 +41,12 @@
  .btn-logout a{
   color: red;
 }
+
+.navbar-light .navbar-toggler {
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0);
+}
+//------------box-shadow en dessous de la navbar-------------------
+.bg-light {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
