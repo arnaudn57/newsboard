@@ -11,7 +11,6 @@ class FavorisController < ApplicationController
     @favori.medium = @medium
     @favori.user = @user
     @favori.save!
-    redirect_to user_dashboards_path(@user)
   end
 
   def destroy

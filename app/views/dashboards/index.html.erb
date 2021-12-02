@@ -34,10 +34,14 @@
                 <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '...') %></p>
                 <p>Source: <cite><%= article.source %></cite></p>
                 <div class="card-btn">
-                  <a class="btn-view" href="<%= article.url %>">Lire l'article</a>
+                  <a class="btn-view" href="<%= article.url %>">Lire l'article <i class="fas fa-book-open"></i></a>
                   <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                     <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                    <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
+                    <%# Medium.find_by(mediable_id: article.id, dashboard_id: last_dashboard.id) %>
+                    <%# Favori.find_by(user: current_user, medium: article) %>
+                    <%# <if current_user.favoris.include?(mediable: article)  %>
+                      <%= button_tag id:'create-fav' do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
+                    <%# end %>
                   <% end %> <%# END DU SIMPLE FORM BTN FAVORI %>
                 </div>
               </div>
@@ -59,7 +63,7 @@
               </audio>
               <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                 <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
-                <%= button_tag  do %>Ecouter plus tard<i class="fas fa-clock"></i> <% end %>
+                <%= button_tag do %>Ecouter plus tard<i class="fas fa-clock"></i> <% end %>
               <% end %> <%# END DU SIMPLE FORM BTN FAVORI %>
             </div>
           </div>
@@ -72,7 +76,7 @@
         <div class="video-container">
           <%= simple_form_for([@user, @favori], remote: true) do |f| %>
             <%= f.hidden_field :medium_id, value: video.media.first.id %>
-            <%= button_tag  do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
+            <%= button_tag do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
           <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
         </div>
       <% end %> <%# END DE L4ITERATION SUR LA DERNIERE VIDEO %>
