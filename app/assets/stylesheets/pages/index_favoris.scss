@@ -18,26 +18,22 @@
 }
 
 .description_favoris p {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 38px;
+  margin-right: 38px;
   text-align: center;
 }
 
 #favoris_category_title {
   font-family: patron bold,helvetica,arial,sans-serif;
-  font-size: 1.625em;
+  font-size: 1.425em;
   font-weight: 700;
   text-align: center;
 }
 
-#favoris_categorie {
-  font-family: patron bold,helvetica,arial,sans-serif;
-  font-size: 1.425em;
+#favoris_categorie  {
+  font-size: 1.625em;
   font-weight: 700;
   color: #304d6d;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
   width: 300px;
 }
 
@@ -47,22 +43,25 @@
     color: #daa756;
     border-radius: 30px;
     border: 1px solid #daa756;
-    margin-top: 20px;
+    margin-top: -20px;
     font-size: 14px;
     margin-left: 25px;
+
 }
 
-
 .favori_page .btn-decouvrir-favori {
-    background-color: #62a5bc;
-    padding: 10px;
-    color: white;
-    border-radius: 30px;
-    border: none;
-    margin-right: 0px;
-    margin-left: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+  background-color: #62a5bc;
+  padding: 5px;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  margin-right: 103px;
+  margin-left: -12px;
+  padding-left: 41px;
+  padding-right: 41px;
+  height: 43px;
+  margin-top: -8px;
+  padding-top: 11px;
 }
 
 .btn-link {
@@ -72,5 +71,58 @@
 }
 
 .scroll-favori {
-  overflow: auto;
+  overflow: scroll;
+}
+
+//----------icones poubelle--------------
+
+.marge-poubelle .fas {
+  margin-top: 20px;
+}
+
+.fa-trash-alt:before {
+  color: #fdfeff;
+  font-size: 17px;
+  margin-top: 11px;
+  background-color: #62a5bc;
+  padding: 15px;
+  border-radius: 50px;
+  margin-left: 24px;
+}
+
+.marge-favoris .fas {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+.favori_page {
+  margin-top: 23px;
+  display: flex;
+  margin-left: 10px;
+}
+
+.mb-0 i {
+  font-size: 20px ;
+  color: #304d6d;
+  margin-right: 8px;
+
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
+
+//-------------Ligne milieu blanche-------------
+#ligne_milieu_favoris {
+  color: white;
+  height: 1px;
+  background-color: white;
+  width: 200px;
+  border-radius: 20px;
+  margin-left: 115px;
+  margin-bottom: 10px;
 }

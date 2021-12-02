@@ -1,109 +1,114 @@
+<div style="height:76px;"></div>
+
 <div class="btn-to-top">
   <a href="#"><i class="fas fa-arrow-up icone"></i></a>
 </div>
 
+
+      <% last_dashboard = @dashboards.last%>
+      <% selected_media = @user.user_media_types.map {|umt| umt.media_types} %>
+
 <!--Carousel Wrapper-->
 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
   <!--Controls-->
   <div class="controls-top">
-    <a class="btn-floating btn-controls" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <p class="date">DATE</p>
-    <a class="btn-floating btn-controls" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
   </div>
   <!--/.Controls-->
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
+
     <!--First slide-->
-    <div class="carousel-item active" data-interval="30000">
-      <% last_dashboard = @dashboards.last%>
-      <% last_article = last_dashboard.articles %>
-      <p class="text-center date"><%= last_dashboard.date %></p>
-
-      <% selected_media = @user.user_media_types.map {|umt| umt.media_types} %>
-
       <%# -------------ARTICLES DU JOUR---------------- %>
-      <% if selected_media.include?("Articles") %>
+    <div class="carousel-item active" data-interval="3000000">
+      <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p
+      <% if selected_media.include?"Articles" %>
+        <div class="tester">
+          <p class="text-center media_title">Articles</p>
+        </div>
+      <% end %>
 
-      <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= last_article.count %>) </h2>
-      <div class="articles-scroll">
-
+      <% last_article = last_dashboard.articles %>
       <% last_article.each do |article| %>
         <div class="col-md-3" style="float:left">
           <div class="card mb-2">
             <img class="card-img-top" src="<%= article.image%>" alt="Card image cap">
             <div class="card-body">
-              <p class="text-center category"> #<%= article.category.upcase %></p>
+              <p class="text-center category"># <%= article.category.upcase %></p>
               <h4 class="card-title"><%= article.title %></h4>
               <p class="card-text"><%= truncate("#{article.content}", :length => 90, :omission => '...') %></p>
               <p>Source: <cite><%= article.source %></cite></p>
               <div class="card-btn">
-                <a class="btn-view" href="<%= article.url %>">Voir l'article</a>
+                <a class="btn-view" href="<%= article.url %>">Lire l'article</a>
                 <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                  <%= f.submit "Ajouter aux favoris" , class: "btn-favori"%>
-                <% end %>
+                  <%= button_tag id:'create-fav' do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
+                <% end %> <%# END DU SIMPLE FORM BTN FAVORI %>
               </div>
             </div>
           </div>
         </div>
-      <% end %>
-      </div>
+      <% end %> <%# END DE L'ITERATION SUR LE DERNIER ARTICLE %>
+
+      <% if selected_media.include?"Podcasts" %>
+        <p class="text-center media_title">Podcast</p>
       <% end %>
 
       <%# ----------PODCAST DU JOUR----------------- %>
-      <% if selected_media.include?("Podcasts") %>
-      <% podcasts = last_dashboard.podcasts %>
-      <h2 class="text-center category_title animate__animated animate__bounceIn">Podcast (<%= podcasts.count %>) </h2>
-      <% podcasts.each do |podcast|%>
-      <div class="col-md-3" style="float:left">
-        <div class="card-product mb-2">
-          <img src="<%= podcast.image %>"/>
-          <div class="card-product-infos">
-            <h2><%= podcast.title %></h2>
-            <audio controls>
-              <source src="<%= podcast.audio %>" type="audio/mp3">
-              <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
-            </audio>
-            <%= simple_form_for([@user, @favori], remote: true) do |f| %>
-              <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
-              <%= f.submit "Ajouter aux favoris", class: "btn-favori-podcast" %>
-            <% end %>
+      <% last_podcasts = last_dashboard.podcasts %>
+      <% last_podcasts.each do |podcast|%>
+        <div class="col-md-3" style="float:left">
+          <div class="card-product mb-2">
+            <img src="<%= podcast.image%>" alt="Card image cap">
+            <div class="card-product-infos">
+              <h2> <%= podcast.title %> </h2>
+              <audio controls>
+                <source src="<%= podcast.audio %>" type="audio/mp3">
+                <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
+              </audio>
+              <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+                <%= f.hidden_field :medium_id, value: podcast.media.first.id %>
+                <%= button_tag do %>Ecouter plus tard<i class="fas fa-clock"></i> <% end %>
+              <% end %> <%# END DU SIMPLE FORM BTN FAVORI %>
+            </div>
           </div>
         </div>
-        </div>
-      <% end %>
-      <% end %>
+      <% end %> <%# END DE L4ITERATION SUR LE DERNIER PODCAST %>
+
       <%# -----------VIDEO DU JOUR------------------ %>
-      <% if selected_media.include?("Video") %>
-      <% videos = last_dashboard.videos %>
-        <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>)</h2>
-      <% videos.each do |video|%>
-        <div class="video-container">
-        <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p> <%= video.title %> </p>
-        <%= simple_form_for([@user, @favori], remote: true) do |f| %>
-          <%= f.hidden_field :medium_id, value: video.media.first.id %>
-          <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
-        <% end %>
-        </div>
+      <% if selected_media.include?"Video" %>
+        <p class="text-center media_title">Video</p>
       <% end %>
+
+      <% last_videos = last_dashboard.videos %>
+      <% last_videos.each do |video|%>
+        <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-container">
+          <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+            <%= f.hidden_field :medium_id, value: video.media.first.id %>
+            <%= button_tag do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
+          <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
+        </div>
+      <% end %> <%# END DE L4ITERATION SUR LA DERNIERE VIDEO %>
     </div>
-    <% end %>
-
     <!--/.First slide-->
-     <!--Second slide-->
-    <% last_dashboards = @dashboards.last(7) %>
-    <% y = last_dashboards.clone %>
-    <% y.pop %> <%# 7 derniers dashboards - le dernier %>
-    <% y.each do |old_dashboard| %>
-      <div class="carousel-item" data-interval="300000">
-      <p class="text-center date"><%= old_dashboard.date %></p>
 
-      <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
-      <%if selected_media.include?("Articles") %>
-      <% old = old_dashboard.articles %>
-      <h2 class="text-center category_title animate__animated animate__bounceIn">Articles (<%= old.count %>) </h2>
-      <div class="articles-scroll">
+    <!--Second slide-->
+    <% six_last_dashboards = @dashboards.last(7) %>
+    <% last_dashboards = six_last_dashboards.clone %>
+    <% last_dashboards.pop %> <%# 7 derniers dashboards - le dernier %>
+    <% last_dashboards.each do |old_dashboard| %>
+      <div class="carousel-item" data-interval="3000000">
+        <p class="text-center date"> <%= old_dashboard.date.strftime("%d/%m/%Y") %> </p>
+
+        <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
+        <% unless old_dashboard.articles.blank? %>
+          <p class="text-center media_title">Articles</p>
+        <% end %>
+
+        <% old = old_dashboard.articles %>
         <% old.each do |article| %>
           <div class="col-md-3" style="float:left">
             <div class="card mb-2">
@@ -117,57 +122,59 @@
                   <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
                   <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                     <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                    <%= f.submit "Ajouter aux favoris", class: "btn-favori" %>
-                  <% end %>
+                    <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
+                  <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
                 </div>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-      <% end %>
+        <% end %> <%# END DE L4ITERATION SUR LES DERNIERS ARTICLES DES AUTRES DASHBOARD%>
 
-      <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
-        <% if selected_media.include?("Podcasts") %>
+
+        <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
+        <% unless old_dashboard.podcasts.blank? %>
+          <p class="text-center media_title">Podcast</p>
+        <% end %>
+
         <% old_podcasts = old_dashboard.podcasts %>
-        <h2 class="text-center category_title animate__animated animate__bounceIn">Podcast (<%= old_podcasts.count %>) </h2>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
             <div class="card-product mb-2">
-              <img src="<%=  old_podcast.image %>" />
+              <img src="<%= old_podcast.image %>" />
               <div class="card-product-infos">
                 <h2><%= old_podcast.title %></h2>
                 <audio controls>
                   <source src="<%= old_podcast.audio %>" type="audio/mp3">
-                  <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
+                  <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="<%= old_podcast.url%>" >lien vers le fichier audio</a> à la place.</p>
                 </audio>
                 <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
-                  <%= f.submit "Ajouter aux favoris", class: "btn-favori-podcast" %>
-                <% end %>
+                  <%= button_tag  do %>Ecouter plus tard<i class="fas fa-clock"></i> <% end %>
+                <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
               </div>
             </div>
-          <% end %>
-        </div>
-        <%end %>
+          </div>
+        <% end %> <%# END DE L4ITERATION SUR LES DERNIERS PODCAST DES AUTRES DASHBOARD%>
+
 
         <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
-         <% if selected_media.include?("Video") %>
-        <% videos = old_dashboard.videos %>
-        <h2 class="text-center category_title animate__animated animate__bounceIn">Video (<%= videos.count %>) </h2>
-        <% videos.each do |video|%>
+        <% unless old_dashboard.videos.blank? %>
+          <p class="text-center media_title">Video</p>
+        <% end %>
+
+        <% old_videos = old_dashboard.videos %>
+        <% old_videos.each do |video|%>
+          <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="video-container">
-          <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <%= simple_form_for([@user, @favori], remote: true) do |f| %>
-            <%= f.hidden_field :medium_id, value: video.media.first.id %>
-            <%= f.submit "Ajouter aux favoris", class: "btn-favori-video" %>
-        <% end %>
+            <%= simple_form_for([@user, @favori], remote: true) do |f| %>
+              <%= f.hidden_field :medium_id, value: video.media.first.id %>
+              <%= button_tag  do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
+            <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
           </div>
-        <% end %>
-      <% end %>
-      <% end %>
-    <!--/.Second slide-->
+        <% end %> <%# END DE L4ITERATION SUR LES VIDEOS DES AUTRES DASHBOARDS %>
+      </div>
+    <% end %> <%# END DE L4ITERATION SUR LES ANCIENS DASHBOARDS  %>
   </div>
-  <!--/.Slides-->
+    <!--/.Slides-->
 </div>
 <!--/.Carousel Wrapper-->

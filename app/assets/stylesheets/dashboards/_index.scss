@@ -31,6 +31,7 @@
 
 html {
   scroll-behavior: smooth;
+  z-index: 1;
 }
 
 // ---------------------------------------------
@@ -53,10 +54,20 @@ html {
 .controls-top .btn-controls {
   color: rgb(98, 165, 188) ;
 }
+
+.fas {
+  color: rgb(98, 165, 188) ;
+}
+
+.media_title {
+  color: rgb(98, 165, 188) ;
+  text-decoration: underline;
+}
 // ----------------CAROUSEL GENERAL END---------------------
 //-----------------CARD ARTICLES---------------------------
 .card {
   border-radius: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-img-top {
@@ -73,10 +84,6 @@ html {
   margin-left: -15px;
 }
 
-.card-body a {
-  margin-left:30px
-}
-
 .card-body cite {
   color: grey;
 }
@@ -91,13 +98,9 @@ html {
 }
 
 .card-btn {
-text-align: center;
+  align-content: center;
 }
 
-.card-btn .btn-view {
-  padding: 10px;
-  margin-right: 24px;
-}
 
 .btn-favori {
   background-color: white;
@@ -115,11 +118,18 @@ text-align: center;
 }
 
 .card-btn .btn-view {
-  background-color: rgb(98, 165, 188);
-  padding: 10px;
+  background-color: #62a5bc;
+  padding: 9px;
   color: white;
-  border-radius:30px;
+  border-radius: 30px;
   border: none;
+  height: 41px;
+  margin-top: 21px;
+  padding-right: 14px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
 }
 
 // ----------------CARD ARTICLES END---------------------
@@ -128,6 +138,7 @@ text-align: center;
   text-align: center;
   width: 250px;
   margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-player-img-top {
@@ -183,6 +194,7 @@ text-align: center;
   align-items: center;
   margin: 0 2px;
   width: 357px;
+  border-radius: 30px;
 }
 
 .card-product img {
@@ -228,6 +240,8 @@ text-align: center;
 
 .card-video {
   text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
 }
 
 .btn-favori-video {
@@ -246,9 +260,26 @@ text-align: center;
 }
 
 .video-iframe {
-  // margin-left: 37px;
+  margin-left: 16px;
 }
 
+.video-iframe p{
+  color:red;
+  margin-left: 2px;
+}
+
+.video-container {
+  width: 357px;
+  // height: 380px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: -10px;
+  text-align:center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding-bottom: 10px;
+
+}
 
 
 // CONTAINER ARTICLES
@@ -256,21 +287,15 @@ text-align: center;
 .articles-scroll {
   overflow: scroll;
   width: 350px;
-  height: 650px;
   margin: 0 auto;
-}
-
-
-.video-container {
-  width: 78%;
-  background-color: white;
-  margin: 0 auto;
-  text-align:center;
-  border-radius: 30px;
 }
 
 .category_title {
   color: rgb(98, 165, 188);
   font-family: roboto;
   margin-top: 20px;
+}
+
+.tester {
+  background-color: grey;
 }

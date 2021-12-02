@@ -77,3 +77,90 @@
   padding-left: 40px;
   padding-right: 40px;
 }
+
+//-------bouton favori Articles-----------------
+
+.card-btn button {
+  border: 1px;
+  background-color:rgba(218, 167, 86, 0.705);
+  margin-top: 14px;
+  color: #fdfdfd;
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 2px;
+  align-content: center;
+  height: 0px;
+  padding-bottom: 36px;
+  padding-left: 12px;
+}
+
+.card-btn button:hover {
+  background-color:rgb(241, 193, 114);
+}
+
+//-------icone horloge Article-----------------
+
+.card-body .fa-clock {
+  color: #fdfeff;
+  font-size: 15px;
+  padding: 5px;
+  border-radius: 50%;
+  padding-left: 9px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.card-body .fa-book-open {
+  color: #fdfeff;
+  font-size: 15px;
+  padding: 5px;
+  border-radius: 50%;
+  padding-left: 9px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+//-------icone horloge Podcast-----------------
+.card-product-infos .fa-clock {
+  padding-left: 10px;
+  color: white;
+}
+
+//-------bouton favori poscast-----------------
+.card-product-infos button {
+  border: 1px;
+  background-color:rgba(218, 167, 86, 0.705);
+  margin-top: 3px;
+  color: rgb(253, 253, 253);
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 8px;
+  width: 200px;
+  align-content: center;
+  margin-left: -45px;
+}
+
+.card-product-infos button:hover {
+  background-color:rgb(241, 193, 114);
+}
+
+
+
+//-------bouton favori video-----------------
+.video-container button {
+  border: 1px;
+  background-color:rgba(218, 167, 86, 0.705);
+  margin-top: 14px;
+  color: rgb(253, 253, 253);
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 8px;
+  align-content: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
+
+}
+.video-container button:hover {
+  background-color:rgb(241, 193, 114);
+
+}

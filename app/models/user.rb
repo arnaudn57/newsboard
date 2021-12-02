@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :user_media_types, dependent: :destroy
   has_many :user_categories, dependent: :destroy
   has_many :dashboards, dependent: :destroy
+  has_many :favori_media, through: :favoris, source: :medium
   validates :available_time, presence: true, on: :update
 
   #---------Méthode de création de dashboard récupérant les méthodes d'insertions---------
