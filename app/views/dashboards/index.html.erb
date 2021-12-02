@@ -24,9 +24,12 @@
       <%# -------------ARTICLES DU JOUR---------------- %>
     <div class="carousel-item active" data-interval="3000000">
       <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p>
-      <% if selected_media.include?"Articles" %>
-          <p class="text-center media_title animate__animated animate__fadeIn">ARTICLES</p>
-      <% end %>
+      <%# if selected_media.include?"Articles" %>
+          <%# <p class="text-center media_title animate__animated animate__fadeIn">ARTICLES</p> %>
+      <%# end %>
+      <% unless last_dashboard.articles.blank? %>
+          <p class="text-center media_title ">ARTICLES</p>
+        <% end %>
 
       <% last_article = last_dashboard.articles %>
       <% last_article.each do |article| %>
@@ -50,9 +53,12 @@
         </div>
       <% end %> <%# END DE L'ITERATION SUR LE DERNIER ARTICLE %>
 
-      <% if selected_media.include?"Podcasts" %>
-        <p class="text-center media_title animate__animated animate__fadeIn">PODCAST</p>
-      <% end %>
+      <%# if selected_media.include?"Podcasts" %>
+        <%# <p class="text-center media_title animate__animated animate__fadeIn">PODCAST</p> %>
+      <%# end %>
+      <% unless last_dashboard.podcasts.blank? %>
+          <p class="text-center media_title ">PODCAST</p>
+        <% end %>
 
       <%# ----------PODCAST DU JOUR----------------- %>
       <% last_podcasts = last_dashboard.podcasts %>
@@ -76,9 +82,12 @@
       <% end %> <%# END DE L4ITERATION SUR LE DERNIER PODCAST %>
 
       <%# -----------VIDEO DU JOUR------------------ %>
-      <% if selected_media.include?"Video" %>
-        <p class="text-center media_title ">VIDEO</p>
-      <% end %>
+      <%# if selected_media.include?"Video" %>
+        <%# <p class="text-center media_title ">VIDEO</p> %>
+      <%# end %>
+      <% unless last_dashboard.videos.blank? %>
+          <p class="text-center media_title ">VIDEO</p>
+        <% end %>
 
       <% last_videos = last_dashboard.videos %>
       <% last_videos.each do |video|%>
@@ -103,7 +112,7 @@
 
         <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
         <% unless old_dashboard.articles.blank? %>
-          <p class="text-center media_title ">ARTICLES</p>
+           <p class="text-center media_title ">ARTICLES</p>
         <% end %>
 
         <% old = old_dashboard.articles %>
@@ -117,7 +126,7 @@
                 <p class="card-text"><%=truncate("#{article.content}", :length => 90, :omission => '...') %></p>
                 <p>Source: <cite><%= article.source %></cite></p>
                 <div class="card-btn">
-                  <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
+                  <a class="btn-view" href="<%=article.url %>">Lire l'article</a>
                   <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                     <%= f.hidden_field :medium_id, value: article.media.first.id %>
                     <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
@@ -130,9 +139,9 @@
 
 
         <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
-        <%# <% unless old_dashboard.podcasts.blank? %>
-          <%# <p class="text-center media_title ">PODCAST</p> %>
-        <%# end %>
+         <% unless old_dashboard.podcasts.blank? %>
+           <p class="text-center media_title ">PODCAST</p>
+        <% end %>
 
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>

@@ -92,17 +92,16 @@
       </h2>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
+      <div class="card-body-fix">
       <% @favoris.each do |favori|%>
       <%#=------------- Si c'est une vidéo----------------------------------------------------   %>
             <% @video_favoris = favori.medium.mediable_type.include?("Video")  %>
             <% if @video_favoris %>
                 <iframe width="357" height="300" class="video-iframe" src="<%=favori.medium.mediable.url%>" title="<%= favori.medium.mediable.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-container">
+                <div class="video-container">
                 <div class="marge-favoris">
                   <%= link_to favori_path(favori), method: :delete, data: { confirm: 'Voulez vous supprimer cette vidéo des favoris?' }, remote: true do %>
-                               <i class="fas fa-trash-alt"></i>
-
+                    <i class="fas fa-trash-alt"></i>
                   <% end %>
                 </div>
               </div>

@@ -27,9 +27,7 @@
 html {
   scroll-behavior: smooth;
 }
-body {
-  height: 200vh;
-}
+
 // ---------------------------------------------
 // ----------------CAROUSEL GENERAL---------------------
 .date {
@@ -301,4 +299,12 @@ body {
 }
 .video-container button:hover {
   background-color:rgb(241, 193, 114);
+}
+
+.card-body-fix {
+  margin-left: -3px;
+}
+
+.body {
+  height: 100%;
 }

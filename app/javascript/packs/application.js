@@ -34,9 +34,9 @@ document.addEventListener('turbolinks:load', () => {
 
   AOS.init();
   loadDynamicBannerText();
-  const submit = document.getElementById("create-fav");
-  submit.addEventListener("touchend", (event) => {
-    submit.style.backgroundColor = "red";
-  });
+  // const submit = document.getElementById("create-fav");
+  // submit.addEventListener("touchend", (event) => {
+  //   submit.style.backgroundColor = "red";
+  // });
 
 });
