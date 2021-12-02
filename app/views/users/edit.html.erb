@@ -13,7 +13,7 @@
     <%# ---------Media_type--------- %>
     <%= f.association :user_media_types , label: "Choisissez vos médias 📰 :", as: :check_boxes, collection: ['Articles', 'Podcasts', 'Video'], checked: @user.user_media_types.map {|uc| uc.media_types}, input_html: {class: "tag-selector"}, item_wrapper_class: 'tag-item'%>
     <%# ---------------Time available------------- %>
-    <%= f.input :available_time, label: "Quel est votre temps de lecture disponible ⌚️ ?", collection: 10..40, required: true %>
+    <%= f.input :available_time, label: "Quel est votre temps de lecture disponible ⌚️ ?", collection: 10..40, include_blank: false %>
     <%# ----------Submit-------------- %>
     <%= f.submit 'Créer ma NewsBoard', class: 'btn-submit' %>
   <% end %>

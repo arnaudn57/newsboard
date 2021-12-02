@@ -20,13 +20,17 @@ ActiveStorage.start()
 
 // External imports
 import "bootstrap";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-
+import { loadDynamicBannerText } from '../components/_typescript';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  btnToTop();
+  AOS.init();
+  loadDynamicBannerText();
 });
