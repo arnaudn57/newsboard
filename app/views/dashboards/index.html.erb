@@ -25,8 +25,11 @@
     <div class="carousel-item active" data-interval="3000000">
       <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p>
       <% if selected_media.include?"Articles" %>
+        <div class="tester">
           <p class="text-center media_title">Articles</p>
-        <% end %>
+        </div>
+      <% end %>
+
       <% last_article = last_dashboard.articles %>
       <% last_article.each do |article| %>
         <div class="col-md-3" style="float:left">
@@ -52,6 +55,7 @@
       <% if selected_media.include?"Podcasts" %>
         <p class="text-center media_title">Podcast</p>
       <% end %>
+
       <%# ----------PODCAST DU JOUR----------------- %>
       <% last_podcasts = last_dashboard.podcasts %>
       <% last_podcasts.each do |podcast|%>
@@ -77,6 +81,7 @@
       <% if selected_media.include?"Video" %>
         <p class="text-center media_title">Video</p>
       <% end %>
+
       <% last_videos = last_dashboard.videos %>
       <% last_videos.each do |video|%>
         <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -102,6 +107,7 @@
         <% unless old_dashboard.articles.blank? %>
           <p class="text-center media_title">Articles</p>
         <% end %>
+
         <% old = old_dashboard.articles %>
         <% old.each do |article| %>
           <div class="col-md-3" style="float:left">
@@ -129,6 +135,7 @@
         <% unless old_dashboard.podcasts.blank? %>
           <p class="text-center media_title">Podcast</p>
         <% end %>
+
         <% old_podcasts = old_dashboard.podcasts %>
         <% old_podcasts.each do |old_podcast| %>
           <div class="col-md-3" style="float:left">
