@@ -33,6 +33,9 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  height: 200vh;
+}
 // ---------------------------------------------
 // ----------------CAROUSEL GENERAL---------------------
 .date {
@@ -51,6 +54,10 @@ html {
 }
 
 .controls-top .btn-controls {
+  color: rgb(98, 165, 188) ;
+}
+
+.fas {
   color: rgb(98, 165, 188) ;
 }
 // ----------------CAROUSEL GENERAL END---------------------
@@ -245,7 +252,7 @@ html {
 }
 
 .video-iframe {
-  margin-left:-31px;
+  margin-left: 16px;
 }
 
 .video-iframe p{
@@ -254,12 +261,14 @@ html {
 }
 
 .video-container {
-  width: 78%;
-  height: 380px;
+  width: 357px;
+  // height: 380px;
   background-color: white;
   margin: 0 auto;
+  margin-top: -10px;
   text-align:center;
-  border-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
   padding-bottom: 10px;
 
 }
@@ -270,7 +279,6 @@ html {
 .articles-scroll {
   overflow: scroll;
   width: 350px;
-  height: 650px;
   margin: 0 auto;
 }
 
