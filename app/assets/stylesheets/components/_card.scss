@@ -1,54 +1,165 @@
-//-----------Carte Index----------------------------
-
-.card-container {
-  // border: 2px solid;
-  border-color: black;
-  border-radius: 10px;
-  padding: 15px;
+// -------FONT IMPORT-------------
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
 }
-
-.card-container-home {
-  border-radius: 10px;
-  padding: 15px;
-}
-
-.card-product-title {
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto:wght@500&display=swap');
+// ---------------BTN TO TOP--------------------------
+.btn-to-top {
   height: 50px;
+  width: 50px;
+  background: rgb(98, 165, 188);
+  border-radius:50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.7;
+}
+.btn-to-top .icone {
+  text-decoration: none;
+  color: white;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  height: 200vh;
+}
+// ---------------------------------------------
+// ----------------CAROUSEL GENERAL---------------------
+.date {
+  border: 1px solid rgb(98, 165, 188);
+  margin-left: 140px;
+  margin-right: 140px;
+  padding: 5px;
+  border-radius: 10px;
+  color: rgb(98, 165, 188);
+}
+.carousel {
+  margin-top: 30px;
+  position: relative;
+  z-index: 1;
+}
+.controls-top .btn-controls {
+  color: rgb(98, 165, 188) ;
 }
 
+// ----------------CAROUSEL GENERAL END---------------------
+//-----------------CARD ARTICLES---------------------------
+.card {
+  border-radius: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.card-img-top {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.card-title {
+  color: rgb(98, 165, 188);
+}
+.source {
+  color: grey;
+  margin-left: -15px;
+}
+.card-body cite {
+  color: grey;
+}
+.card-body .category {
+  color: rgb(98, 165, 188);
+}
+.card-body-player audio {
+  width: 199px;
+  border-radius:none;
+}
+.card-btn {
+  align-content: center;
+}
+.card-btn .btn-view {
+  background-color: #62A5BC;
+  padding: 9px;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  height: 41px;
+  margin-top: 21px;
+  padding-right: 14px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+// ----------------CARD ARTICLES END---------------------
+// ----------------CARD PODCAST---------------------
+.card-player {
+  text-align: center;
+  width: 250px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.card-player-img-top {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.card-body-player {
+  width: 250px;
+  background-color: white;
+  padding: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.card-body-player p {
+  color: rgb(98, 165, 188);
+}
+.card-body-player .btn-favori {
+  background-color: white;
+  padding: 10px;
+  color: rgb(218, 167, 86);
+  border-radius:30px;
+  border: 1px solid rgb(218, 167, 86);
+  margin-top: 20px;
+}
+.btn-favori-podcast {
+  background-color: white;
+  padding: 10px;
+  color: rgb(218, 167, 86);
+  border-radius:30px;
+  border: 1px solid rgb(218, 167, 86);
+  margin-left: -36px;
+  margin-top: 8px;
+}
+.btn-favori-podcast:hover {
+  background-color: rgb(218, 167, 86);
+  color: white;
+}
+// ----------------CARD PODCAST END---------------------
 .card-product {
   overflow: hidden;
-  height: 250px;
+  height: 225px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  margin: 0 2px;
+  width: 357px;
+  border-radius: 30px;
 }
-
 .card-product img {
   height: 100%;
   width: 120px;
   object-fit: cover;
-  border-radius: 10px;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
 }
-
-.card-product-infos {
-  display: block;
-  height: 250px;
-}
-
-.card-product-content {
-  margin-top: 10px;
-  height: 90px;
-}
-
 .card-product h2 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  margin-top: -26px;
+  margin-bottom: 15px;
 }
-
 .card-product p {
   font-size: 12px;
   line-height: 1.4;
@@ -56,35 +167,73 @@
   margin-bottom: 0;
   margin-top: 8px;
 }
-
 .card-product .card-product-infos {
-  padding: 16px;
+  padding: 80px;
+  margin-left: -8px;
 }
-
-.card-container {
-  display: grid;
-  grid-gap: 10px;
-  margin: 10px;
+.card-product .card-product-infos h2{
+  margin-left: -27px;
 }
-
-.card-product-bouton .btn-outline-success {
-  font-size: 12px;
-  border-radius: 20px;
-  margin-left: 20px;
-  margin-top: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 40px;
-  padding-right: 40px;
+.card-product .card-product-infos audio {
+  width: 199px;
+  margin-left: -45px;
+  height: 40px;
+}
+// ---------------CARD VIDEO------------------
+.card-video {
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+.btn-favori-video {
+  background-color: white;
+  padding: 10px;
+  color: rgb(218, 167, 86);
+  border-radius:30px;
+  border: 1px solid rgb(218, 167, 86);
+  margin-top: 8px;
+  // margin-left: 106px;
+}
+.btn-favori-video:hover {
+  background-color: rgb(218, 167, 86);
+  color: white;
+}
+.video-iframe {
+  margin-left: 16px;
+}
+.video-iframe p{
+  color:red;
+  margin-left: 2px;
+}
+.video-container {
+  width: 357px;
+  // height: 380px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: -10px;
+  text-align:center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding-bottom: 10px;
+}
+// CONTAINER ARTICLES
+.articles-scroll {
+  overflow: scroll;
+  width: 350px;
+  margin: 0 auto;
+}
+.category_title {
+  color: rgb(98, 165, 188);
+  font-family: roboto;
+  margin-top: 20px;
 }
 
 //-------bouton favori Articles-----------------
-
 .card-btn button {
   border: 1px;
   background-color:rgba(218, 167, 86, 0.705);
   margin-top: 14px;
-  color: #fdfdfd;
+  color: #FDFDFD;
   border-radius: 30px;
   font-size: 16px;
   padding: 2px;
@@ -93,15 +242,12 @@
   padding-bottom: 36px;
   padding-left: 12px;
 }
-
 .card-btn button:hover {
   background-color:rgb(241, 193, 114);
 }
-
 //-------icone horloge Article-----------------
-
 .card-body .fa-clock {
-  color: #fdfeff;
+  color: #FDFEFF;
   font-size: 15px;
   padding: 5px;
   border-radius: 50%;
@@ -111,7 +257,7 @@
   padding-bottom: 10px;
 }
 .card-body .fa-book-open {
-  color: #fdfeff;
+  color: #FDFEFF;
   font-size: 15px;
   padding: 5px;
   border-radius: 50%;
@@ -119,13 +265,11 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 //-------icone horloge Podcast-----------------
 .card-product-infos .fa-clock {
   padding-left: 10px;
   color: white;
 }
-
 //-------bouton favori poscast-----------------
 .card-product-infos button {
   border: 1px;
@@ -139,13 +283,9 @@
   align-content: center;
   margin-left: -45px;
 }
-
 .card-product-infos button:hover {
   background-color:rgb(241, 193, 114);
 }
-
-
-
 //-------bouton favori video-----------------
 .video-container button {
   border: 1px;
@@ -158,9 +298,7 @@
   align-content: center;
   padding-top: 7px;
   padding-bottom: 7px;
-
 }
 .video-container button:hover {
   background-color:rgb(241, 193, 114);
-
 }

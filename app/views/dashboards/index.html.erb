@@ -25,7 +25,7 @@
     <div class="carousel-item active" data-interval="3000000">
       <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p>
       <% if selected_media.include?"Articles" %>
-          <p class="text-center media_title">Articles</p>
+          <p class="text-center media_title animate__animated animate__fadeIn">ARTICLES</p>
       <% end %>
 
       <% last_article = last_dashboard.articles %>
@@ -51,7 +51,7 @@
       <% end %> <%# END DE L'ITERATION SUR LE DERNIER ARTICLE %>
 
       <% if selected_media.include?"Podcasts" %>
-        <p class="text-center media_title">Podcast</p>
+        <p class="text-center media_title animate__animated animate__fadeIn">PODCAST</p>
       <% end %>
 
       <%# ----------PODCAST DU JOUR----------------- %>
@@ -77,7 +77,7 @@
 
       <%# -----------VIDEO DU JOUR------------------ %>
       <% if selected_media.include?"Video" %>
-        <p class="text-center media_title">Video</p>
+        <p class="text-center media_title animate__animated animate__fadeIn">VIDEO</p>
       <% end %>
 
       <% last_videos = last_dashboard.videos %>
@@ -103,7 +103,7 @@
 
         <%# ---------------ARTICLES ANCIEN DASHBOARDS---------------------- %>
         <% unless old_dashboard.articles.blank? %>
-          <p class="text-center media_title">Articles</p>
+          <p class="text-center media_title animate__animated animate__fadeIn">ARTICLES</p>
         <% end %>
 
         <% old = old_dashboard.articles %>
@@ -131,7 +131,7 @@
 
         <%# ---------PODCAST ANCIEN DASHBOARD---------------- %>
         <% unless old_dashboard.podcasts.blank? %>
-          <p class="text-center media_title">Podcast</p>
+          <p class="text-center media_title animate__animated animate__fadeIn">PODCAST</p>
         <% end %>
 
         <% old_podcasts = old_dashboard.podcasts %>
@@ -157,7 +157,7 @@
 
         <%# --------------VIDEO ANCIEN DASHBOAD---------------- %>
         <% unless old_dashboard.videos.blank? %>
-          <p class="text-center media_title">Video</p>
+          <p class="text-center media_title animate__animated animate__fadeIn">VIDEO</p>
         <% end %>
 
         <% old_videos = old_dashboard.videos %>
