@@ -23,11 +23,9 @@
     <!--First slide-->
       <%# -------------ARTICLES DU JOUR---------------- %>
     <div class="carousel-item active" data-interval="3000000">
-      <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p
+      <p class="text-center date"> <%= last_dashboard.date.strftime("%d/%m/%Y") %> </p>
       <% if selected_media.include?"Articles" %>
-        <div class="tester">
           <p class="text-center media_title">Articles</p>
-        </div>
       <% end %>
 
       <% last_article = last_dashboard.articles %>
@@ -57,7 +55,7 @@
       <% end %>
 
       <%# ----------PODCAST DU JOUR----------------- %>
-      <% last_podcasts = last_dashboard.podcasts %>
+<% last_podcasts = last_dashboard.podcasts %>
       <% last_podcasts.each do |podcast|%>
         <div class="col-md-3" style="float:left">
           <div class="card-product mb-2">
