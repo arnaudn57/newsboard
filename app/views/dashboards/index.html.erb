@@ -69,8 +69,8 @@
 
       <% videos = last_dashboard.videos %>
       <% videos.each do |video|%>
+        <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="video-container">
-          <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <%= simple_form_for([@user, @favori], remote: true) do |f| %>
             <%= f.hidden_field :medium_id, value: video.media.first.id %>
             <%= button_tag  do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
@@ -103,7 +103,7 @@
                     <a class="btn-view" href="<%=article.url %>">Voir l'article</a>
                     <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                       <%= f.hidden_field :medium_id, value: article.media.first.id %>
-                      <%= f.submit "Ajouter aux favoris", class: "fas fa-clock" %>
+                      <%= button_tag  do %>Lire plus tard<i class="fas fa-clock"></i> <% end %>
                     <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
                   </div>
                 </div>
@@ -122,11 +122,11 @@
                 <h2><%= old_podcast.title %></h2>
                 <audio controls>
                   <source src="<%= old_podcast.audio %>" type="audio/mp3">
-                  <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="#" >lien vers le fichier audio</a> à la place.</p>
+                  <p>Votre navigateur ne prend pas en charge l'audio HTML5. Voici un <a href="<%= old_podcast.url%>" >lien vers le fichier audio</a> à la place.</p>
                 </audio>
                 <%= simple_form_for([@user, @favori], remote: true) do |f| %>
                   <%= f.hidden_field :medium_id, value: old_podcast.media.first.id %>
-                  <%= f.submit "Ajouter aux favoris", class: "fas fa-clock" %>
+                  <%= button_tag  do %>Ecouter plus tard<i class="fas fa-clock"></i> <% end %>
                 <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
               </div>
             </div>
@@ -137,12 +137,12 @@
 
         <% videos = old_dashboard.videos %>
         <% videos.each do |video|%>
+          <iframe width="357" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="video-container">
-            <iframe width="300" height="300" class="video-iframe" src="<%=video.url%>" title="<%= video.title %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
               <%= f.hidden_field :medium_id, value: video.media.first.id %>
-              <%= f.submit "Ajouter aux favoris", class: "fas fa-clock" %>
-            <% end %>
+              <%= button_tag  do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
+            <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES VIDEOS DES AUTRES DASHBOARDS %>
       </div>

@@ -252,7 +252,7 @@ body {
 }
 
 .video-iframe {
-  margin-left:-31px;
+  margin-left: 16px;
 }
 
 .video-iframe p{
@@ -261,12 +261,14 @@ body {
 }
 
 .video-container {
-  width: 78%;
-  height: 380px;
+  width: 357px;
+  // height: 380px;
   background-color: white;
   margin: 0 auto;
+  margin-top: -10px;
   text-align:center;
-  border-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
   padding-bottom: 10px;
 
 }
@@ -277,7 +279,6 @@ body {
 .articles-scroll {
   overflow: scroll;
   width: 350px;
-  height: 650px;
   margin: 0 auto;
 }
 
