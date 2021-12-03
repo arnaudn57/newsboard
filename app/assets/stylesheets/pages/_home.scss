@@ -105,7 +105,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-top: 10px;
+  padding-top: 16px;
 }
 
 .bubble {
@@ -118,6 +118,7 @@
 	// looks
 	background-color: #fff;
 	padding: 1.125em 1.5em;
+  padding-top: 28px;
 	font-size: 1.25em;
 	border-radius: 1rem;
   box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
