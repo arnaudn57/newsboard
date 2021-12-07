@@ -22,10 +22,10 @@
 
 
 .btn-sign_up {
-  text-align: center;
-  margin-top: 86px;
-  margin-bottom: 10px;
-  padding: 50px;
+    text-align: center;
+    margin-top: 53px;
+    margin-bottom: 38px;
+    padding: 28px;
 }
 
 .text-content {
@@ -120,4 +120,18 @@
 	font-size: 1.25em;
 	border-radius: 1rem;
   box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.user_sign_in {
+  background-color: #304d6d;
+  border-radius: 30px;
+  padding: 8px;
+}
+
+.user_sign_in a {
+  color: white;
+}
+
+.user_sign_in input {
+  color: white;
 }

@@ -18,11 +18,11 @@
             <div class="card-container-home">
               <div class="col-md-3" style="float:left">
                   <div class="card mb-2">
-                    <img class="card-img-top" src="<%= Article.where(category: "music").last.image%>" alt="Card image cap">
+                    <img class="card-img-top" src="<%= Article.where(category: "news").last.image%>" alt="Card image cap">
                       <div class="card-body">
-                          <p class="text-center category"> #<%= Article.where(category: "music").last.category.upcase %></p>
-                          <h4 class="card-title"><%= Article.where(category: "music").last.title %></h4>
-                          <p class="card-text"><%= truncate(Article.where(category: "music").last.content, :length => 90, :omission => '...')%></p>
+                          <p class="text-center category"> #<%= Article.where(category: "news").last.category.upcase %></p>
+                          <h4 class="card-title"><%= truncate(Article.where(category: "news").last.title, :length => 70, :omission => '...') %></h4>
+                          <p class="card-text"><%= truncate(Article.where(category: "news").last.content, :length => 90, :omission => '...')%></p>
                       </div>
                   </div>
                 </div>
