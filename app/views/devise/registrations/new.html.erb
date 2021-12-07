@@ -3,7 +3,7 @@
   <div class="container px-4 py-5 mx-auto ">
     <div class="card card0">
 
-<h3 class="mb-5 text-center heading">S'inscrire</h3>
+<h3 class="mb-5 text-center heading">S'inscrire 🖊</h3>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="row justify-content-center my-3 px-3">
-   <div class="btn btn-info"> <%= f.button :submit, "S'inscrire" %> </div>
+   <div class="user_sign_in"><%= f.button :submit, "S'inscrire" %></div>
   </div>
 <% end %>
 

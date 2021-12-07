@@ -21,7 +21,7 @@
                     <img class="card-img-top" src="<%= Article.where(category: "news").last.image%>" alt="Card image cap">
                       <div class="card-body">
                           <p class="text-center category"> #<%= Article.where(category: "news").last.category.upcase %></p>
-                          <h4 class="card-title"><%= Article.where(category: "news").last.title %></h4>
+                          <h4 class="card-title"><%= truncate(Article.where(category: "news").last.title, :length => 70, :omission => '...') %></h4>
                           <p class="card-text"><%= truncate(Article.where(category: "news").last.content, :length => 90, :omission => '...')%></p>
                       </div>
                   </div>
