@@ -175,7 +175,7 @@
           <div class="video-container">
             <%= simple_form_for([@user, @favori], remote: true) do |f| %>
               <%= f.hidden_field :medium_id, value: video.media.first.id %>
-              <%= button_tag  do %>Regarder plus tard<i class="fas fa-clock"></i> <% end %>
+              <%= button_tag  do %>Regarder plus tard <i class="fas fa-clock"></i> <% end %>
             <% end %><%# END DU SIMPLE FORM BTN FAVORI %>
           </div>
         <% end %> <%# END DE L4ITERATION SUR LES VIDEOS DES AUTRES DASHBOARDS %>
